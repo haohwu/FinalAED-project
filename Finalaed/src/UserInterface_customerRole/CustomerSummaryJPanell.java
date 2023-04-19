@@ -30,9 +30,7 @@ public class CustomerSummaryJPanell extends javax.swing.JPanel {
     
     
     
-    /**
-     * Creates new form CustomerSummaryJPanell
-     */
+   
     public CustomerSummaryJPanell(JPanel userProcessContainer, UserAccount account, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;     

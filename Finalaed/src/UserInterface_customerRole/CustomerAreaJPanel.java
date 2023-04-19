@@ -23,9 +23,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
     Pharmacy pharmacy;
     EcoSystem system;
     Customer customer;
-    /**
-     * Creates new form CustomerAreaJPanel
-     */
+    
     public CustomerAreaJPanel(JPanel userProcessContainer, UserAccount useraccount, EcoSystem system) {
         initComponents();
          this.userProcessContainer = userProcessContainer;  
@@ -201,7 +199,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnReviewOrdersActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
-        // TODO add your handling code here:
+        
         if((txtAddress.getText() == "") || (txtPhone.getText() == "") )
         {
             JOptionPane.showMessageDialog(null,"Please fill all values!", "Warning", JOptionPane.WARNING_MESSAGE);
