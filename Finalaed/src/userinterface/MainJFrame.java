@@ -134,7 +134,7 @@ public class MainJFrame extends javax.swing.JFrame {
                                         .addComponent(lblPassword, javax.swing.GroupLayout.Alignment.LEADING))
                                     .addGap(61, 61, 61)))
                             .addComponent(lblTitle))
-                        .addGap(0, 44, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -156,7 +156,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(btnLogin)
                 .addGap(18, 18, 18)
                 .addComponent(btnLogout)
-                .addContainerGap(470, Short.MAX_VALUE))
+                .addContainerGap(1708, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -164,12 +164,13 @@ public class MainJFrame extends javax.swing.JFrame {
         container.setBackground(new java.awt.Color(255, 255, 255));
         container.setLayout(new java.awt.CardLayout());
 
-        jLabel4.setBackground(new java.awt.Color(255, 255, 51));
+        jLabel4.setBackground(new java.awt.Color(255, 153, 204));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/main-bigstock-Vector-Illustration-Pharmacist-354628031.jpg"))); // NOI18N
         container.add(jLabel4, "card2");
 
         jSplitPane1.setRightComponent(container);
 
-        getContentPane().add(jSplitPane1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(jSplitPane1, java.awt.BorderLayout.PAGE_START);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
