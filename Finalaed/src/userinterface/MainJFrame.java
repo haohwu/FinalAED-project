@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-//package userinterface;
+package userinterface;
 
 import Business.ConfigureASystem;
 import Business.Customer.Customer;
