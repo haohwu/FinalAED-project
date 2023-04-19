@@ -34,9 +34,7 @@ import userinterface.HospitalRole.HospitalAreaJPanel;
  */
 public class MainJFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MainJFrame
-     */
+    
     private EcoSystem system;
     private UserAccount user;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
@@ -71,7 +69,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel1.setBackground(new java.awt.Color(255, 51, 102));
 
         txtUserName.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         txtUserName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -124,6 +122,8 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnLogout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtUserName)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -134,17 +134,15 @@ public class MainJFrame extends javax.swing.JFrame {
                                         .addComponent(lblPassword, javax.swing.GroupLayout.Alignment.LEADING))
                                     .addGap(61, 61, 61)))
                             .addComponent(lblTitle))
-                        .addGap(0, 44, Short.MAX_VALUE))
-                    .addComponent(txtUserName)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(0, 44, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(43, 43, 43)
                 .addComponent(lblTitle)
-                .addGap(47, 47, 47)
+                .addGap(31, 31, 31)
                 .addComponent(lblUsername)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -166,6 +164,7 @@ public class MainJFrame extends javax.swing.JFrame {
         container.setBackground(new java.awt.Color(255, 255, 255));
         container.setLayout(new java.awt.CardLayout());
 
+        jLabel4.setBackground(new java.awt.Color(255, 255, 51));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Medomand-online-Pharmacy-supply-1024x759.png"))); // NOI18N
         container.add(jLabel4, "card2");
 
