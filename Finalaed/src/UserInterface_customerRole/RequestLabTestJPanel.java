@@ -21,9 +21,7 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
 
     
    
-    /**
-     * Creates new form RequestLabTestJPanel
-     */
+    
     public RequestLabTestJPanel(JPanel userProcessContainer, Orders o) {
         initComponents();
            
