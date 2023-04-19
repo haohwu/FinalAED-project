@@ -18,9 +18,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CustomerOrderAction extends javax.swing.JPanel {
 
-    /**
-     * Creates new form CustomerOrderAction
-     */
     
     JPanel userProcessContainer;
     Customer customer;
