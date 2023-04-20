@@ -31,6 +31,27 @@ public class SystemAdminManageSupplierEmployee extends javax.swing.JPanel {
         private Supplier supplier;
         private String user;
         private EcoSystem ecosystem;
+        
+        
+        public SystemAdminManageSupplierEmployee(JPanel userProcessContainer, Supplier supplier, EcoSystem ecosystem) {
+        initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.supplier = supplier;
+        this.ecosystem = ecosystem;
+        txtUsername.setEnabled(false);
+        txtPassword.setEnabled(false);
+        txtConfirmPassword.setEnabled(false);
+        txtName.setEnabled(false);
+        txtPhoneNumber.setEnabled(false);
+        txtAddress.setEnabled(false);
+        btnSubmit.setEnabled(false);
+        btnDelete.setEnabled(false);
+        btnView.setEnabled(false);
+        radioBtnDelivery.setEnabled(false);
+        radioBtnManager.setEnabled(false);
+        populateSupplierEmpTable();
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
