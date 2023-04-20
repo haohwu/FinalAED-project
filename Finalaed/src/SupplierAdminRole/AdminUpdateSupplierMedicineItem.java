@@ -107,7 +107,7 @@ JPanel userProcessContainer;
          if((Integer)spinnerPrice.getValue() > 0)
         {
             supplierMedicineItem.setPrice((Integer)spinnerPrice.getValue());
-            JOptionPane.showMessageDialog(null, "Medicine " + supplierMedicineItem.getName()+ " updated successfully!");
+            JOptionPane.showMessageDialog(null, "Medicine " + supplierMedicineItem.getName()+ " updated !");
         }
         else
         {
