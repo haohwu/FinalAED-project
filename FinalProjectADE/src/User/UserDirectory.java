@@ -4,6 +4,8 @@
  */
 package User;
 
+import Employee.Employee;
+import Role.Role;
 import java.util.ArrayList;
 
 /**
@@ -37,5 +39,14 @@ public class UserDirectory {
     
     public void deleteUser(User user){
         userList.remove(user);
+    }
+    
+    public boolean checkIfUserUnique(String name){
+        for(User user : userList){
+            if(user.getName() == name){
+                return false;
+            }
+        }
+        return true;
     }
 }
