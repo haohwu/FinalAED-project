@@ -1,22 +1,41 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+ 
 package userinterface.SystemAdminWorkArea;
+import Business.Customer.Customer;
+import Business.DeliveryMan.DeliveryMan;
+import Business.EcoSystem;
+import Business.Employee.Employee;
+import Business.Role.AdminRole;
+import Business.Role.CustomerRole;
+import Business.Role.DeliveryManRole;
+import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
+import javax.swing.JPanel;
 
 /**
  *
- * @author pratikkpoojari
+ * @author Pratik Poojari
  */
 public class SystemAdminUpdateCustomer extends javax.swing.JPanel {
 
-    /**
-     * Creates new form SystemAdminUpdatePanel
-     */
-    public SystemAdminUpdateCustomer() {
+    
+    private JPanel userProcessContainerSAUC;
+    private EcoSystem ecosystemSAUC;
+    private Customer customerSAUC;
+    public SystemAdminUpdateCustomer(JPanel userProcessContainer, Customer customer, EcoSystem ecosystem) {
         initComponents();
+        this.userProcessContainerSAUC = userProcessContainer;
+        this.customerSAUC = customer;
+        this.ecosystemSAUC = ecosystem;;
+        txtName.setText(customer.getName());
+        txtPhoneNumber.setText(customer.getPhone());
+        txtAddress.setText(customer.getAddress());
+        
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -137,7 +156,23 @@ public class SystemAdminUpdateCustomer extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnSubmitSAUCActionPerformed
 
-
+ private boolean validateThisSAUC() {
+        String regex = "\\d{10}";
+        if(("".equals(txtPhoneNumber.getText())) || ("".equals(txtAddress.getText())))
+        {
+            JOptionPane.showMessageDialog(null,"Please fill all details!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        else if(!(txtPhoneNumber.getText().matches(regex)))
+        {
+            JOptionPane.showMessageDialog(null,"Phone number must have only 10 digits!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBackSAUC;
     private javax.swing.JButton btnSubmitSAUC;
