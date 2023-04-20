@@ -11,9 +11,10 @@ import java.util.ArrayList;
  * @author whh
  */
 public class PatientDirectory {
+
     private ArrayList<Patient> patientList;
-    
-    public PatientDirectory(){
+
+    public PatientDirectory() {
         this.patientList = new ArrayList<>();
     }
 
@@ -24,8 +25,8 @@ public class PatientDirectory {
     public void setPatientList(ArrayList<Patient> patientList) {
         this.patientList = patientList;
     }
-    
-    public Patient createPatient(String name, String phoneNum, String address){
+
+    public Patient createPatient(String name, String phoneNum, String address) {
         Patient patient = new Patient();
         patient.setName(name);
         patient.setPhoneNum(phoneNum);
@@ -33,8 +34,17 @@ public class PatientDirectory {
         patientList.add(patient);
         return patient;
     }
-    
-    public void deletePatient(Patient patient){
+
+    public void deletePatient(Patient patient) {
         patientList.remove(patient);
+    }
+
+    public Patient findPatient(String name) {
+        for (Patient p : patientList) {
+            if (p.getName() == name) {
+                return p;
+            }
+        }
+        return null;
     }
 }
