@@ -19,13 +19,11 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 /**
  *
- * @author Prartik Poojari
+ * @author Pratik Poojari
  */
 public class SystemAdminManagePharmacy extends javax.swing.JPanel {
 
-    /**
-     * Creates new form SystemAdminManagePharmacy
-     */
+    
     
     private JPanel userProcessContainerSAMR;
     private EcoSystem ecosystem;
@@ -54,19 +52,241 @@ public class SystemAdminManagePharmacy extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblBackground = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
+        btnManagePharmacy = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblPharmacy = new javax.swing.JTable();
+        btnDeletePharmacy = new javax.swing.JButton();
+        btnCreatePharmacy = new javax.swing.JButton();
+        lblBackground1 = new javax.swing.JLabel();
+        txtPharmacyName = new javax.swing.JTextField();
+        txtAddress = new javax.swing.JTextField();
+
+        btnBack.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnBack.setText("Back");
+        btnBack.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
+        btnManagePharmacy.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnManagePharmacy.setText("View Pharmacy");
+        btnManagePharmacy.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnManagePharmacy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManagePharmacyActionPerformed(evt);
+            }
+        });
+
+        tblPharmacy.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        tblPharmacy.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Serial No.", "Pharmacy Name", "Address"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblPharmacy.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblPharmacyMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblPharmacy);
+
+        btnDeletePharmacy.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnDeletePharmacy.setText("Delete Pharmacy");
+        btnDeletePharmacy.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnDeletePharmacy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeletePharmacyActionPerformed(evt);
+            }
+        });
+
+        btnCreatePharmacy.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnCreatePharmacy.setText("Create Pharmacy ");
+        btnCreatePharmacy.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnCreatePharmacy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreatePharmacyActionPerformed(evt);
+            }
+        });
+
+        txtPharmacyName.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        txtPharmacyName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        txtAddress.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        txtAddress.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAddressActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 1160, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(lblBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 1160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(50, 50, 50)
+                            .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(10, 10, 10)
+                            .addComponent(btnManagePharmacy, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(10, 10, 10)
+                            .addComponent(btnCreatePharmacy, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(360, 360, 360)
+                            .addComponent(txtPharmacyName, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(560, 560, 560)
+                            .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(10, 10, 10)
+                            .addComponent(btnDeletePharmacy, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(320, 320, 320)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblBackground1, javax.swing.GroupLayout.PREFERRED_SIZE, 1160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 920, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(lblBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 920, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(30, 30, 30)
+                            .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(51, 51, 51)
+                            .addComponent(btnManagePharmacy, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(125, 125, 125)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnCreatePharmacy, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(30, 30, 30)
+                                    .addComponent(txtPharmacyName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(20, 20, 20)
+                            .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(220, 220, 220)
+                            .addComponent(btnDeletePharmacy, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(140, 140, 140)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblBackground1, javax.swing.GroupLayout.PREFERRED_SIZE, 920, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainerSAMR.remove(this);
+        Component[] componentArray = userProcessContainerSAMR.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        SystemAdminWorkAreaJPanel dwjp = (SystemAdminWorkAreaJPanel) component;
+        //dwjp.populateTree();
+        CardLayout layout = (CardLayout) userProcessContainerSAMR.getLayout();
+        layout.previous(userProcessContainerSAMR);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnManagePharmacyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManagePharmacyActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblPharmacy.getSelectedRow();
+        if (selectedRow >= 0)
+        {
+            Pharmacy selectedPharmacy = (Pharmacy) tblPharmacy.getValueAt(selectedRow, 1);
+            SystemManageEmployees fs = new SystemManageEmployees(userProcessContainerSAMR, selectedPharmacy, ecosystem);
+            userProcessContainerSAMR.add("SysAdminManageEmployees", fs);
+            CardLayout layout = (CardLayout) userProcessContainerSAMR.getLayout();
+            layout.next(userProcessContainerSAMR);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null,"Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+    }//GEN-LAST:event_btnManagePharmacyActionPerformed
+
+    private void tblPharmacyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPharmacyMouseClicked
+        // TODO add your handling code here:
+        int selectedRow = tblPharmacy.getSelectedRow();
+        if (selectedRow >= 0)
+        {
+            btnDeletePharmacy.setEnabled(true);
+            btnManagePharmacy.setEnabled(true);
+        }
+    }//GEN-LAST:event_tblPharmacyMouseClicked
+
+    private void btnDeletePharmacyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletePharmacyActionPerformed
+        // TODO add your handling code here:
+        int selectedRowSAMR = tblPharmacy.getSelectedRow();
+        if (selectedRowSAMR >= 0)
+        {
+            Pharmacy selectedPharmacy = (Pharmacy) tblPharmacy.getValueAt(selectedRowSAMR, 1);
+            ecosystem.getPharmacyDirectory().deletePharmacy(selectedPharmacy);
+            JOptionPane.showMessageDialog(null, "Pharmacy " + selectedPharmacy.getName()+ " deleted successfully!");
+            populateTable();
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null,"Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+    }//GEN-LAST:event_btnDeletePharmacyActionPerformed
+
+    private void btnCreatePharmacyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePharmacyActionPerformed
+        // TODO add your handling code here:
+        btnCreatePharmacy.setEnabled(false);
+        txtPharmacyName.setEnabled(true);
+        txtAddress.setEnabled(true);
+        btnSubmit.setEnabled(true);
+    }//GEN-LAST:event_btnCreatePharmacyActionPerformed
+
+    private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_txtAddressActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnCreatePharmacy;
+    private javax.swing.JButton btnDeletePharmacy;
+    private javax.swing.JButton btnManagePharmacy;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblBackground;
+    private javax.swing.JLabel lblBackground1;
+    private javax.swing.JTable tblPharmacy;
+    private javax.swing.JTextField txtAddress;
+    private javax.swing.JTextField txtPharmacyName;
     // End of variables declaration//GEN-END:variables
 }
