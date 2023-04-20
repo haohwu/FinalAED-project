@@ -181,7 +181,7 @@ public class AdminManageSupplierOrders extends javax.swing.JPanel {
         {
             SupplierOrders supplierOrders = (SupplierOrders) tblOrders.getValueAt(selectedRow, 0);
             supplier.deleteOrder(supplierOrders);
-            JOptionPane.showMessageDialog(null, "Order deleted successfully!");
+            JOptionPane.showMessageDialog(null, "Order deleted !");
             populateTable();
         }
         else
@@ -202,7 +202,7 @@ public class AdminManageSupplierOrders extends javax.swing.JPanel {
                 String dmName = comboSupplierDeliveryAgent.getSelectedItem().toString();
                 SupplierDeliveryMan sdm = supplier.findSupplierDeliveryMan(dmName);
                 supplierOrders.setSupplierDeliveryMan(sdm);
-                JOptionPane.showMessageDialog(null, "Delivery man assigned successfully!");
+                JOptionPane.showMessageDialog(null, "Delivery man assigned !");
                 populateTable();
             }
             else
