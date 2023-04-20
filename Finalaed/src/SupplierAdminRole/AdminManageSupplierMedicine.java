@@ -247,7 +247,7 @@ public class AdminManageSupplierMedicine extends javax.swing.JPanel {
             if(supplier.getSupplierMedicineCatalog().checkIfSupplierMedicineItemIsUnique(txtName.getText()))
             {
                 SupplierMedicineItem smi = supplier.getSupplierMedicineCatalog().createSupplierMedicineItem(txtName.getText(), (Integer)spinnerPrice.getValue());
-                JOptionPane.showMessageDialog(null, "Medicine Item " + smi.getName()+ " created successfully!");
+                JOptionPane.showMessageDialog(null, "Medicine Item " + smi.getName()+ " created !");
                 populateTable();
                 btnCreate.setEnabled(true);
                 txtName.setText("");
