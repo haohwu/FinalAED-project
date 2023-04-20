@@ -85,7 +85,7 @@ public class SystemAdminManageHospitals extends javax.swing.JPanel {
         SystemAMHConfirmPasswordText = new javax.swing.JTextField();
         SystemAMHSubmitButton = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 204, 102));
+        setBackground(new java.awt.Color(0, 255, 255));
 
         SystemAMHTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         SystemAMHTable.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
@@ -338,7 +338,7 @@ public class SystemAdminManageHospitals extends javax.swing.JPanel {
     }//GEN-LAST:event_SystemAMHTableMouseClicked
 
     private void SystemAMCDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SystemAMCDeleteButtonActionPerformed
-        // TODO add your handling code here:
+        
         int selectedRow = SystemAMHTable.getSelectedRow();
         if (selectedRow >= 0)
         {
