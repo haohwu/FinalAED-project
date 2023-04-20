@@ -4,6 +4,9 @@
  */
 package userinterface.SystemAdminWorkArea;
 
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Pratik Poojari
@@ -270,17 +273,52 @@ public class SystemManageEmployees extends javax.swing.JPanel {
     }//GEN-LAST:event_radioBtnDeliveryActionPerformed
 
     private void tblProfileSMEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProfileSMEMouseClicked
-     
+        // TODO add your handling code here:
+        int selectedRow = tblProfileSME.getSelectedRow();
+        if (selectedRow >= 0)
+        {
+            Employee selectedEmployee = (Employee) tblProfileSME.getValueAt(selectedRow, 1);
+            SystemUpdateEmployee fs = new SystemUpdateEmployee(userProcessContainer, selectedEmployee, ecosystem);
+            userProcessContainer.add("SysAdminUpdateEmployees", fs);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null,"Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
         }
     }//GEN-LAST:event_tblProfileSMEMouseClicked
 
     private void btnManageEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageEmployeeActionPerformed
-       
+        int selectedRow = tblProfileSME.getSelectedRow();
+        if (selectedRow >= 0)
+        {
+            Employee selectedEmployee = (Employee) tblProfileSME.getValueAt(selectedRow, 1);
+            pharmacy.getEmployeeDirectory().deleteEmployee(selectedEmployee);
+            JOptionPane.showMessageDialog(null, "Employee " + selectedEmployee.getName()+ " deleted successfully!");
+            populateTable();
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null,"Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
     }//GEN-LAST:event_btnManageEmployeeActionPerformed
 
     private void btnDeleteEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteEmployeeActionPerformed
         // TODO add your handling code here:
-       
+         // TODO add your handling code here:
+        btnCreateEmployee.setEnabled(false);
+        txtUsername.setEnabled(true);
+        txtPassword.setEnabled(true);
+        txtConfirmPassword.setEnabled(true);
+        txtName.setEnabled(true);
+        txtPhoneNumber.setEnabled(true);
+        txtAddress.setEnabled(true);
+        btnSubmit.setEnabled(true);
+        radioBtnDelivery.setEnabled(true);
+        radioBtnManager.setEnabled(true);
     }//GEN-LAST:event_btnDeleteEmployeeActionPerformed
 
     private void btnCreateEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateEmployeeActionPerformed
