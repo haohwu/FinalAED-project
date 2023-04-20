@@ -119,7 +119,7 @@ public void populateTable() {
         int count1 = 1;
         if(system.getDrugsDirectory().getDrugsList()!= null)
         {
-            System.out.println("Inside part");
+            System.out.println("Inside part of drugs");
             for(Drugs s : system.getDrugsDirectory().getDrugsList())
             {
                 Object[] row = new Object[dtm.getColumnCount()]; //creates an array
