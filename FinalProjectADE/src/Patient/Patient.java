@@ -13,12 +13,21 @@ public class Patient {
     private String name;
     private String phoneNum;
     private String email;
+    private String address;
     
     private static int count;
     
     public Patient(){
         this.Id = this.count++;
         
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public int getId() {
