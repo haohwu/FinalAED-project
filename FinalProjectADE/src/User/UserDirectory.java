@@ -25,5 +25,14 @@ public class UserDirectory {
         this.userList = userList;
     }
     
+    public User creatUser(String name, String password, Role role, Employee employee){
+        User user = new User();
+        user.setName(name);
+        user.setPassword(password);
+        user.setRole(role);
+        user.setEmployee(employee);
+        userList.add(user);
+        return user;
+    }
     
 }
