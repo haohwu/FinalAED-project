@@ -62,6 +62,7 @@ public class SystemAdminManagePharmacy extends javax.swing.JPanel {
         lblBackground1 = new javax.swing.JLabel();
         txtPharmacyName = new javax.swing.JTextField();
         txtAddress = new javax.swing.JTextField();
+        btnSubmit = new javax.swing.JButton();
 
         btnBack.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnBack.setText("Back");
@@ -134,6 +135,15 @@ public class SystemAdminManagePharmacy extends javax.swing.JPanel {
             }
         });
 
+        btnSubmit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnSubmit.setText("Submit");
+        btnSubmit.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -170,6 +180,11 @@ public class SystemAdminManagePharmacy extends javax.swing.JPanel {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(lblBackground1, javax.swing.GroupLayout.PREFERRED_SIZE, 1160, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,6 +218,11 @@ public class SystemAdminManagePharmacy extends javax.swing.JPanel {
                             .addGap(140, 140, 140)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(lblBackground1, javax.swing.GroupLayout.PREFERRED_SIZE, 920, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -289,12 +309,34 @@ public class SystemAdminManagePharmacy extends javax.swing.JPanel {
 
     }//GEN-LAST:event_txtAddressActionPerformed
 
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        // TODO add your handling code here:
+        Pharmacy p = ecosystem.getPharmacyDirectory().createPharmacy(txtPharmacyName.getText(), txtAddress.getText());
+        if(p == null)
+        {
+            JOptionPane.showMessageDialog(null,"Pharmacy " + txtPharmacyName.getText() + " already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Pharmacy created successfully as " + p.getName());
+            btnCreatePharmacy.setEnabled(true);
+            txtPharmacyName.setEnabled(false);
+            txtAddress.setEnabled(false);
+            btnSubmit.setEnabled(false);
+            txtPharmacyName.setText("");
+            txtAddress.setText("");
+        }
+        populateTable();
+    }//GEN-LAST:event_btnSubmitActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCreatePharmacy;
     private javax.swing.JButton btnDeletePharmacy;
     private javax.swing.JButton btnManagePharmacy;
+    private javax.swing.JButton btnSubmit;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel lblBackground1;
