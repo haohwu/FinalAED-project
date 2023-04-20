@@ -7,7 +7,6 @@ package userinterface.SystemAdminWorkArea;
 
 import Business.EcoSystem;
 import Business.Employee.Employee;
-//import Business.Role.AdminRole;
 import Business.Role.DeliveryManRole;
 import Business.Role.SupplierDeliveryManRole;
 import Business.Role.SupplierAdminRole;
@@ -462,7 +461,7 @@ private void populateSupplierEmpTable() {
     private boolean validateThis() {
         String regex = "\\d{10}";
         if(("".equals(txtUsername.getText())) || ("".equals(txtPassword.getText())) || ("".equals(txtConfirmPassword.getText())) 
-                || ("".equals(txtName.getText())) || ("".equals(txtPhoneNumber.getText())) || ("".equals(txtAddress.getText()))
+             //   || ("".equals(txtName.getText())) || ("".equals(txtPhoneNumber.getText())) || ("".equals(txtAddress.getText()))
                 || ((radioBtnDelivery.isEnabled() == false) && (radioBtnManager.isEnabled() == false)))
         {
             JOptionPane.showMessageDialog(null,"Please fill all details!", "Warning", JOptionPane.WARNING_MESSAGE);
