@@ -1,4 +1,8 @@
- 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package userinterface.SystemAdminWorkArea;
 import Business.Customer.Customer;
 import Business.DeliveryMan.DeliveryMan;
@@ -13,8 +17,6 @@ import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-
-import javax.swing.JPanel;
 
 /**
  *
@@ -36,6 +38,7 @@ public class SystemAdminUpdateCustomer extends javax.swing.JPanel {
         txtAddress.setText(customer.getAddress());
         
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,13 +49,21 @@ public class SystemAdminUpdateCustomer extends javax.swing.JPanel {
     private void initComponents() {
 
         btnBackSAUC = new javax.swing.JButton();
+        btnSubmitSAUC = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         txtPhoneNumber = new javax.swing.JTextField();
+        lblPhoneNumber = new javax.swing.JLabel();
+        lblAddress = new javax.swing.JLabel();
         txtAddress = new javax.swing.JTextField();
-        btnSubmitSAUC = new javax.swing.JButton();
+        lblBackground = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(null);
 
         btnBackSAUC.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnBackSAUC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Back Button.png"))); // NOI18N
         btnBackSAUC.setText("Back");
         btnBackSAUC.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnBackSAUC.addActionListener(new java.awt.event.ActionListener() {
@@ -60,21 +71,8 @@ public class SystemAdminUpdateCustomer extends javax.swing.JPanel {
                 btnBackSAUCActionPerformed(evt);
             }
         });
-
-        lblTitle.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitle.setText("Update Customer");
-
-        txtName.setEditable(false);
-        txtName.setBackground(new java.awt.Color(255, 255, 255));
-        txtName.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        txtName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        txtPhoneNumber.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        txtPhoneNumber.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        txtAddress.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        txtAddress.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        add(btnBackSAUC);
+        btnBackSAUC.setBounds(30, 30, 110, 50);
 
         btnSubmitSAUC.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnSubmitSAUC.setText("Submit");
@@ -84,55 +82,48 @@ public class SystemAdminUpdateCustomer extends javax.swing.JPanel {
                 btnSubmitSAUCActionPerformed(evt);
             }
         });
+        add(btnSubmitSAUC);
+        btnSubmitSAUC.setBounds(440, 370, 160, 39);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(btnBackSAUC, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(240, 240, 240)
-                            .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(430, 430, 430)
-                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(430, 430, 430)
-                            .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(430, 430, 430)
-                            .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(410, 410, 410)
-                            .addComponent(btnSubmitSAUC, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 379, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnBackSAUC, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(20, 20, 20)
-                            .addComponent(lblTitle)))
-                    .addGap(83, 83, 83)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(27, 27, 27)
-                    .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(30, 30, 30)
-                    .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(60, 60, 60)
-                    .addComponent(btnSubmitSAUC, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        lblTitle.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText("Update Customer");
+        add(lblTitle);
+        lblTitle.setBounds(380, 50, 350, 29);
+
+        lblName.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblName.setText("Name:");
+        add(lblName);
+        lblName.setBounds(340, 160, 51, 30);
+
+        txtName.setEditable(false);
+        txtName.setBackground(new java.awt.Color(255, 255, 255));
+        txtName.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        txtName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        add(txtName);
+        txtName.setBounds(460, 163, 260, 30);
+
+        txtPhoneNumber.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        txtPhoneNumber.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        add(txtPhoneNumber);
+        txtPhoneNumber.setBounds(460, 220, 260, 30);
+
+        lblPhoneNumber.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblPhoneNumber.setText("Phone Number:");
+        add(lblPhoneNumber);
+        lblPhoneNumber.setBounds(270, 220, 130, 30);
+
+        lblAddress.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblAddress.setText("Address:");
+        add(lblAddress);
+        lblAddress.setBounds(320, 280, 70, 30);
+
+        txtAddress.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        txtAddress.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        add(txtAddress);
+        txtAddress.setBounds(460, 280, 260, 30);
+        add(lblBackground);
+        lblBackground.setBounds(0, 0, 1030, 760);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackSAUCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackSAUCActionPerformed
@@ -156,7 +147,21 @@ public class SystemAdminUpdateCustomer extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnSubmitSAUCActionPerformed
 
- private boolean validateThisSAUC() {
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBackSAUC;
+    private javax.swing.JButton btnSubmitSAUC;
+    private javax.swing.JLabel lblAddress;
+    private javax.swing.JLabel lblBackground;
+    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblPhoneNumber;
+    private javax.swing.JLabel lblTitle;
+    private javax.swing.JTextField txtAddress;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPhoneNumber;
+    // End of variables declaration//GEN-END:variables
+
+     private boolean validateThisSAUC() {
         String regex = "\\d{10}";
         if(("".equals(txtPhoneNumber.getText())) || ("".equals(txtAddress.getText())))
         {
@@ -173,12 +178,4 @@ public class SystemAdminUpdateCustomer extends javax.swing.JPanel {
             return true;
         }
     }
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBackSAUC;
-    private javax.swing.JButton btnSubmitSAUC;
-    private javax.swing.JLabel lblTitle;
-    private javax.swing.JTextField txtAddress;
-    private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtPhoneNumber;
-    // End of variables declaration//GEN-END:variables
 }
