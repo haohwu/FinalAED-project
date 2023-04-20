@@ -58,4 +58,13 @@ public class UserDirectory {
         }
         return null;
     }
+    
+    public User findUser(Employee employee){
+        for(User user : userList){
+            if(user.getEmployee() == employee){
+                return user;
+            }
+        }
+        return null;
+    }
 }
