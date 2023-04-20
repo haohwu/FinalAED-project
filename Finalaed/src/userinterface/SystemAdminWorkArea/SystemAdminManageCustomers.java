@@ -96,7 +96,7 @@ public class SystemAdminManageCustomers extends javax.swing.JPanel {
             }
         });
         add(btnBack);
-        btnBack.setBounds(10, 24, 110, 50);
+        btnBack.setBounds(20, 50, 110, 50);
 
         btnSubmit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnSubmit.setText("Submit");
