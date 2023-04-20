@@ -198,7 +198,7 @@ public class AdminManageSupplierMedicine extends javax.swing.JPanel {
         {
             SupplierMedicineItem smi = (SupplierMedicineItem) tblMedicineCatalog.getValueAt(selectedRow, 1);
             supplier.getSupplierMedicineCatalog().deleteSupplierMedicineItem(smi);
-            JOptionPane.showMessageDialog(null, "Medicine " + smi.getName()+ " deleted successfully!");
+            JOptionPane.showMessageDialog(null, "Medicine " + smi.getName()+ " deleted !");
             populateTable();
         }
         else
