@@ -272,7 +272,20 @@ public class SystemAdminManagePharmacy extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCreatePharmacyActionPerformed
 
     private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
-        // TODO add your handling code here:
+         int selectedRow = tblPharmacy.getSelectedRow();
+        if (selectedRow >= 0)
+        {
+            Pharmacy selectedPharmacy = (Pharmacy) tblPharmacy.getValueAt(selectedRow, 1);
+            SystemManageEmployees fs = new SystemManageEmployees(userProcessContainerSAMR, selectedPharmacy, ecosystem);
+            userProcessContainerSAMR.add("SysAdminManageEmployees", fs);
+            CardLayout layout = (CardLayout) userProcessContainerSAMR.getLayout();
+            layout.next(userProcessContainerSAMR);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null,"Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
 
     }//GEN-LAST:event_txtAddressActionPerformed
 
