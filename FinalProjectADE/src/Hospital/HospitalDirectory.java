@@ -37,4 +37,13 @@ public class HospitalDirectory {
     public void deleteHospital(Hospital hospital){
         hopitalList.remove(hospital);
     }
+    
+    public Hospital findHospital(String hospitalName){
+        for(Hospital hospital : hopitalList){
+            if(hospital.getHospitalName() == hospitalName){
+                return hospital;
+            }
+        }
+        return null;
+    }
 }
