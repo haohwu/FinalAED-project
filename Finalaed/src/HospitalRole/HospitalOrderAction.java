@@ -66,6 +66,67 @@ public class HospitalOrderAction extends javax.swing.JPanel{
     }
 
 
+    private void HospMedicineTableMouseClicked(java.awt.event.MouseEvent evt) {                                               
+        // TODO add your handling code here:
+        int selectedRow = HospMedicineTable.getSelectedRow();
+        if (selectedRow >= 0)
+        {
+            AddHospMedicineItemButton.setEnabled(true);
+        }
+    }                                              
+
+    private void AddHospMedicineItemButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                          
+        // TODO add your handling code here:
+        int selectedRow = HospMedicineTable.getSelectedRow();
+        if (selectedRow >= 0)
+        {
+            MedicineItem mi2 = (MedicineItem) HospMedicineTable.getValueAt(selectedRow, 1);
+
+            cart.add(mi2);
+            JOptionPane.showMessageDialog(null, "Medicine Item " + mi2.getName()+ " added to cart successfully!");
+            totalAmount = totalAmount + mi2.getPrice();
+            populateOrder1();
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null,"Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+    }                                                         
+
+    private void HOABackButtonFocusLost(java.awt.event.FocusEvent evt) {                                        
+        // TODO add your handling code here:
+    }                                       
+
+    private void HOABackButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }                                             
+
+    private void HOADeleteItemButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                    
+        // TODO add your handling code here:
+        int selectedRow1 = HOAOrderTable.getSelectedRow();
+        if (selectedRow1 >= 0)
+        {
+            MedicineItem mi1 = (MedicineItem) HOAOrderTable.getValueAt(selectedRow1, 1);
+            //order.deleteFoodItem(fi);
+            cart.remove(mi1);
+            JOptionPane.showMessageDialog(null, "Medicine Item " + mi1.getName()+ " deleted from cart successfully!");
+            totalAmount = totalAmount - mi1.getPrice();
+            populateOrder1();
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null,"Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+    }                                                   
+
+    private void HOAOrderTotalAmountTextActionPerformed(java.awt.event.ActionEvent evt) {                                                        
+        // TODO add your handling code here:
+    }                                                       
 
 
 
