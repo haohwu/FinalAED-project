@@ -35,4 +35,7 @@ public class UserDirectory {
         return user;
     }
     
+    public void deleteUser(User user){
+        userList.remove(user);
+    }
 }
