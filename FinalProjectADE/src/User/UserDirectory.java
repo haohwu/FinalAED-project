@@ -49,4 +49,13 @@ public class UserDirectory {
         }
         return true;
     }
+    
+    public User authenticateUser(String name, String password){
+        for(User user : userList){
+            if(user.getName() == name && user.getPassword() == password){
+                return user;
+            }
+        }
+        return null;
+    }
 }
