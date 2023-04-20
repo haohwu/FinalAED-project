@@ -4,17 +4,45 @@
  */
 package userinterface.SystemAdminWorkArea;
 
+import Business.Customer.Customer;
+import Business.DeliveryMan.DeliveryMan;
+import Business.EcoSystem;
+import Business.Employee.Employee;
+import Business.Pharmacy.Pharmacy;
+import Business.Role.AdminRole;
+import Business.Role.CustomerRole;
+import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 /**
  *
- * @author pratikkpoojari
+ * @author Prartik Poojari
  */
 public class SystemAdminManagePharmacy extends javax.swing.JPanel {
 
     /**
-     * Creates new form SystemAdmin
+     * Creates new form SystemAdminManagePharmacy
      */
-    public SystemAdminManagePharmacy() {
+    
+    private JPanel userProcessContainerSAMR;
+    private EcoSystem ecosystem;
+    private String user;
+    
+    public SystemAdminManagePharmacy(JPanel userProcessContainer, EcoSystem ecosystem) {
         initComponents();
+        this.userProcessContainerSAMR = userProcessContainer;
+        this.ecosystem = ecosystem;
+        this.user = user;
+        txtPharmacyName.setEnabled(false);
+        txtAddress.setEnabled(false);
+
+        btnSubmit.setEnabled(false);
+        btnDeletePharmacy.setEnabled(false);
+        btnManagePharmacy.setEnabled(false);
+        populateTable();
     }
 
     /**
