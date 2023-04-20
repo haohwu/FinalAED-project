@@ -171,12 +171,22 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnManagePharmacySAWAPActionPerformed
 
     private void BtnManageHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnManageHospitalActionPerformed
-      
+       // TODO add your handling code here:
+        SystemAdminManageHospitals uc = new SystemAdminManageHospitals(userProcessContainerSAWAP, ecosystemSAWAP);
+        userProcessContainerSAWAP.add("UserHospital", uc);
+        CardLayout layout = (CardLayout)this.userProcessContainerSAWAP.getLayout();
+        layout.next(userProcessContainerSAWAP);
     }//GEN-LAST:event_BtnManageHospitalActionPerformed
 
     private void BtnManageSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnManageSupplierActionPerformed
         // TODO add your handling code here:
-     
+       // TODO add your handling code here:
+
+        DrugApprovalJPanel da = new DrugApprovalJPanel(userProcessContainerSAWAP, ecosystemSAWAP);
+        userProcessContainerSAWAP.add("UserSupplier", da);
+        CardLayout layout = (CardLayout)this.userProcessContainerSAWAP.getLayout();
+        layout.next(userProcessContainerSAWAP);
+
     }//GEN-LAST:event_BtnManageSupplierActionPerformed
 
     private void btn_DrugApprovalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DrugApprovalActionPerformed
