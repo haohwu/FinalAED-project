@@ -27,20 +27,16 @@ import userinterface.DrugMinistry.DrugApprovalJPanel;
 public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
    
+     JPanel userProcessContainerSAWAP;
+    EcoSystem ecosystemSAWAP;
+    public SystemAdminWorkAreaJPanel(JPanel userProcessContainer,EcoSystem ecosystem) {
+        initComponents();
+        this.userProcessContainerSAWAP = userProcessContainer;
+        this.ecosystemSAWAP = ecosystem;
+        //populateTree();
+    }
     
-   
-            DefaultMutableTreeNode fl = (DefaultMutableTreeNode)rd.getRoot();
-            DefaultMutableTreeNode f = new DefaultMutableTreeNode("MedicineCatalog");
-            sd.add(f);
-            for(MedicineItem mi : p.getMedicineCatalog().getMedicineItemList())
-            {
-                DefaultMutableTreeNode z = (DefaultMutableTreeNode)ed.getRoot();
-                f.add(new DefaultMutableTreeNode(mi.getName()));
-            }
-        }
-        
-        modelSAWAP.reload(root);
-    }*/
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -157,42 +153,45 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManageCustomersSAWAPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageCustomersSAWAPActionPerformed
-      SystemAdminManageCustomers uc = new SystemAdminManageCustomers(userProcessContainerSAWAP, ecosystemSAWAP);
+        SystemAdminManageCustomers uc = new SystemAdminManageCustomers(userProcessContainerSAWAP, ecosystemSAWAP);
         userProcessContainerSAWAP.add("UserCustomer", uc);
         CardLayout layout = (CardLayout)this.userProcessContainerSAWAP.getLayout();
         layout.next(userProcessContainerSAWAP);
     }//GEN-LAST:event_btnManageCustomersSAWAPActionPerformed
 
     private void btnManagePharmacySAWAPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManagePharmacySAWAPActionPerformed
-       SystemAdminManagePharmacy um = new SystemAdminManagePharmacy(userProcessContainerSAWAP, ecosystemSAWAP);
+        SystemAdminManagePharmacy um = new SystemAdminManagePharmacy(userProcessContainerSAWAP, ecosystemSAWAP);
         userProcessContainerSAWAP.add("UserManager", um);
         CardLayout layout = (CardLayout)this.userProcessContainerSAWAP.getLayout();
         layout.next(userProcessContainerSAWAP);
     }//GEN-LAST:event_btnManagePharmacySAWAPActionPerformed
 
     private void BtnManageHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnManageHospitalActionPerformed
-       // TODO add your handling code here:
+        // TODO add your handling code here:
         SystemAdminManageHospitals uc = new SystemAdminManageHospitals(userProcessContainerSAWAP, ecosystemSAWAP);
         userProcessContainerSAWAP.add("UserHospital", uc);
         CardLayout layout = (CardLayout)this.userProcessContainerSAWAP.getLayout();
         layout.next(userProcessContainerSAWAP);
+        
     }//GEN-LAST:event_BtnManageHospitalActionPerformed
 
     private void BtnManageSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnManageSupplierActionPerformed
         // TODO add your handling code here:
-       // TODO add your handling code here:
-
-        DrugApprovalJPanel da = new DrugApprovalJPanel(userProcessContainerSAWAP, ecosystemSAWAP);
-        userProcessContainerSAWAP.add("UserSupplier", da);
+        SystemAdminManageSupplier ms = new SystemAdminManageSupplier(userProcessContainerSAWAP, ecosystemSAWAP);
+        userProcessContainerSAWAP.add("UserSupplier", ms);
         CardLayout layout = (CardLayout)this.userProcessContainerSAWAP.getLayout();
         layout.next(userProcessContainerSAWAP);
+        
 
     }//GEN-LAST:event_BtnManageSupplierActionPerformed
 
     private void btn_DrugApprovalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DrugApprovalActionPerformed
         // TODO add your handling code here:
 
-     
+        DrugApprovalJPanel da = new DrugApprovalJPanel(userProcessContainerSAWAP, ecosystemSAWAP);
+        userProcessContainerSAWAP.add("UserSupplier", da);
+        CardLayout layout = (CardLayout)this.userProcessContainerSAWAP.getLayout();
+        layout.next(userProcessContainerSAWAP);
 
     }//GEN-LAST:event_btn_DrugApprovalActionPerformed
 
