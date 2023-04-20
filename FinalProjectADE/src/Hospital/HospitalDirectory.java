@@ -33,4 +33,8 @@ public class HospitalDirectory {
         hopitalList.add(hospital);
         return hospital;
     }
+    
+    public void deleteHospital(Hospital hospital){
+        hopitalList.remove(hospital);
+    }
 }
