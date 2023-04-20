@@ -27,10 +27,7 @@ import javax.swing.table.DefaultTableModel;
 public class SystemAdminManageSupplierEmployee extends javax.swing.JPanel {
 
     
-        private JPanel userProcessContainer;
-        private Supplier supplier;
-        private String user;
-        private EcoSystem ecosystem;
+        
         
         
         public SystemAdminManageSupplierEmployee(JPanel userProcessContainer, Supplier supplier, EcoSystem ecosystem) {
