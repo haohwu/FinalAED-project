@@ -25,5 +25,12 @@ public class SupplierDeliveryDirectory {
         this.supplierDeliverylist = supplierDeliverylist;
     }
     
-    
+    public SupplierDelivery createSupplierDelivery(String name, String phoneNum, String address){
+        SupplierDelivery supplierDelivery = new SupplierDelivery();
+        supplierDelivery.setSupplierDeliveryName(phoneNum);
+        supplierDelivery.setSupplierDeliveryPhoneNum(phoneNum);
+        supplierDelivery.setSupplierDeliveryAddress(address);
+        supplierDeliverylist.add(supplierDelivery);
+        return supplierDelivery;
+    }
 }
