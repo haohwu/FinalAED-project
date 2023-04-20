@@ -129,7 +129,69 @@ public class HospitalOrderAction extends javax.swing.JPanel{
     }                                                       
 
 
-
+     // Variables declaration - do not modify                     
+     private javax.swing.JButton AddHospMedicineItemButton;
+     private javax.swing.JButton HOABackButton;
+     private javax.swing.JButton HOADeleteItemButton;
+     private javax.swing.JButton HOAOrderButton;
+     private javax.swing.JTable HOAOrderTable;
+     private javax.swing.JTextField HOAOrderTotalAmountText;
+     private javax.swing.JLabel HOATotalAmountLabel;
+     private javax.swing.JTable HospMedicineTable;
+     private javax.swing.JScrollPane jScrollPane1;
+     private javax.swing.JScrollPane jScrollPane2;
+     // End of variables declaration                   
+ 
+ private void populateMedicine1() {
+         DefaultTableModel dtm = (DefaultTableModel)HospMedicineTable.getModel();
+         dtm.setRowCount(0);
+         if(pharma.getMedicineCatalog().getMedicineItemList() != null)
+         {
+             for(MedicineItem mi : pharma.getMedicineCatalog().getMedicineItemList())
+             {
+                 Object[] row = new Object[dtm.getColumnCount()];
+                 row[0] = mi.getId();
+                 row[1] = mi;
+                 row[2] = mi.getPrice();
+                 dtm.addRow(row);
+             }
+         }
+         if(dtm.getRowCount() == 0)
+             {
+                 AddHospMedicineItemButton.setEnabled(false);
+                 HOADeleteItemButton.setEnabled(false);
+             }
+     }
+ 
+     private void populateOrder1() {
+         DefaultTableModel dtm = (DefaultTableModel)HOAOrderTable.getModel();
+         dtm.setRowCount(0);
+         if(cart != null)
+         {
+             HOADeleteItemButton.setEnabled(true);
+             HOAOrderButton.setEnabled(true);
+             int count = 1;
+             for(MedicineItem mi3 : cart)
+             {
+                 Object[] row = new Object[dtm.getColumnCount()];
+                 row[0] = count;
+                 row[1] = mi3;
+                 row[2] =  mi3.getPrice();
+                 dtm.addRow(row);
+                 count++;
+             }
+             HOAOrderTotalAmountText.setText(Integer.toString(totalAmount));
+         }
+         if(HOAOrderTable.getRowCount() <= 0)
+         {
+             HOAOrderButton.setEnabled(false);
+             HOADeleteItemButton.setEnabled(false);
+         }
+ 
+ 
+ 
+ 
+     }
 
 
 
