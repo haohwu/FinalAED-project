@@ -62,7 +62,7 @@ public class HospitalOrderAction extends javax.swing.JPanel{
             orders.addItem(mo);
         }
         orders.calculateTotalAmount();
-        JOptionPane.showMessageDialog(null, "Thank you for your order! Order of " + orders.getMedicineItemList().size() + " medicine item(s) for amount $" + orders.getTotalAmount() + " is placed successfully!");
+        JOptionPane.showMessageDialog(null, "Thank you for your order! Order of " + orders.getMedicineItemList().size() + " medicine item(s) for amount $" + orders.getTotalAmount() + " is placed !");
     }
 
 
