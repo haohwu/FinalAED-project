@@ -28,7 +28,7 @@ public class HospitalAreaJPanel extends javax.swing.JPanel {
      * Creates new form HospitalAreaJPanel
      */
     
-    String name;
+    
     private JPanel userProcessContainer;
     private UserAccount userAccount;
     Pharmacy pharmacy;
