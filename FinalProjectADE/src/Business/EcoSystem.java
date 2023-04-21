@@ -6,19 +6,21 @@ package Business;
 
 import Delivery.DeliveryDirectory;
 import Hospital.HospitalDirectory;
-import Medicine.MedicineDetail;
 import Medicine.MedicineDetailDirectory;
 import Medicine.MedicineDirectory;
 import Patient.PatientDirectory;
 import Pharmacy.PharmacyDirectory;
+import Role.Role;
+import Role.SysAdmin;
 import SupplierDelivery.SupplierDeliveryDirectory;
 import SupplierManager.SupplierManagerDirectory;
+import java.util.ArrayList;
 
 /**
  *
  * @author whh
  */
-public class EcoSystem {
+public class EcoSystem extends Organization{
     public static EcoSystem ecoSystem;
     private HospitalDirectory hospitalDirectory;
     private PatientDirectory patientDirectory;
@@ -39,6 +41,12 @@ public class EcoSystem {
         this.medicineDirectory = medicineDirectory;
     }
 
+    public static EcoSystem getInstance(){
+        if(ecoSystem == null){
+            ecoSystem = new EcoSystem();
+        }
+        return ecoSystem;
+    }
     public static EcoSystem getEcoSystem() {
         return ecoSystem;
     }
@@ -111,5 +119,23 @@ public class EcoSystem {
         this.pharmacyDirectory = pharmacyDirectory;
     }
     
+    @Override
+    public ArrayList<Role> getSupportedRole(){
+        ArrayList<Role> role = new ArrayList<Role>();
+        role.add(new SysAdmin());
+        return role;
+    }
+    
+    private EcoSystem(){
+        super();
+        this.patientDirectory = patientDirectory;
+        this.deliveryDirectory = deliveryDirectory;
+        this.supplierDeliveryDirectory = supplierDeliveryDirectory;
+        this.supplierManagerDirectory  = supplierManagerDirectory;
+        this.pharmacyDirectory = pharmacyDirectory;
+        this.medicineDetailDirectory = medicineDetailDirectory;
+        this.medicineDirectory = medicineDirectory;
+        
+    }
     
 }

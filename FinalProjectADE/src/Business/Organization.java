@@ -5,8 +5,10 @@
 package Business;
 
 import Employee.EmployeeDirectory;
+import Role.Role;
 import User.UserDirectory;
 import Work.WorkQueue;
+import java.util.ArrayList;
 
 
 
@@ -26,7 +28,10 @@ public abstract class Organization {
         this.organizationName = organizationName;
         this.organizationId = this.count++;
     }
-
+    public  Organization(){
+        
+    }
+    
     public int getOrganizationId() {
         return organizationId;
     }
@@ -75,6 +80,8 @@ public abstract class Organization {
         Organization.count = count;
     }
     
+    public abstract ArrayList<Role> getSupportedRole();
+    
     public enum organizationType{
         SysAdmin("SysAdmin"),
         Patient("Patient"),
@@ -93,5 +100,10 @@ public abstract class Organization {
         public String getValue() {
             return value;
         }
+    }
+    
+    @Override
+    public String toString(){
+        return  organizationName;
     }
 }

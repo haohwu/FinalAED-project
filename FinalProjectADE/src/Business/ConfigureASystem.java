@@ -4,10 +4,21 @@
  */
 package Business;
 
+import Employee.Employee;
+import Patient.Patient;
+
 /**
  *
  * @author whh
  */
 public class ConfigureASystem {
-    
+    public static EcoSystem configure(){
+        EcoSystem ecoSystem = EcoSystem.getInstance();
+        
+        Employee employee = ecoSystem.getEmployeeDirectory().createEmployee("Q", "Q", "Q");
+        
+        Patient patient = ecoSystem.getPatientDirectory().createPatient("W", "W", "W");
+        
+        return ecoSystem;
+    }
 }
