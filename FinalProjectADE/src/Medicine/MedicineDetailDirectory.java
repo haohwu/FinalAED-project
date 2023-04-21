@@ -25,5 +25,13 @@ public class MedicineDetailDirectory {
         this.medicineDetailList = medicineDetailList;
     }
     
-    
+    public MedicineDetail createMedicineDetail(String Id, String name, String composition, String symptom){
+        MedicineDetail medicineDetail = new MedicineDetail();
+        medicineDetail.setId(Id);
+        medicineDetail.setName(name);
+        medicineDetail.setComposition(composition);
+        medicineDetail.setSymptom(symptom);
+        medicineDetailList.add(medicineDetail);
+        return medicineDetail;
+    }
 }
