@@ -46,5 +46,13 @@ public class PharmacyDirectory {
         return true;
     }
     
+    public Pharmacy findPharmacyName(String phmarmacyName){
+        for(Pharmacy pharmacy : pharmacyList){
+            if(pharmacy.getPharmacyName() == phmarmacyName){
+                return pharmacy;
+            }
+        }
+        return null;
+    }
     
 }
