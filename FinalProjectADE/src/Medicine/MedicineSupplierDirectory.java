@@ -34,4 +34,13 @@ public class MedicineSupplierDirectory {
     public void deleteMedicineSupplier(MedicineSupplier medicineSupplier){
         medicineSupplierList.remove(medicineSupplier);
     }
+    
+    public boolean checkIfMedicineSupplierNameUniques(String medicineSupplierName){
+        for(MedicineSupplier medicineSupplier : medicineSupplierList){
+            if(medicineSupplier.getMedicineSupplierName() == medicineSupplierName){
+                return false;
+            }
+        }
+        return true;
+    }
 }
