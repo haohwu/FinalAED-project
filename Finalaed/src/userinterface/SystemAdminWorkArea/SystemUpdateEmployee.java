@@ -10,9 +10,7 @@ package userinterface.SystemAdminWorkArea;
  */
 public class SystemUpdateEmployee extends javax.swing.JPanel {
 
-    /**
-     * Creates new form SystemUpdateEmployee
-     */
+  
     public SystemUpdateEmployee() {
         initComponents();
     }
@@ -26,19 +24,115 @@ public class SystemUpdateEmployee extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnBack = new javax.swing.JButton();
+        lblTitle = new javax.swing.JLabel();
+        txtUsername = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JTextField();
+        txtConfirmPassword = new javax.swing.JTextField();
+        txtName = new javax.swing.JTextField();
+        txtPhoneNumber = new javax.swing.JTextField();
+        txtAddress = new javax.swing.JTextField();
+
+        btnBack.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnBack.setText("Back");
+        btnBack.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
+        lblTitle.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText("Update Employees");
+
+        txtUsername.setEditable(false);
+        txtUsername.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        txtUsername.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        txtPassword.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        txtPassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        txtConfirmPassword.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        txtConfirmPassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        txtName.setEditable(false);
+        txtName.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        txtName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        txtPhoneNumber.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        txtPhoneNumber.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        txtAddress.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        txtAddress.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 750, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(260, 260, 260)
+                            .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(360, 360, 360)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 413, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(10, 10, 10)
+                            .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(60, 60, 60)
+                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(20, 20, 20)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(10, 10, 10)
+                    .addComponent(txtConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(10, 10, 10)
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(10, 10, 10)
+                    .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(10, 10, 10)
+                    .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainerSUE.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainerSUE.getLayout();
+        layout.previous(userProcessContainerSUE);
+    }//GEN-LAST:event_btnBackActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
+    private javax.swing.JLabel lblTitle;
+    private javax.swing.JTextField txtAddress;
+    private javax.swing.JTextField txtConfirmPassword;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPassword;
+    private javax.swing.JTextField txtPhoneNumber;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }
