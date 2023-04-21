@@ -32,4 +32,13 @@ public class PharmacyDirectory {
         pharmacyList.add(pharmacy);
         return pharmacy;
     }
+    
+    public boolean checkIfPharmacyNameUnique(String pharmacyName){
+        for(Pharmacy pharmacy : pharmacyList){
+            if(pharmacy.getPharmacyName() == pharmacyName){
+                return false;
+            }
+        }
+        return true;
+    }
 }
