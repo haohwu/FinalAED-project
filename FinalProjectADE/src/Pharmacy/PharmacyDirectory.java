@@ -33,6 +33,10 @@ public class PharmacyDirectory {
         return pharmacy;
     }
     
+    public void deletePharmacy(Pharmacy pharmacy){
+        pharmacyList.remove(pharmacy);
+    }
+    
     public boolean checkIfPharmacyNameUnique(String pharmacyName){
         for(Pharmacy pharmacy : pharmacyList){
             if(pharmacy.getPharmacyName() == pharmacyName){
@@ -41,4 +45,6 @@ public class PharmacyDirectory {
         }
         return true;
     }
+    
+    
 }
