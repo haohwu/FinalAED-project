@@ -34,4 +34,8 @@ public class MedicineDetailDirectory {
         medicineDetailList.add(medicineDetail);
         return medicineDetail;
     }
+    
+    public void deleteMedicineDetail(MedicineDetail medicineDetail){
+        medicineDetailList.remove(medicineDetail);
+    }
 }
