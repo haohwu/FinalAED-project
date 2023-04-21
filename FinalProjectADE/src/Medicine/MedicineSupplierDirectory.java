@@ -30,4 +30,8 @@ public class MedicineSupplierDirectory {
         medicineSupplierList.add(medicineSupplier);
         return medicineSupplier;
     }
+    
+    public void deleteMedicineSupplier(MedicineSupplier medicineSupplier){
+        medicineSupplierList.remove(medicineSupplier);
+    }
 }
