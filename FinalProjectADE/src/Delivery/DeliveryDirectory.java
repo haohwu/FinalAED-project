@@ -10,10 +10,10 @@ import java.util.ArrayList;
  *
  * @author whh
  */
-public class DelvieryDirectory {
+public class DeliveryDirectory {
     private ArrayList<Delivery> deliveryList;
     
-    public DelvieryDirectory(){
+    public DeliveryDirectory(){
         this.deliveryList = new ArrayList<>();
     }
 
