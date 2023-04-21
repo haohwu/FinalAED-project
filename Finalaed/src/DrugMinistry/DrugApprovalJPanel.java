@@ -404,7 +404,28 @@ public class DrugApprovalJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txt_drug;
     // End of variables declaration//GEN-END:variables
 
-
+    private void populateTable() {
+        DefaultTableModel dtm = (DefaultTableModel)tbl_DrugApproval.getModel();
+        dtm.setRowCount(0); //deletes the empty records  
+        int count1 = 1;
+        if(ecosystem.getDrugsDirectory().getDrugsList()!= null)
+        {
+            for(Drugs s : ecosystem.getDrugsDirectory().getDrugsList())
+            {
+                Object[] row = new Object[dtm.getColumnCount()]; //creates an array
+                row[0] = s.getId();
+                row[1] = s;
+                row[2] = s.getDrugCompostion();
+                row[3] = s.getDisease();
+                dtm.addRow(row);
+                count1++;
+            }
+        }
+        else
+        {
+            tbl_DrugApproval.setEnabled(false);
+        }
+    }
 
 
 
