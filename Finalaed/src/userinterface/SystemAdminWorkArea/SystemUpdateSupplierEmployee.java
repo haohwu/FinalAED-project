@@ -53,6 +53,10 @@ public SystemUpdateSupplierEmployee(JPanel userProcessContainer, Employee employ
         txtPhoneNumber = new javax.swing.JTextField();
         txtAddress = new javax.swing.JTextField();
         btnBack = new javax.swing.JButton();
+        radioBtnDelivery = new javax.swing.JRadioButton();
+        lblRole = new javax.swing.JLabel();
+        radioBtnManager = new javax.swing.JRadioButton();
+        btnSubmit = new javax.swing.JButton();
 
         lblTitle.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         lblTitle.setText("Update Employee Information");
@@ -77,6 +81,30 @@ public SystemUpdateSupplierEmployee(JPanel userProcessContainer, Employee employ
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
+            }
+        });
+
+        radioBtnDelivery.setBackground(new java.awt.Color(255, 255, 255));
+        radioBtnDelivery.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        radioBtnDelivery.setText("Delivery Man");
+        radioBtnDelivery.setEnabled(false);
+
+        lblRole.setBackground(new java.awt.Color(255, 255, 255));
+        lblRole.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblRole.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblRole.setText("Role:");
+
+        radioBtnManager.setBackground(new java.awt.Color(255, 255, 255));
+        radioBtnManager.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        radioBtnManager.setText("Supplier Manager");
+        radioBtnManager.setEnabled(false);
+
+        btnSubmit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnSubmit.setText("Submit");
+        btnSubmit.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
             }
         });
 
@@ -115,6 +143,21 @@ public SystemUpdateSupplierEmployee(JPanel userProcessContainer, Employee employ
                             .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(lblBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 1030, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lblRole, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(10, 10, 10)
+                            .addComponent(radioBtnManager, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(180, 180, 180)
+                            .addComponent(radioBtnDelivery, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(190, 190, 190)
+                            .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,6 +192,17 @@ public SystemUpdateSupplierEmployee(JPanel userProcessContainer, Employee employ
                             .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(lblBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblRole)
+                        .addComponent(radioBtnManager))
+                    .addGap(25, 25, 25)
+                    .addComponent(radioBtnDelivery)
+                    .addGap(25, 25, 25)
+                    .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -158,6 +212,21 @@ public SystemUpdateSupplierEmployee(JPanel userProcessContainer, Employee employ
         CardLayout layout = (CardLayout) userProcessContainerSUE.getLayout();
         layout.previous(userProcessContainerSUE);
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        // TODO add your handling code here:
+        if(validateThisSUE())
+        {
+            userSUE.setPassword(txtPassword.getText());
+            employeeSUE.setAddress(txtAddress.getText());
+            employeeSUE.setPhone((txtPhoneNumber.getText()));
+            JOptionPane.showMessageDialog(null, "Details for " + employeeSUE.getName()+ " updated successfully!");
+        }
+        else
+        {
+            return;
+        }
+    }//GEN-LAST:event_btnSubmitActionPerformed
 
 private boolean validateThisSUE() {
         String regex = "\\d{10}";
@@ -185,8 +254,12 @@ private boolean validateThisSUE() {
 }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnSubmit;
     private javax.swing.JLabel lblBackground;
+    private javax.swing.JLabel lblRole;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JRadioButton radioBtnDelivery;
+    private javax.swing.JRadioButton radioBtnManager;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtConfirmPassword;
     private javax.swing.JTextField txtName;
