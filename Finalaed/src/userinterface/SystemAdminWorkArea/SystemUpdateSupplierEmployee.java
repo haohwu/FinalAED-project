@@ -1,6 +1,9 @@
 
 package userinterface.SystemAdminWorkArea;
 
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Pratik Poojari
@@ -11,7 +14,27 @@ public class SystemUpdateSupplierEmployee extends javax.swing.JPanel {
     public SystemUpdateSupplierEmployee() {
         initComponents();
     }
-
+public SystemUpdateSupplierEmployee(JPanel userProcessContainer, Employee employee, EcoSystem system) {
+        initComponents();
+        this.userProcessContainerSUE = userProcessContainer;
+        this.employeeSUE = employee;
+        this.ecosystemSUE = system;
+        this.userSUE = ecosystemSUE.getUserAccountDirectory().findEmployee(employee);
+        txtUsername.setText(userSUE.getUsername());
+        txtPassword.setText(userSUE.getPassword());
+        txtConfirmPassword.setText(userSUE.getPassword());
+        txtName.setText(employee.getName());
+        txtPhoneNumber.setText(employee.getPhone());
+        txtAddress.setText(employee.getAddress());
+        if(this.userSUE.getRole().toString().equals("Business.Role.DeliverManRole"))
+        {
+            radioBtnDelivery.setSelected(true);
+        }
+        else
+        {
+            radioBtnManager.setSelected(true);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -136,7 +159,30 @@ public class SystemUpdateSupplierEmployee extends javax.swing.JPanel {
         layout.previous(userProcessContainerSUE);
     }//GEN-LAST:event_btnBackActionPerformed
 
-
+private boolean validateThisSUE() {
+        String regex = "\\d{10}";
+        if(("".equals(txtPassword.getText())) || ("".equals(txtConfirmPassword.getText())) 
+                || ("".equals(txtPhoneNumber.getText())) || ("".equals(txtAddress.getText())))
+        {
+            JOptionPane.showMessageDialog(null,"Please fill all details!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        else if(!(txtPassword.getText().equals(txtConfirmPassword.getText())))
+        {
+            JOptionPane.showMessageDialog(null,"Passwords do not match!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        else if(!(txtPhoneNumber.getText().matches(regex)))
+        {
+            JOptionPane.showMessageDialog(null,"Phone number must have only 10 digits!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JLabel lblBackground;
