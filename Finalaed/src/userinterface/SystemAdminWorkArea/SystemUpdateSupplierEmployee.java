@@ -242,7 +242,7 @@ public class SystemUpdateSupplierEmployee extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
 
-/*private boolean validateThisSUE() {
+private boolean validateThisSUE() {
         String regex = "\\d{10}";
         if(("".equals(txtPassword.getText())) || ("".equals(txtConfirmPassword.getText())) 
                 || ("".equals(txtPhoneNumber.getText())) || ("".equals(txtAddress.getText())))
