@@ -120,7 +120,7 @@ public class SupplierProcessDeliveryWorkArea extends javax.swing.JPanel {
         System.out.println(comboResultStatus.getSelectedIndex());
         System.out.println(supplierOrders.isStatus());
         System.out.println(supplierOrders.getTotalAmount());
-        JOptionPane.showMessageDialog(null, "Order status updated successfully!");
+        JOptionPane.showMessageDialog(null, "Order status updated !");
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
