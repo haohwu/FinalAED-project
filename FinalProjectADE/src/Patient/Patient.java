@@ -4,6 +4,9 @@
  */
 package Patient;
 
+import Order.Order;
+import java.util.ArrayList;
+
 /**
  *
  * @author whh
@@ -16,12 +19,20 @@ public class Patient {
     private String address;
     
     private static int count;
+    private ArrayList<Order> PastOrderList;
     
     public Patient(){
         this.Id = this.count++;
         
     }
+    public ArrayList<Order> getPastOrderList() {
+        return PastOrderList;
+    }
 
+    public void setPastOrderList(ArrayList<Order> PastOrderList) {
+        this.PastOrderList = PastOrderList;
+    }
+    
     public String getAddress() {
         return address;
     }
