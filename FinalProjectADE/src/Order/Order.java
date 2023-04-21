@@ -6,7 +6,9 @@ package Order;
 
 import Delivery.Delivery;
 import Hospital.Hospital;
+import Medicine.Medicine;
 import Patient.Patient;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -22,12 +24,22 @@ public class Order {
     private Patient patient;
     private Hospital hospital;
     private Delivery delivery;
+    private ArrayList<Medicine> medicineList;
     
     private static int count;
     public Order(){
         this.Id = this.count++;
         this.discription = "";
         this.status = false;
+        this.medicineList = new ArrayList<>();
+    }
+
+    public ArrayList<Medicine> getMedicineList() {
+        return medicineList;
+    }
+
+    public void setMedicineList(ArrayList<Medicine> medicineList) {
+        this.medicineList = medicineList;
     }
 
     public int getId() {
