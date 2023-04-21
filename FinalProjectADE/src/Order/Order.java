@@ -113,22 +113,21 @@ public class Order {
     public static void setCount(int count) {
         Order.count = count;
     }
-        public int calculateTotalAmount()
+            public int calculateTotalAmount()
     {
         int sum = 0;
-        for(MedicineItem mi : this.getMedicineItemList())
+        for(Medicine medicine : this.getMedicineList())
         {
-            sum = sum + mi.getPrice();
+            sum = sum + medicine.getPrice();
         }
-        this.totalAmount = sum;
+        this.amount = sum;
         return sum;
     }
     
-    public void addItem(MedicineItem mi)
+    public void addItem(Medicine medicine)
     {
-        medicineItemList.add(mi);
+        medicineList.add(medicine);
     }
-
     
     @Override
     public String toString(){
