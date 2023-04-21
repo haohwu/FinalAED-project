@@ -25,5 +25,11 @@ public class PharmacyDirectory {
         this.pharmacyList = pharmacyList;
     }
     
-    
+    public Pharmacy createPharmacy(String pharmacyName, String pharmacyAddress){
+        Pharmacy pharmacy = new Pharmacy();
+        pharmacy.setPharmacyName(pharmacyName);
+        pharmacy.setPharmacyAddress(pharmacyAddress);
+        pharmacyList.add(pharmacy);
+        return pharmacy;
+    }
 }
