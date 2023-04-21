@@ -17,6 +17,7 @@ public abstract class Role {
         Delivery("Delivery"),
         SupplierManager("SupplierManager"),
         SupplierDelivery("SupplierDelivery"),
+        SuppplierEmployee("SupplierEmployee"),
         PharmacyManager("PharmacyManager");
         
         private String value;
