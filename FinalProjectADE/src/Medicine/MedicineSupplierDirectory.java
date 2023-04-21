@@ -25,5 +25,9 @@ public class MedicineSupplierDirectory {
         this.medicineSupplierList = medicineSupplierList;
     }
     
-    
+    public MedicineSupplier createMedicineSupplier(String SupplierName, int price){
+        MedicineSupplier medicineSupplier = new MedicineSupplier(SupplierName, price);
+        medicineSupplierList.add(medicineSupplier);
+        return medicineSupplier;
+    }
 }
