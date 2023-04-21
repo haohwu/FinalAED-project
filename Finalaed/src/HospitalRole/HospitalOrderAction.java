@@ -119,7 +119,7 @@ public class HospitalOrderAction extends javax.swing.JPanel{
         }
         else
         {
-            JOptionPane.showMessageDialog(null,"Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null," Please select a row ", " Warning ", JOptionPane.WARNING_MESSAGE);
             return;
         }
     }                                                   
