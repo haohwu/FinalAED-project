@@ -89,6 +89,7 @@ public abstract class Organization {
         Delivery("Delivery"),
         SupplierManager("SupplierManager"),
         SupplierDelivery("SupplierDelivery"),
+        SupplierEmployee("SupplierEmployee"),
         PharmacyManager("PharmacyManager");
         
         private String value;
