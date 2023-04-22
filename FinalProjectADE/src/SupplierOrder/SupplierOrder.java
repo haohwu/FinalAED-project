@@ -15,6 +15,7 @@ import java.util.Date;
  * @author whh
  */
 public class SupplierOrder {
+
     private int Id;
     private String detail;
     private int amount;
@@ -23,10 +24,10 @@ public class SupplierOrder {
     private Pharmacy pharmacy;
     private SupplierDelivery supplierDelivery;
     private ArrayList<MedicineSupplier> medicineSupplierList;
-    
+
     private static int count;
-    
-    public SupplierOrder(){
+
+    public SupplierOrder() {
         this.Id = count++;
         this.detail = "";
         this.orderStatus = false;
@@ -104,9 +105,22 @@ public class SupplierOrder {
     public static void setCount(int count) {
         SupplierOrder.count = count;
     }
-    
+
+    public void addOrder(MedicineSupplier medicineSupplier) {
+        medicineSupplierList.add(medicineSupplier);
+    }
+
+    public int calculateTotalAmount() {
+        int sum = 0;
+        for (MedicineSupplier medicineSupplier : this.getMedicineSupplierList()) {
+            sum = (int) (sum + medicineSupplier.getPrice());
+        }
+        this.amount = sum;
+        return sum;
+    }
+
     @Override
-    public String toString(){
+    public String toString() {
         return Integer.toString(Id);
     }
 }

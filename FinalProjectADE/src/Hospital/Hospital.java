@@ -4,21 +4,36 @@
  */
 package Hospital;
 
+import Order.Order;
+import java.util.ArrayList;
+
 /**
  *
  * @author whh
  */
 public class Hospital {
+
     private int hospitalId;
     private String hospitalName;
     private String hospitalPhoneNum;
     private String hospitalAddress;
     private String hospitalEmial;
-    private static int count;
+    public ArrayList<Order> PastOrderList;
     
-    public Hospital(){
+    private static int count;
+
+    public Hospital() {
         this.hospitalId = this.count++;
     }
+
+    public ArrayList<Order> getPastOrderList() {
+        return PastOrderList;
+    }
+
+    public void setPastOrderList(ArrayList<Order> PastOrderList) {
+        this.PastOrderList = PastOrderList;
+    }
+    
 
     public int getHospitalId() {
         return hospitalId;
@@ -67,9 +82,9 @@ public class Hospital {
     public static void setCount(int count) {
         Hospital.count = count;
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         return hospitalName;
     }
 }
