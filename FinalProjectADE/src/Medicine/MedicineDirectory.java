@@ -33,6 +33,13 @@ public class MedicineDirectory {
         }
         return true;
     }
+    public void DeleteMedicine(Medicine medicine){
+        medicineList.remove(medicine);
+    }
     
-    
+    public Medicine createMedicine(String MedicineName, int price){
+        Medicine medicine = new Medicine(MedicineName, price);
+        medicineList.add(medicine);
+        return medicine;
+    }
 }

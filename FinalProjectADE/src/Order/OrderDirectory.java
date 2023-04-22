@@ -5,6 +5,7 @@
 package Order;
 
 import Hospital.Hospital;
+import Patient.Patient;
 import java.util.ArrayList;
 
 /**
@@ -26,10 +27,18 @@ public class OrderDirectory {
         this.orderList = orderList;
     }
     
-    public Order createOrder(Hospital hospital){
+       public Order createHospitalOrder(Hospital hospital){
         Order order = new Order();
         order.setHospital(hospital);
         orderList.add(order);
         return order;
     }
+    
+        public Order createPatientOrder(Patient patient)
+    {
+        Order order = new Order();
+        order.setPatient(patient);
+        orderList.add(order);
+        return order;
+    } 
 }

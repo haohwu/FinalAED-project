@@ -8,6 +8,7 @@ import Delivery.Delivery;
 import Delivery.DeliveryDirectory;
 import Employee.EmployeeDirectory;
 import Medicine.MedicineDirectory;
+import Order.Order;
 import Order.OrderDirectory;
 import SupplierOrder.SupplierOrder;
 import java.util.ArrayList;
@@ -141,4 +142,7 @@ public class Pharmacy {
         return null;
     }
     
+    public void deleteOrder(Order order){
+       this.getOrderDirectory().getOrderList().remove(order);
+    }
 }
