@@ -1,6 +1,6 @@
 # FinalAED-project
 
-#Online Pharmacy Management System
+#𝐎𝐧𝐥𝐢𝐧𝐞 𝐏𝐡𝐚𝐫𝐦𝐚𝐜𝐲 𝐌𝐚𝐧𝐚𝐠𝐞𝐦𝐞𝐧𝐭 𝐒𝐲𝐬𝐭𝐞𝐦
 
 
 ![pharmacist-pharmacy-medicine-man](https://user-images.githubusercontent.com/123033270/233869601-91157a34-817a-4643-847c-6cf2fc2e8c74.jpg)
@@ -10,7 +10,7 @@ This application is designed to streamline the distribution and sale of pharmace
  
 
 
-Enterprises :
+𝐄𝐧𝐭𝐞𝐫𝐩𝐫𝐢𝐬𝐞𝐬 :
 
 1)Hospital Admim      2)Drug Approval       3)Supplier         4)Pharmacy      5)Patients
  
@@ -18,12 +18,13 @@ Organizations  :
 
 1)Pharmacy      2)Supplier      3)Health Ministry        4)Hospital      5)Customers      6)Employees
  
-Roles :
+𝐑𝐨𝐥𝐞𝐬 :
 
 1)Pharmacy Admin     2)Pharmacy Delivery Agent         3)Supplier Admin        4)Supplier Delivery Agent        5)System Admin        6)Drug Approval
 7)Hospital Admin        8)Supplier Manager
  
-Advantages of this project:
+𝐀𝐝𝐯𝐚𝐧𝐭𝐚𝐠𝐞𝐬 𝐨𝐟 𝐭𝐡𝐢𝐬 𝐩𝐫𝐨𝐣𝐞𝐜𝐭:
+
 1)Easy way of ordering medicine
 
 2)People can enter with the generated credentials
@@ -36,7 +37,7 @@ Advantages of this project:
  
  
  
-Workflow of this project:
+𝐖𝐨𝐫𝐤𝐟𝐥𝐨𝐰 𝐨𝐟 𝐭𝐡𝐢𝐬 𝐩𝐫𝐨𝐣𝐞𝐜𝐭:
 
 ![5100 Group Assignment 1 - FlowChart (1)](https://user-images.githubusercontent.com/123033270/233869632-e4a76c64-ca46-4312-a0f0-54cd001279dc.png)
 
@@ -66,7 +67,8 @@ Workflow of this project:
 13)The Health Ministry has the power to approve a drug or not which is reflected in supplier admin. 
 
 
-Contributions - 
+𝐂𝐨𝐧𝐭𝐫𝐢𝐛𝐮𝐭𝐢𝐨𝐧𝐬 - 
+
 Haohua - BackEnd Classes and connecting UI to the BackEnd Calsses
 
 Pratik - Main UI,PharmacyAdmin,PharmacyAdmin,SystemAdmin,CustomerRoles,SupplierDeliveryManRoles UI part and connecting Ui to the BackEnd Classes
