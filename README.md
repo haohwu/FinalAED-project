@@ -3,7 +3,7 @@
 #Online Pharmacy Management System
 
 
-![download](https://user-images.githubusercontent.com/123033270/233869569-fcc3b15a-6a64-4319-88f3-6357d9827831.jpeg)
+![pharmacist-pharmacy-medicine-man](https://user-images.githubusercontent.com/123033270/233869601-91157a34-817a-4643-847c-6cf2fc2e8c74.jpg)
 
 
 
