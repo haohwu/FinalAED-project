@@ -2,7 +2,8 @@
 
 #Online Pharmacy Management System
 
-![17c8d541af5aaded3c280c7f8d7d7e9c](https://user-images.githubusercontent.com/123033270/233869460-12218654-7b89-4592-9066-08776cf7f3e5.gif)
+![images](https://user-images.githubusercontent.com/123033270/233869544-40fe5c3c-2ed1-4e51-bea5-2d0a23aceded.jpeg)
+
 
 
 
