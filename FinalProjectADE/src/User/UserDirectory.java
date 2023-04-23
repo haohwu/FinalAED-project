@@ -51,11 +51,10 @@ public class UserDirectory {
     }
     
     public User authenticateUser(String name, String password){
-        for(User user : userList){
+        for(User user : userList)
             if(user.getName() == name && user.getPassword() == password){
                 return user;
             }
-        }
         return null;
     }
     

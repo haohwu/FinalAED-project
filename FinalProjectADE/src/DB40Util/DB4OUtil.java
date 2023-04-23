@@ -18,7 +18,7 @@ import java.nio.file.Paths;
  */
 public class DB4OUtil {
     
-     private static final String FILENAME = Paths.get("Databank.db4o").toAbsolutePath().toString();// path to the data store
+     private static final String FILENAME = Paths.get("Databank.db4o").toAbsolutePath().toString();
     private static DB4OUtil dB4OUtil;
     
     public synchronized static DB4OUtil getInstance(){
@@ -39,13 +39,9 @@ public class DB4OUtil {
 
             EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
             config.common().add(new TransparentPersistenceSupport());
-            //Controls the number of objects in memory
             config.common().activationDepth(Integer.MAX_VALUE);
-            //Controls the depth/level of updation of Object
             config.common().updateDepth(Integer.MAX_VALUE);
-
-            //Register your top most Class here
-            config.common().objectClass(EcoSystem.class).cascadeOnUpdate(true); // Change to the object you want to save
+            config.common().objectClass(EcoSystem.class).cascadeOnUpdate(true);
 
             ObjectContainer db = Db4oEmbedded.openFile(config, FILENAME);
             return db;
@@ -64,11 +60,11 @@ public class DB4OUtil {
     
     public EcoSystem retrieveSystem(){
         ObjectContainer conn = createConnection();
-        ObjectSet<EcoSystem> systems = conn.query(EcoSystem.class); // Change to the object you want to save
+        ObjectSet<EcoSystem> systems = conn.query(EcoSystem.class);
         EcoSystem system;
         if (systems.size() == 0){
             System.out.println("New System created!");
-            system = ConfigureASystem.configure();  // If there's no System in the record, create a new one
+            system = ConfigureASystem.configure(); 
         }
         else{
             System.out.println("Old System retrieved");
