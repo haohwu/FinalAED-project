@@ -5,7 +5,8 @@
 package Business;
 
 import Employee.Employee;
-import Patient.Patient;
+import Role.SysAdmin;
+import User.User;
 
 /**
  *
@@ -17,7 +18,7 @@ public class ConfigureASystem {
         
         Employee employee = ecoSystem.getEmployeeDirectory().createEmployee("Q", "Q", "Q");
         
-        Patient patient = ecoSystem.getPatientDirectory().createPatient("W", "W", "W");
+        User user = ecoSystem.getUserDirectory().creatUser("W", "W",new SysAdmin(), employee);
         
         return ecoSystem;
     }
