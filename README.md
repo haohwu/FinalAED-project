@@ -21,14 +21,19 @@ Roles :
  
 Advantages of this project:
 1)Easy way of ordering medicine
+
 2)People can enter with the generated credentials
+
 3)Access to hospitals and customers
+
 4)Gives an idea of approved medicine
+
 5)All the enterprises are well connected
  
  
  
 Workflow of this project:
+
 1)Admin has his own credential and after login in they get access to all the enterprise.
 
 2)This project starts with a system admin that has access to create pharmacies and suppliers, After this system admin can also access to create the supplier and pharmacy admin and delivery agents.
