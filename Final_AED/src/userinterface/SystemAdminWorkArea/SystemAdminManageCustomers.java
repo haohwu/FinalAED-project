@@ -254,6 +254,8 @@ public class SystemAdminManageCustomers extends javax.swing.JPanel {
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         add(jSeparator1);
         jSeparator1.setBounds(168, 1, 13, 720);
+
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/SystemAdminWorkArea/11-1-1024x600 (1).jpg"))); // NOI18N
         add(lblBackground);
         lblBackground.setBounds(0, 0, 1030, 760);
     }// </editor-fold>//GEN-END:initComponents

@@ -81,7 +81,7 @@ public class SystemUpdateEmployee extends javax.swing.JPanel {
         radioBtnDelivery = new javax.swing.JRadioButton();
         btnSubmit = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(0, 255, 255));
         setLayout(null);
 
         lblTitle.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -152,7 +152,7 @@ public class SystemUpdateEmployee extends javax.swing.JPanel {
         lblUsername.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         lblUsername.setText("Username: ");
         add(lblUsername);
-        lblUsername.setBounds(280, 170, 87, 30);
+        lblUsername.setBounds(280, 170, 89, 30);
 
         lblRole.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         lblRole.setText("Role:");
@@ -162,7 +162,7 @@ public class SystemUpdateEmployee extends javax.swing.JPanel {
         lblPassword.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         lblPassword.setText("Password: ");
         add(lblPassword);
-        lblPassword.setBounds(280, 220, 83, 30);
+        lblPassword.setBounds(280, 220, 85, 30);
 
         radioBtnManager.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(radioBtnManager);
@@ -170,7 +170,7 @@ public class SystemUpdateEmployee extends javax.swing.JPanel {
         radioBtnManager.setText("Pharmacy Manager");
         radioBtnManager.setEnabled(false);
         add(radioBtnManager);
-        radioBtnManager.setBounds(410, 430, 180, 26);
+        radioBtnManager.setBounds(410, 430, 180, 25);
 
         lblConfirmPassword.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         lblConfirmPassword.setText("Confirm Password:");
@@ -183,7 +183,7 @@ public class SystemUpdateEmployee extends javax.swing.JPanel {
         radioBtnDelivery.setText("Delivery Agent");
         radioBtnDelivery.setEnabled(false);
         add(radioBtnDelivery);
-        radioBtnDelivery.setBounds(410, 480, 180, 26);
+        radioBtnDelivery.setBounds(410, 480, 180, 25);
 
         btnSubmit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnSubmit.setText("Submit");

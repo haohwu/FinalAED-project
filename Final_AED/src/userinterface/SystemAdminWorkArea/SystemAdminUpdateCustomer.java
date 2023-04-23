@@ -124,6 +124,8 @@ public class SystemAdminUpdateCustomer extends javax.swing.JPanel {
         txtAddress.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         add(txtAddress);
         txtAddress.setBounds(460, 280, 260, 30);
+
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/SystemAdminWorkArea/11-1-1024x600 (1).jpg"))); // NOI18N
         add(lblBackground);
         lblBackground.setBounds(0, 0, 1030, 760);
     }// </editor-fold>//GEN-END:initComponents

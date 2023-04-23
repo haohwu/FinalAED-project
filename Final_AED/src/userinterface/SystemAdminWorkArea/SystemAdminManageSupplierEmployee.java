@@ -257,8 +257,10 @@ public class SystemAdminManageSupplierEmployee extends javax.swing.JPanel {
         txtName.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         add(txtName);
         txtName.setBounds(690, 340, 300, 30);
+
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/SystemAdminWorkArea/11-1-1024x600 (1).jpg"))); // NOI18N
         add(lblBackground);
-        lblBackground.setBounds(0, 0, 1030, 760);
+        lblBackground.setBounds(-50, -10, 1040, 770);
     }// </editor-fold>//GEN-END:initComponents
 
     private void radioBtnDeliveryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBtnDeliveryActionPerformed

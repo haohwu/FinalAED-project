@@ -141,11 +141,11 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(null);
 
-        lblTitle.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Tiro Bangla", 1, 48)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblTitle.setText("Admin Panel");
+        lblTitle.setText("Administrator Panel");
         jPanel2.add(lblTitle);
-        lblTitle.setBounds(450, 50, 150, 31);
+        lblTitle.setBounds(370, 50, 490, 60);
 
         btnManageCustomersSAWAP.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnManageCustomersSAWAP.setText("Manage Customers");
@@ -156,7 +156,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         jPanel2.add(btnManageCustomersSAWAP);
-        btnManageCustomersSAWAP.setBounds(10, 95, 160, 50);
+        btnManageCustomersSAWAP.setBounds(40, 200, 160, 50);
 
         btnManagePharmacySAWAP.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnManagePharmacySAWAP.setText("Manage Pharmacy");
@@ -167,7 +167,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         jPanel2.add(btnManagePharmacySAWAP);
-        btnManagePharmacySAWAP.setBounds(10, 179, 160, 50);
+        btnManagePharmacySAWAP.setBounds(810, 200, 160, 50);
 
         BtnManageHospital.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         BtnManageHospital.setText("Manage Hospital");
@@ -178,7 +178,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         jPanel2.add(BtnManageHospital);
-        BtnManageHospital.setBounds(10, 430, 160, 50);
+        BtnManageHospital.setBounds(440, 360, 160, 50);
 
         BtnManageSupplier.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         BtnManageSupplier.setText("Manage Supplier");
@@ -189,7 +189,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         jPanel2.add(BtnManageSupplier);
-        BtnManageSupplier.setBounds(10, 270, 160, 50);
+        BtnManageSupplier.setBounds(50, 550, 160, 50);
 
         btn_DrugApproval.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btn_DrugApproval.setText("Drug Approval ");
@@ -200,12 +200,13 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         jPanel2.add(btn_DrugApproval);
-        btn_DrugApproval.setBounds(10, 360, 160, 50);
+        btn_DrugApproval.setBounds(800, 560, 160, 50);
 
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/SystemAdminWorkArea/HD-wallpaper-what-caregivers-need-to-know-about-schizophrenia-treatment-cute-pharmacy.v1 (1).jpg"))); // NOI18N
         lblBackground.setMaximumSize(new java.awt.Dimension(1024, 759));
         lblBackground.setMinimumSize(new java.awt.Dimension(1024, 759));
         jPanel2.add(lblBackground);
-        lblBackground.setBounds(-10, 0, 1030, 760);
+        lblBackground.setBounds(0, -120, 1210, 1080);
 
         jSplitPane.setRightComponent(jPanel2);
 

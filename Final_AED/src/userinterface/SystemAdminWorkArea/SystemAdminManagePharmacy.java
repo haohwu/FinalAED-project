@@ -193,8 +193,10 @@ public class SystemAdminManagePharmacy extends javax.swing.JPanel {
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         add(jSeparator1);
         jSeparator1.setBounds(220, 10, 11, 520);
+
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/SystemAdminWorkArea/Pharmacy Delivery.jpeg"))); // NOI18N
         add(lblBackground);
-        lblBackground.setBounds(220, 0, 810, 760);
+        lblBackground.setBounds(40, 10, 1510, 880);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeletePharmacyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletePharmacyActionPerformed

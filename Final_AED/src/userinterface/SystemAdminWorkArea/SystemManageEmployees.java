@@ -85,7 +85,8 @@ public class SystemManageEmployees extends javax.swing.JPanel {
         txtPhoneNumber = new javax.swing.JTextField();
         txtPassword = new javax.swing.JTextField();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(0, 255, 255));
+        setBorder(new javax.swing.border.MatteBorder(null));
         setLayout(null);
 
         lblPhoneNumber.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -171,7 +172,7 @@ public class SystemManageEmployees extends javax.swing.JPanel {
             }
         });
         add(radioBtnDelivery);
-        radioBtnDelivery.setBounds(450, 600, 200, 26);
+        radioBtnDelivery.setBounds(450, 600, 200, 25);
 
         tblProfileSME.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         tblProfileSME.setModel(new javax.swing.table.DefaultTableModel(
