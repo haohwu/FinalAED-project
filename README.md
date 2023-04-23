@@ -2,7 +2,7 @@
 
 #Online Pharmacy Management System
 
-![images](https://user-images.githubusercontent.com/123033270/233869544-40fe5c3c-2ed1-4e51-bea5-2d0a23aceded.jpeg)
+
 
 
 
