@@ -8,12 +8,17 @@ This application is designed to streamline the distribution and sale of pharmace
  
 Enterprises :
 1)Hospital Admin
+
 2)Drug Approval
+
 3)Supplier
+
 4)Pharmacy
+
 5)Patients
  
-Organizations :
+Organizations  :
+
 1)Pharmacy
 
 2)Supplier
@@ -23,16 +28,25 @@ Organizations :
 4)Hospital
 
 5)Customers
+
 6)Employees
  
 Roles :
+
 1)Pharmacy Admin
+
 2)Pharmacy Delivery Agent
+
 3)Supplier Admin
+
 4)Supplier Delivery Agent
+
 5)System Admin
+
 6)Drug Approval
+
 7)Hospital Admin
+
 8)Supplier Manager
  
 Advantages of this project:
@@ -46,16 +60,26 @@ Advantages of this project:
  
 Workflow of this project:
 1)Admin has his own credential and after login in they get access to all the enterprise.
+
 2)This project starts with a system admin that has access to create pharmacies and suppliers, After this system admin can also access to create the supplier and pharmacy admin and delivery agents.
+
 3)They also have access to creating hospitals and drug ministries.
+
 4)After this supplier manager can create a new medicine and also have and function to update the medicine and delete it when not in stock.
 5)After the creation of the medicine, the pharmacy can order it from the supplier.
+
 6)Then the pharmacy can place an order then the supplier manager assigns the delivery to a delivery agent from the supplier.
+
 7)After this, the pharmacy can send a message to the delivery agent and the delivery agent can select if an order is delivered or not.
 8)Now pharmacies can create the medicine which will be available to the customers.
+
 9)Customers can place an order from the Pharmacy and then the pharmacy manager can assign a delivery agent to the customers.
+
 10)Customers can also give messages to the pharmacy delivery agent.
+
 11)After the delivery of medicine, the pharmacy delivery agent can put a detail that the order is sent or not.
+
 12)The hospital can create new patients and prescriptions.
+
 13)The Health Ministry has the power to approve a drug or not which is reflected in supplier admin. 
 
