@@ -8,16 +8,16 @@ This application is designed to streamline the distribution and sale of pharmace
  
 Enterprises :
 
-1)Hospital Admim     2)Drug Approval     3)Supplier        4)Pharmacy     5)Patients
+1)Hospital Admim      2)Drug Approval       3)Supplier         4)Pharmacy      5)Patients
  
 Organizations  :
 
-1)Pharmacy     2)Supplier     3)Health Ministry       4)Hospital     5)Customers     6)Employees
+1)Pharmacy      2)Supplier      3)Health Ministry        4)Hospital      5)Customers      6)Employees
  
 Roles :
 
-1)Pharmacy Admin     2)Pharmacy Delivery Agent      3)Supplier Admin      4)Supplier Delivery Agent     5)System Admin    6)Drug Approval
-7)Hospital Admin     8)Supplier Manager
+1)Pharmacy Admin     2)Pharmacy Delivery Agent         3)Supplier Admin        4)Supplier Delivery Agent        5)System Admin        6)Drug Approval
+7)Hospital Admin        8)Supplier Manager
  
 Advantages of this project:
 1)Easy way of ordering medicine
