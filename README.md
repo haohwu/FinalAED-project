@@ -15,9 +15,13 @@ Enterprises :
  
 Organizations :
 1)Pharmacy
+
 2)Supplier
+
 3)Health Ministry
+
 4)Hospital
+
 5)Customers
 6)Employees
  
