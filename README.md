@@ -1,7 +1,7 @@
 # FinalAED-project
 
 #Online Pharamcy Management System
-![image](https://user-images.githubusercontent.com/123033270/233812508-44e01f34-2853-4ff1-8c21-dc16362ad804.png)
+
 
 
 This application is designed to streamline the distribution and sale of pharmaceutical products. Through our platform, customers can easily place orders with pharmacies and pharmacies can do the same with suppliers. The application also enables users to track and update the availability of medicine at both pharmacies and suppliers. Additionally, a health ministry is responsible for approving drugs for suppliers. To complete the ecosystem, hospitals are integrated into the system, allowing them to create and monitor patients.
