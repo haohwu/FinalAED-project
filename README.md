@@ -41,6 +41,9 @@ Advantages of this project:
  
 Workflow of this project:
 
+![5100 Group Assignment 1 - FlowChart (1)](https://user-images.githubusercontent.com/123033270/233869632-e4a76c64-ca46-4312-a0f0-54cd001279dc.png)
+
+
 1)Admin has his own credential and after login in they get access to all the enterprise.
 
 2)This project starts with a system admin that has access to create pharmacies and suppliers, After this system admin can also access to create the supplier and pharmacy admin and delivery agents.
@@ -65,3 +68,8 @@ Workflow of this project:
 
 13)The Health Ministry has the power to approve a drug or not which is reflected in supplier admin. 
 
+
+Contributions - 
+Haohua - BackEnd Classes and connecting UI to the BackEnd Calsses
+Pratik - Main UI,PharmacyAdmin,PharmacyAdmin,SystemAdmin,CustomerRoles,SupplierDeliveryManRoles UI part and connecting Ui to the BackEnd Calsses
+Cheng- ArchtecturalDiagrams,UML diagrams,WorkFLow Diagrams and Hospital,DrugMinistry,DeliveryManRole UI parts
