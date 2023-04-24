@@ -3,7 +3,8 @@
 #𝐎𝐧𝐥𝐢𝐧𝐞 𝐏𝐡𝐚𝐫𝐦𝐚𝐜𝐲 𝐌𝐚𝐧𝐚𝐠𝐞𝐦𝐞𝐧𝐭 𝐒𝐲𝐬𝐭𝐞𝐦
 
 
-![pharmacist-pharmacy-medicine-man](https://user-images.githubusercontent.com/123033270/233869601-91157a34-817a-4643-847c-6cf2fc2e8c74.jpg)
+![17c8d541af5aaded3c280c7f8d7d7e9c](https://user-images.githubusercontent.com/123033270/233889976-83bee831-903c-47d0-bfd8-b0f6e8b174f6.gif)
+
 
 
 This application is designed to streamline the distribution and sale of pharmaceutical products. Through our platform, customers can easily place orders with pharmacies and pharmacies can do the same with suppliers. The application also enables users to track and update the availability of medicine at both pharmacies and suppliers. Additionally, a health ministry is responsible for approving drugs for suppliers. To complete the ecosystem, hospitals are integrated into the system, allowing them to create and monitor patients.
