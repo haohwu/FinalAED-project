@@ -1,45 +1,32 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package userinterface.SystemAdminWorkArea;
 
-import Business.Customer.Customer;
 import Business.Customer.EmailValidation;
 import Business.Hospital.Hospital;
-import Business.DeliveryMan.DeliveryMan;
 import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Hospital.HospitalDirectory;
-import Business.Role.AdminRole;
-import Business.Role.CustomerRole;
-import Business.Role.DeliveryManRole;
 import Business.Role.HospitalAdminRole;
-import Business.SupplierEmp.SupplierEmp;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Pratik Poojari
  */
 public class SystemAdminManageHospitals extends javax.swing.JPanel {
 
-    /**
-     * Creates new form SystemAdminManageHospitals
-     */
-    
-       private JPanel userProcessContainerSAMC;
-       private EcoSystem ecosystem;
-       
+    private JPanel userProcessContainerSAMC;
+    private EcoSystem ecosystem;
+
     public SystemAdminManageHospitals(JPanel userProcessContainer, EcoSystem ecosystem) {
         initComponents();
-         this.userProcessContainerSAMC = userProcessContainer;
+        this.userProcessContainerSAMC = userProcessContainer;
         this.ecosystem = ecosystem;
-        
+
         SystemAMHUsernameText.setEnabled(false);
         SystemAMHPasswordText.setEnabled(false);
         SystemAMHConfirmPasswordText.setEnabled(false);
@@ -48,12 +35,9 @@ public class SystemAdminManageHospitals extends javax.swing.JPanel {
         SystemAMHAddressText.setEnabled(false);
         SystemAMHSubmitButton.setEnabled(false);
         SystemAMCDeleteButton.setEnabled(false);
-        //SystemAMCViewButton.setEnabled(false);
-         emailIDField.setEnabled(false);
+        emailIDField.setEnabled(false);
         populateTableHM();
-        
-        
-        
+
     }
 
     /**
@@ -97,7 +81,7 @@ public class SystemAdminManageHospitals extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Serial No.", "Customer Name"
+                "Serial No.", "Hospital Name"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -186,7 +170,7 @@ public class SystemAdminManageHospitals extends javax.swing.JPanel {
         });
 
         SendEmailButton.setBackground(new java.awt.Color(255, 204, 153));
-        SendEmailButton.setText("Get Credendials");
+        SendEmailButton.setText("Register Email");
         SendEmailButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SendEmailButtonActionPerformed(evt);
@@ -327,26 +311,21 @@ public class SystemAdminManageHospitals extends javax.swing.JPanel {
     private void SystemAMHTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SystemAMHTableMouseClicked
         // TODO add your handling code here:
         int selectedRow = SystemAMHTable.getSelectedRow();
-        if (selectedRow >= 0)
-        {
+        if (selectedRow >= 0) {
             SystemAMCDeleteButton.setEnabled(true);
-          //  SystemAMCViewButton.setEnabled(true);
         }
     }//GEN-LAST:event_SystemAMHTableMouseClicked
 
     private void SystemAMCDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SystemAMCDeleteButtonActionPerformed
         // TODO add your handling code here:
         int selectedRow = SystemAMHTable.getSelectedRow();
-        if (selectedRow >= 0)
-        {
+        if (selectedRow >= 0) {
             Hospital selectedHospital = (Hospital) SystemAMHTable.getValueAt(selectedRow, 1);
             ecosystem.getHospitalDirectory().deleteHospital(selectedHospital);
-            JOptionPane.showMessageDialog(null, "Hospital " + selectedHospital.getHospitalName()+ " deleted successfully!");
+            JOptionPane.showMessageDialog(null, "Hospital " + selectedHospital.getHospitalName() + " deleted successfully!");
             populateTableHM();
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null,"Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
     }//GEN-LAST:event_SystemAMCDeleteButtonActionPerformed
@@ -354,16 +333,12 @@ public class SystemAdminManageHospitals extends javax.swing.JPanel {
     private void SystemAMHCreateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SystemAMHCreateButtonActionPerformed
         // TODO add your handling code here:
         SystemAMHCreateButton.setEnabled(false);
-        //SystemAMCUsernameText.setEnabled(true);
-        //SystemAMCPasswordText.setEnabled(true);
-        //SystemAMCConfirmPasswordText.setEnabled(true);
         SystemAMHNameText.setEnabled(true);
         emailIDField.setEnabled(true);
         SystemAMHPhoneNumberText.setEnabled(true);
         SystemAMHAddressText.setEnabled(true);
         SystemAMHSubmitButton.setEnabled(true);
         SystemAMCDeleteButton.setEnabled(true);
-        //SystemAMCViewButton.setEnabled(true);
     }//GEN-LAST:event_SystemAMHCreateButtonActionPerformed
 
     private void SystemAMCBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SystemAMCBackButtonActionPerformed
@@ -372,7 +347,6 @@ public class SystemAdminManageHospitals extends javax.swing.JPanel {
         Component[] componentArray = userProcessContainerSAMC.getComponents();
         Component component = componentArray[componentArray.length - 1];
         SystemAdminWorkAreaJPanel dwjp = (SystemAdminWorkAreaJPanel) component;
-        //dwjp.populateTree();
         CardLayout layout = (CardLayout) userProcessContainerSAMC.getLayout();
         layout.previous(userProcessContainerSAMC);
     }//GEN-LAST:event_SystemAMCBackButtonActionPerformed
@@ -401,55 +375,52 @@ public class SystemAdminManageHospitals extends javax.swing.JPanel {
         String CustomerPassword = SystemAMHNameText.getText().concat(pass2);
         String str1 = "Your USERNAME is: " + CustomerUserName;
         String str2 = "Your PASSWORD is: " + CustomerPassword;
-        String Emailmsg = str1.concat(str2);
 
-        System.out.println("In between"+CustomerUserName+" "+CustomerPassword+" "+ emailId);
-       //  boolean emailSent = EmailValidation.sendEmail(Emailmsg, emailId,CustomerUserName,CustomerPassword);
+        System.out.println("In between" + CustomerUserName + " " + CustomerPassword + " " + emailId);
 
-       if(validateThisSAMC2()==true)
-       {
-        String emailSent = EmailValidation.generatePassword(str2);
-        String emailSent1=EmailValidation.generateUserName(str1);
-           
-        try
-            {
-               //String emailSent = EmailValidation.generatePassword(str2);
+        if (validateThisSAMC2() == true) {
 
-                if(emailSent == null)
-                {
-                     JOptionPane.showMessageDialog(null, "Please Enter a valid Email address! ","warning", JOptionPane.WARNING_MESSAGE);
-                    
-                    return;
-                } 
-                else {
-                    JOptionPane.showMessageDialog(null, "Email Sent! ","warning", JOptionPane.WARNING_MESSAGE);
-                   
-                    return;
-                }
-            }
-            catch(Exception e){
-                System.out.println("Please put valid EmailID");
-            }
-            System.out.println(emailSent);
-   }
+            EmailValidation temp1 = new EmailValidation(emailId, "Welcome Your account for hosiptal has been successfully made. !!", "Hi Your account was updated successfully, Hospital was added!");
+            temp1.sendEmail();
+            JOptionPane.showMessageDialog(null, "New Hospital added and mail sent");
+        } else {
+
+            JOptionPane.showMessageDialog(null, "Email Invalid");
+            SystemAMHCreateButton.setEnabled(true);
+            SystemAMHUsernameText.setText("");
+            SystemAMHUsernameText.setEnabled(false);
+            SystemAMHPasswordText.setText("");
+            SystemAMHPasswordText.setEnabled(false);
+            SystemAMHConfirmPasswordText.setText("");
+            SystemAMHConfirmPasswordText.setEnabled(false);
+            SystemAMHNameText.setText("");
+            SystemAMHNameText.setEnabled(false);
+            SystemAMHPhoneNumberText.setText("");
+            SystemAMHPhoneNumberText.setEnabled(false);
+            SystemAMHAddressText.setText("");
+            SystemAMHAddressText.setEnabled(false);
+            emailIDField.setEnabled(false);
+            SystemAMHSubmitButton.setEnabled(false);
+            emailIDField.setText("");
+            return;
+        }
+
 
     }//GEN-LAST:event_SendEmailButtonActionPerformed
 
     private void SystemAMHSubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SystemAMHSubmitButtonActionPerformed
-        String pass2 = "1234";
-        String HospitalUserName = EmailValidation.generateUserName(SystemAMHNameText.getText());
-        String HospitalPassword = EmailValidation.generatePassword(SystemAMHNameText.getText().concat(pass2));
 
-        if(validateThisSAMC()==true)
-        {
+        String HospitalUserName = (SystemAMHUsernameText.getText());
+        String HospitalPassword = (SystemAMHPasswordText.getText());
+
+        if (validateThisSAMC() == true) {
             Employee e = ecosystem.getEmployeeDirectory().createEmployee(SystemAMHNameText.getText(), SystemAMHAddressText.getText(), SystemAMHPhoneNumberText.getText());
-            
-            UserAccount ua = ecosystem.getUserAccountDirectory().createUserAccount(HospitalUserName, HospitalPassword, e, new HospitalAdminRole());
-            if(ua != null)
-            {
 
-                Hospital c = ecosystem.getHospitalDirectory().createHospital(SystemAMHNameText.getText(), SystemAMHAddressText.getText(), SystemAMHPhoneNumberText.getText());
-                JOptionPane.showMessageDialog(null, "Customer account created successfully for " + c.getHospitalName());
+            UserAccount ua = ecosystem.getUserAccountDirectory().createUserAccount(HospitalUserName, HospitalPassword, e, new HospitalAdminRole());
+            if (ua != null) {
+
+                Hospital c = ecosystem.getHospitalDirectory().createHospital(SystemAMHNameText.getText(), SystemAMHAddressText.getText(), SystemAMHPhoneNumberText.getText(), SystemAMHUsernameText.getText());
+                JOptionPane.showMessageDialog(null, "Hospital account created successfully for " + c.getHospitalName());
                 populateTableHM();
                 SystemAMHCreateButton.setEnabled(true);
                 SystemAMHUsernameText.setText("");
@@ -467,17 +438,12 @@ public class SystemAdminManageHospitals extends javax.swing.JPanel {
                 emailIDField.setEnabled(false);
                 SystemAMHSubmitButton.setEnabled(false);
                 emailIDField.setText("");
-            }
-            else
-            {
+            } else {
                 ecosystem.getEmployeeDirectory().deleteEmployee(e);
-                JOptionPane.showMessageDialog(null,"Username " + HospitalUserName + " already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
-                return;
-            }
-        }
+                JOptionPane.showMessageDialog(null, "Username " + HospitalUserName + " already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
 
-        else
-        {
+            }
+        } else {
             return;
         }
     }//GEN-LAST:event_SystemAMHSubmitButtonActionPerformed
@@ -509,74 +475,58 @@ public class SystemAdminManageHospitals extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateTableHM() {
-        DefaultTableModel dtmSAMC = (DefaultTableModel)SystemAMHTable.getModel();
+        DefaultTableModel dtmSAMC = (DefaultTableModel) SystemAMHTable.getModel();
         dtmSAMC.setRowCount(0);
-        if(ecosystem.getHospitalDirectory().getHospitalList() != null)
-        {
-            for(Hospital h: ecosystem.getHospitalDirectory().getHospitalList())
-            {
+        if (ecosystem.getHospitalDirectory().getHospitalList() != null) {
+            for (Hospital h : ecosystem.getHospitalDirectory().getHospitalList()) {
                 Object[] row = new Object[dtmSAMC.getColumnCount()];
-                row[0]= h.getHospitalId();
-                row[1]= h;
+                row[0] = h.getHospitalId();
+                row[1] = h;
                 dtmSAMC.addRow(row);
             }
         }
-        if(dtmSAMC.getRowCount() == 0)
-            {
-                SystemAMCDeleteButton.setEnabled(false);
-                //SystemAMCViewButton.setEnabled(false);
-            }
+        if (dtmSAMC.getRowCount() == 0) {
+            SystemAMCDeleteButton.setEnabled(false);
+        }
     }
 
     private boolean validateThisSAMC() {
-        HospitalDirectory ua=this.ecosystem.getHospitalDirectory();
+        HospitalDirectory ua = this.ecosystem.getHospitalDirectory();
         String regex = "\\d{10}";
-        if(("".equals(SystemAMHUsernameText.getText())) || ("".equals(SystemAMHPasswordText.getText())) || ("".equals(SystemAMHConfirmPasswordText.getText())) 
-                || ("".equals(SystemAMHNameText.getText())) || ("".equals(SystemAMHPhoneNumberText.getText())) || ("".equals(SystemAMHAddressText.getText())))
-        {
-            JOptionPane.showMessageDialog(null,"Please fill all details!", "Warning", JOptionPane.WARNING_MESSAGE);
+        if (("".equals(SystemAMHUsernameText.getText())) || ("".equals(SystemAMHPasswordText.getText())) || ("".equals(SystemAMHConfirmPasswordText.getText()))
+                || ("".equals(SystemAMHNameText.getText())) || ("".equals(SystemAMHPhoneNumberText.getText())) || ("".equals(SystemAMHAddressText.getText()))) {
+            JOptionPane.showMessageDialog(null, "Please fill all details!", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
-        }
-        else if(!(SystemAMHPasswordText.getText().equals(SystemAMHConfirmPasswordText.getText())))
-        {
-            JOptionPane.showMessageDialog(null,"Passwords do not match!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (!(SystemAMHPasswordText.getText().equals(SystemAMHConfirmPasswordText.getText()))) {
+            JOptionPane.showMessageDialog(null, "Passwords do not match!", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
-        }
-        else if(!(SystemAMHPhoneNumberText.getText().matches(regex)))
-        {
-            JOptionPane.showMessageDialog(null,"Mobile no. can have only 10 digits!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (!(SystemAMHPhoneNumberText.getText().matches(regex))) {
+            JOptionPane.showMessageDialog(null, "Mobile no. can have only 10 digits!", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
-        }
-        else if (ua.checkIfHospitalIsUnique(SystemAMHNameText.getText())==false){
-            
-              JOptionPane.showMessageDialog(null, "Sorry credentials are taken.");
-      return false;
-      
-          }    
-        else
-        {
+        } else if (ua.checkIfHospitalIsUnique(SystemAMHNameText.getText()) == false) {
+
+            JOptionPane.showMessageDialog(null, "Sorry name is taken.");
+            return false;
+
+        } else if (ua.checkIfHospitalUserIsUnique(SystemAMHUsernameText.getText()) == false) {
+
+            JOptionPane.showMessageDialog(null, "Sorry credentials are taken.");
+            return false;
+        } else {
             return true;
         }
     }
+
     private boolean validateThisSAMC2() {
         String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
-        
-        if (emailIDField.getText().matches(regex)==true){
+
+        if (emailIDField.getText().matches(regex) == true) {
             return true;
-        }
-        else {
-             
-   
+        } else {
+
             return false;
 
-                    }   
-    
+        }
+
+    }
 }
-}    
-
-
-
-
-
-
-

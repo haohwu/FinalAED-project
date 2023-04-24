@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Business.DeliveryMan;
+
 import java.util.ArrayList;
 
 /**
@@ -10,6 +11,7 @@ import java.util.ArrayList;
  * @author whh
  */
 public class DeliveryManDirectory {
+
     private ArrayList<DeliveryMan> deliveryManList;
 
     public DeliveryManDirectory() {
@@ -19,14 +21,14 @@ public class DeliveryManDirectory {
     public ArrayList<DeliveryMan> getDeliveryManList() {
         return deliveryManList;
     }
-    
-    public DeliveryMan createDeliveryMan(String name, String phone, String address){
+
+    public DeliveryMan createDeliveryMan(String name, String phone, String address) {
         DeliveryMan deliveryMan = new DeliveryMan();
         deliveryMan.setName(name);
         deliveryMan.setPhone(phone);
         deliveryMan.setAddress(address);
         deliveryManList.add(deliveryMan);
         return deliveryMan;
-    }    
-    
+    }
+
 }

@@ -9,11 +9,13 @@ import Business.SupplierDeliveryMan.SupplierDeliveryMan;
 import Business.SupplierMedicineItem.SupplierMedicineItem;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+
 /**
  *
  * @author whh
  */
 public class SupplierOrders {
+
     private Pharmacy pharmacy;
     private int orderId;
     private LocalDateTime orderDate;
@@ -23,7 +25,7 @@ public class SupplierOrders {
     private int totalAmount;
     private String message;
     private boolean status;
-    
+
     public SupplierOrders() {
         orderId = count;
         count++;
@@ -64,25 +66,21 @@ public class SupplierOrders {
     public int getTotalAmount() {
         return totalAmount;
     }
-    
-    public void deleteSupplierMedicineItem(SupplierMedicineItem smi)
-    {
+
+    public void deleteSupplierMedicineItem(SupplierMedicineItem smi) {
         suppliermedicineItemList.remove(smi);
     }
-    
-    public int calculateTotalAmount()
-    {
+
+    public int calculateTotalAmount() {
         int sum = 0;
-        for(SupplierMedicineItem smi : this.getSupplierMedicineItemList())
-        {
+        for (SupplierMedicineItem smi : this.getSupplierMedicineItemList()) {
             sum = sum + smi.getPrice();
         }
         this.totalAmount = sum;
         return sum;
     }
-    
-    public void addItem(SupplierMedicineItem smi)
-    {
+
+    public void addItem(SupplierMedicineItem smi) {
         suppliermedicineItemList.add(smi);
     }
 
@@ -101,10 +99,10 @@ public class SupplierOrders {
     public void setStatus(boolean status) {
         this.status = status;
     }
-    
+
     @Override
     public String toString() {
         return Integer.toString(orderId);
-    }   
-  
+    }
+
 }

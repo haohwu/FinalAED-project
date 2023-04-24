@@ -1,14 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package userinterface.HospitalRole;
 
 import Business.Customer.Customer;
+import Business.EcoSystem;
 import Business.Hospital.Hospital;
 import Business.MedicineItems.MedicineItem;
 import Business.Orders.Orders;
 import Business.Pharmacy.Pharmacy;
+import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -21,13 +20,15 @@ import javax.swing.table.DefaultTableModel;
  */
 public class HospitalOrderAction extends javax.swing.JPanel {
 
-    
+    private EcoSystem system;
     JPanel userProcessContainer;
     Customer customer;
     Pharmacy pharma;
     Orders orders;
+    private UserAccount user;
     int totalAmount = 0;
     Hospital hospital;
+    
     ArrayList<MedicineItem> cart = new ArrayList<MedicineItem>();
     
     public HospitalOrderAction(JPanel userProcessContainer, Hospital hospital, Pharmacy pharmacy) {
@@ -35,7 +36,7 @@ public class HospitalOrderAction extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.hospital = hospital;
         this.pharma = pharmacy;
-       
+       this.system=system;
         populateMedicine1(); 
         populateOrder1();
         if(HOAOrderTable.getRowCount() <= 0)
@@ -64,9 +65,9 @@ public class HospitalOrderAction extends javax.swing.JPanel {
         HOAOrderTotalAmountText = new javax.swing.JTextField();
         HOATotalAmountLabel = new javax.swing.JLabel();
 
-        HOAOrderButton.setBackground(new java.awt.Color(0, 0, 0));
+        setBackground(new java.awt.Color(0, 255, 255));
+
         HOAOrderButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        HOAOrderButton.setForeground(new java.awt.Color(255, 255, 255));
         HOAOrderButton.setText("Confirm Order");
         HOAOrderButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         HOAOrderButton.addActionListener(new java.awt.event.ActionListener() {
@@ -75,7 +76,6 @@ public class HospitalOrderAction extends javax.swing.JPanel {
             }
         });
 
-        HospMedicineTable.setBackground(new java.awt.Color(255, 204, 204));
         HospMedicineTable.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         HospMedicineTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -93,7 +93,6 @@ public class HospitalOrderAction extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        HospMedicineTable.setSelectionForeground(new java.awt.Color(102, 204, 255));
         HospMedicineTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 HospMedicineTableMouseClicked(evt);
@@ -101,9 +100,7 @@ public class HospitalOrderAction extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(HospMedicineTable);
 
-        AddHospMedicineItemButton.setBackground(new java.awt.Color(0, 0, 0));
         AddHospMedicineItemButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        AddHospMedicineItemButton.setForeground(new java.awt.Color(255, 255, 255));
         AddHospMedicineItemButton.setText("Add Item to Order");
         AddHospMedicineItemButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         AddHospMedicineItemButton.addActionListener(new java.awt.event.ActionListener() {
@@ -112,9 +109,7 @@ public class HospitalOrderAction extends javax.swing.JPanel {
             }
         });
 
-        HOABackButton.setBackground(new java.awt.Color(0, 0, 0));
         HOABackButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        HOABackButton.setForeground(new java.awt.Color(255, 255, 255));
         HOABackButton.setText("< Back");
         HOABackButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         HOABackButton.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -128,7 +123,6 @@ public class HospitalOrderAction extends javax.swing.JPanel {
             }
         });
 
-        HOAOrderTable.setBackground(new java.awt.Color(255, 204, 204));
         HOAOrderTable.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         HOAOrderTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -148,9 +142,7 @@ public class HospitalOrderAction extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(HOAOrderTable);
 
-        HOADeleteItemButton.setBackground(new java.awt.Color(0, 0, 0));
         HOADeleteItemButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        HOADeleteItemButton.setForeground(new java.awt.Color(255, 255, 255));
         HOADeleteItemButton.setText("Delete Item");
         HOADeleteItemButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         HOADeleteItemButton.addActionListener(new java.awt.event.ActionListener() {
@@ -178,32 +170,32 @@ public class HospitalOrderAction extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(0, 271, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(AddHospMedicineItemButton, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 758, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 758, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 64, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(HOADeleteItemButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(37, 37, 37)
-                                .addComponent(HOATotalAmountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(HOAOrderTotalAmountText, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(HOAOrderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(HOABackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(AddHospMedicineItemButton, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1))))
-                .addContainerGap(69, Short.MAX_VALUE))
+                        .addGap(6, 6, 6)
+                        .addComponent(HOADeleteItemButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addComponent(HOATotalAmountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(HOAOrderTotalAmountText, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(HOAOrderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(HOABackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(190, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 771, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(AddHospMedicineItemButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(HOABackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -211,11 +203,11 @@ public class HospitalOrderAction extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(HOADeleteItemButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(HOADeleteItemButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(HOATotalAmountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(HOAOrderTotalAmountText, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(HOAOrderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(137, Short.MAX_VALUE))
+                    .addComponent(HOAOrderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(400, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -254,7 +246,6 @@ public class HospitalOrderAction extends javax.swing.JPanel {
         else
         {
             JOptionPane.showMessageDialog(null,"Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
         }
     }//GEN-LAST:event_AddHospMedicineItemButtonActionPerformed
 
@@ -275,7 +266,6 @@ public class HospitalOrderAction extends javax.swing.JPanel {
         if (selectedRow1 >= 0)
         {
             MedicineItem mi1 = (MedicineItem) HOAOrderTable.getValueAt(selectedRow1, 1);
-            //order.deleteFoodItem(fi);
             cart.remove(mi1);
             JOptionPane.showMessageDialog(null, "Medicine Item " + mi1.getName()+ " deleted from cart successfully!");
             totalAmount = totalAmount - mi1.getPrice();
@@ -341,6 +331,7 @@ private void populateMedicine1() {
                 row[0] = count;
                 row[1] = mi3;
                 row[2] =  mi3.getPrice();
+                
                 dtm.addRow(row);
                 count++;
             }
@@ -351,12 +342,21 @@ private void populateMedicine1() {
             HOAOrderButton.setEnabled(false);
             HOADeleteItemButton.setEnabled(false);
         }
-
-
-
-
-    }
-
-
-
+    }   
+    
 }
+    
+
+
+    
+    
+   
+
+
+
+
+
+
+
+
+    

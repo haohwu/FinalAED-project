@@ -3,48 +3,42 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package userinterface.SupplierAdminRole;
+
 import Business.EcoSystem;
 import Business.Employee.Employee;
-import Business.Pharmacy.Pharmacy;
 import Business.Supplier.Supplier;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import userinterface.PharmacyAdminRole.AdminManageMedicine;
-import userinterface.PharmacyAdminRole.AdminManageOrders;
 
 /**
  *
  * @author Pratik Poojari
  */
 public class SupplierAdminWorkAreaJPanel extends javax.swing.JPanel {
-JPanel userProcessContainer;
+
+    JPanel userProcessContainer;
     UserAccount user;
     EcoSystem system;
     Supplier supplier;
-    /**
-     * Creates new form SupplierAdminWorkAreaJPanel
-     */
+
     public SupplierAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount user, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.user = user;
         this.system = system;
-        for(Supplier r : system.getSupplierDirectory().getSupplierList())
-        {
-            for(Employee e : r.getEmployeeDirectory().getEmployeeList())
-            {
-                if(user.getEmployee() == e)
-                {
+        for (Supplier r : system.getSupplierDirectory().getSupplierList()) {
+            for (Employee e : r.getEmployeeDirectory().getEmployeeList()) {
+                if (user.getEmployee() == e) {
                     this.supplier = r;
                     lblValue.setText(r.getName());
                 }
-            } 
+            }
         }
         txtSupplierName.setText(this.supplier.getName());
         txtAddress.setText(this.supplier.getAddress());
-      
+
     }
 
     /**
@@ -56,6 +50,7 @@ JPanel userProcessContainer;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblBackground = new javax.swing.JLabel();
         lblTitle = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         lblSupplier = new javax.swing.JLabel();
@@ -67,8 +62,15 @@ JPanel userProcessContainer;
         btnViewOrder = new javax.swing.JButton();
         btnMedicineManage = new javax.swing.JButton();
         btnSubmit = new javax.swing.JButton();
-        lblBackground = new javax.swing.JLabel();
 
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Pharmacy Delivery.jpeg"))); // NOI18N
+        lblBackground.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                lblBackgroundFocusGained(evt);
+            }
+        });
+
+        setBackground(new java.awt.Color(0, 255, 255));
         setMaximumSize(new java.awt.Dimension(1024, 759));
         setMinimumSize(new java.awt.Dimension(1024, 759));
 
@@ -121,17 +123,10 @@ JPanel userProcessContainer;
         });
 
         btnSubmit.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnSubmit.setText("Submit");
+        btnSubmit.setText("Update");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSubmitActionPerformed(evt);
-            }
-        });
-
-        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/4cdd558652d6adfe5e9d4c5af515fc40.jpg"))); // NOI18N
-        lblBackground.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                lblBackgroundFocusGained(evt);
             }
         });
 
@@ -140,103 +135,105 @@ JPanel userProcessContainer;
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(btnViewOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnMedicineManage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblSupplierName, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblAddress))
-                        .addGap(53, 53, 53)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnViewOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnMedicineManage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblAddress)
+                                        .addGap(53, 53, 53))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                                        .addComponent(lblSupplierName, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, Short.MAX_VALUE)))))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtSupplierName, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSubmit)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(80, 80, 80)
+                                .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(6, 6, 6))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblSupplier)
                         .addGap(35, 35, 35)
-                        .addComponent(lblValue, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(400, 400, 400)
-                        .addComponent(lblTitle)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(161, 161, 161))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(lblBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTitle)
+                            .addComponent(lblValue, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(1195, 1195, 1195))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(108, 108, 108)
+                .addGap(72, 72, 72)
                 .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblValue, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnViewOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(btnMedicineManage, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblSupplierName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtSupplierName, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtSupplierName, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblSupplierName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(58, 58, 58)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(62, 62, 62)
-                        .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(344, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(lblBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lblAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnViewOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(btnMedicineManage)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(240, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnViewOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewOrderActionPerformed
         // TODO add your handling code here:
-         AdminManageSupplierOrders amo = new AdminManageSupplierOrders(userProcessContainer, supplier);
+        AdminManageSupplierOrders amo = new AdminManageSupplierOrders(userProcessContainer, supplier);
         userProcessContainer.add("UserCustomer", amo);
-        CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
+        CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnViewOrderActionPerformed
 
     private void btnMedicineManageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicineManageActionPerformed
         // TODO add your handling code here:
-         AdminManageSupplierMedicine amm = new AdminManageSupplierMedicine(userProcessContainer, supplier);
+        AdminManageSupplierMedicine amm = new AdminManageSupplierMedicine(userProcessContainer, supplier);
         userProcessContainer.add("UserCustomer", amm);
-        CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
+        CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnMedicineManageActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
-         if(("".equals(txtSupplierName.getText())) || ("".equals(txtAddress.getText())))
-        {
-            JOptionPane.showMessageDialog(null,"Please fill all values!", "Warning", JOptionPane.WARNING_MESSAGE);
+
+        if (("".equals(txtSupplierName.getText())) || ("".equals(txtAddress.getText()))) {
+            JOptionPane.showMessageDialog(null, "No Empty allowed!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
-        }
-        else if(txtSupplierName.getText() == null ? supplier.getName() != null : !txtSupplierName.getText().equals(supplier.getName()))
-        {
-            if(system.getSupplierDirectory().checkIfSupplierIsUnique(txtSupplierName.getText()))
-            {
+        } else if (txtSupplierName.getText() == null ? supplier.getName() != null : !txtSupplierName.getText().equals(supplier.getName())) {
+            if (system.getSupplierDirectory().checkIfSupplierIsUnique(txtSupplierName.getText())) {
                 supplier.setName(txtSupplierName.getText());
                 supplier.setAddress(txtAddress.getText());
-                JOptionPane.showMessageDialog(null, "Supplier details updated!");
-            }
-            else
-            {
-                JOptionPane.showMessageDialog(null,"Supplier name not unique!", "Warning", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Updated!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Not unique!", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
             }
         }
@@ -249,9 +246,9 @@ JPanel userProcessContainer;
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        MedicinesApproved ma = new MedicinesApproved(userProcessContainer,system);
+        MedicinesApproved ma = new MedicinesApproved(userProcessContainer, system);
         userProcessContainer.add("UserCustomer", ma);
-        CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
+        CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton2ActionPerformed
 

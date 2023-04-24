@@ -189,12 +189,12 @@
     <Component class="javax.swing.JLabel" name="lblBackground">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/icon/46c6cc94a14f2da88997d4df1d5efde7.jpg"/>
+          <Image iconType="3" name="/icon/Medomand-online-Pharmacy-supply-1024x759.png"/>
         </Property>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="0" y="0" width="1030" height="760"/>
+          <AbsoluteConstraints x="0" y="-20" width="1030" height="760"/>
         </Constraint>
       </Constraints>
     </Component>

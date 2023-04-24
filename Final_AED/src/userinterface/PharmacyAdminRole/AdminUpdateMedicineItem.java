@@ -73,7 +73,7 @@ public class AdminUpdateMedicineItem extends javax.swing.JPanel {
             }
         });
         add(btnSubmit);
-        btnSubmit.setBounds(640, 440, 160, 50);
+        btnSubmit.setBounds(490, 440, 210, 60);
 
         enterpriseLabel.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         enterpriseLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -91,7 +91,7 @@ public class AdminUpdateMedicineItem extends javax.swing.JPanel {
             }
         });
         add(btnBack);
-        btnBack.setBounds(70, 60, 170, 60);
+        btnBack.setBounds(50, 60, 190, 60);
 
         txtName.setEditable(false);
         txtName.setBackground(new java.awt.Color(255, 255, 255));
@@ -100,7 +100,7 @@ public class AdminUpdateMedicineItem extends javax.swing.JPanel {
         add(txtName);
         txtName.setBounds(350, 240, 460, 50);
 
-        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/46c6cc94a14f2da88997d4df1d5efde7.jpg"))); // NOI18N
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Medomand-online-Pharmacy-supply-1024x759.png"))); // NOI18N
         add(lblBackground);
         lblBackground.setBounds(0, 0, 1030, 760);
     }// </editor-fold>//GEN-END:initComponents

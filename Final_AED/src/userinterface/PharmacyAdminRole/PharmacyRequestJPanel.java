@@ -4,26 +4,25 @@
  */
 package userinterface.PharmacyAdminRole;
 
-import Business.Orders.Orders;
 import Business.SupplierOrders.SupplierOrders;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
 /**
  *
  * @author Pratik Poojari
  */
 public class PharmacyRequestJPanel extends javax.swing.JPanel {
+
     private JPanel userProcessContainer;
     private SupplierOrders so;
-    /**
-     * Creates new form PharmacyRequestJPanel
-     */
+
     public PharmacyRequestJPanel(JPanel userProcessContainer, SupplierOrders so) {
         initComponents();
-         this.userProcessContainer = userProcessContainer;
-        
+        this.userProcessContainer = userProcessContainer;
+
         this.so = so;
         lblEnterprise.setText("OrderID: " + so);
         txtMessage.setText(so.getMessage());
@@ -55,7 +54,7 @@ public class PharmacyRequestJPanel extends javax.swing.JPanel {
             }
         });
         add(btnSubmit);
-        btnSubmit.setBounds(310, 420, 120, 50);
+        btnSubmit.setBounds(310, 420, 160, 50);
 
         lblMessage.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         lblMessage.setText("Message: ");
@@ -65,7 +64,7 @@ public class PharmacyRequestJPanel extends javax.swing.JPanel {
         txtMessage.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         txtMessage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         add(txtMessage);
-        txtMessage.setBounds(240, 150, 290, 210);
+        txtMessage.setBounds(240, 150, 410, 190);
 
         btnBack.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Back Button.png"))); // NOI18N
@@ -76,28 +75,24 @@ public class PharmacyRequestJPanel extends javax.swing.JPanel {
             }
         });
         add(btnBack);
-        btnBack.setBounds(830, 50, 130, 60);
+        btnBack.setBounds(810, 50, 150, 60);
 
         lblEnterprise.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         lblEnterprise.setText("<>");
         add(lblEnterprise);
         lblEnterprise.setBounds(60, 50, 480, 50);
 
-        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/46c6cc94a14f2da88997d4df1d5efde7.jpg"))); // NOI18N
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Medomand-online-Pharmacy-supply-1024x759.png"))); // NOI18N
         add(lblBackground);
         lblBackground.setBounds(0, 0, 1030, 760);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
-        if(txtMessage.getText() != "")
-        {
+        if (txtMessage.getText() != "") {
             so.setMessage(txtMessage.getText());
             JOptionPane.showMessageDialog(null, "Message updated successfully");
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null,"Message cannot be empty!", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
+        } else {
+            JOptionPane.showMessageDialog(null, "Message cannot be empty!", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnSubmitActionPerformed
 
@@ -108,7 +103,7 @@ public class PharmacyRequestJPanel extends javax.swing.JPanel {
         Component component = componentArray[componentArray.length - 1];
         PharmacySummaryJPanel dwjp = (PharmacySummaryJPanel) component;
         dwjp.populateRequestTable();
-        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 

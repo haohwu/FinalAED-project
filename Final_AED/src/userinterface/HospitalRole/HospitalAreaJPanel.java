@@ -7,16 +7,11 @@ package userinterface.HospitalRole;
 
 
 import Business.EcoSystem;
-import Business.Employee.Employee;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import Business.Customer.Customer;
 import Business.Hospital.Hospital;
 import Business.Pharmacy.Pharmacy;
-import userinterface.CustomerRole.CustomerOrderAction;
-import userinterface.HospitalRole.HospitalOrderAction;
 
 /**
  *
@@ -79,6 +74,9 @@ public class HospitalAreaJPanel extends javax.swing.JPanel {
         HospitalContactText = new javax.swing.JTextField();
         CustomerAddressLabel = new javax.swing.JLabel();
         HospitalAddressText = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(51, 255, 255));
 
         valueLabel2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         valueLabel2.setText("<value>");
@@ -119,6 +117,13 @@ public class HospitalAreaJPanel extends javax.swing.JPanel {
         HospitalAddressText.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         HospitalAddressText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        jButton1.setText("SEE DELIVERY HISTORY");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -147,8 +152,11 @@ public class HospitalAreaJPanel extends javax.swing.JPanel {
                             .addComponent(PharmacyComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(267, 267, 267)
-                        .addComponent(valueLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(185, Short.MAX_VALUE))
+                        .addComponent(valueLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(250, 250, 250)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(280, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,7 +182,9 @@ public class HospitalAreaJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CustomerAddressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(HospitalAddressText, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(192, Short.MAX_VALUE))
+                .addGap(68, 68, 68)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(164, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -191,6 +201,13 @@ public class HospitalAreaJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_PharmacyComboBoxActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+      HospitalSummaryJPanel cpo = new HospitalSummaryJPanel(userProcessContainer, userAccount, system);
+            userProcessContainer.add("CustomerOrder", cpo);
+            CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CustomerAddressLabel;
@@ -202,6 +219,7 @@ public class HospitalAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> PharmacyComboBox;
     private javax.swing.JLabel PharmacyLabel;
     private javax.swing.JLabel UpdateDetailLabels;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel valueLabel2;
     // End of variables declaration//GEN-END:variables
 }

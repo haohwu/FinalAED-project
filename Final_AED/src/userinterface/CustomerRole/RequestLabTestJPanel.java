@@ -4,7 +4,6 @@
  */
 package userinterface.CustomerRole;
 
-
 import Business.Orders.Orders;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -16,21 +15,19 @@ import javax.swing.JOptionPane;
  * @author Pratik Poojari
  */
 public class RequestLabTestJPanel extends javax.swing.JPanel {
-     private JPanel userProcessContainer;
-    private Orders o;    
 
-    
+    private JPanel userProcessContainer;
+    private Orders o;
 
     public RequestLabTestJPanel(JPanel userProcessContainer, Orders o) {
         initComponents();
-           
+
         this.userProcessContainer = userProcessContainer;
-        
+
         this.o = o;
         lblEnterprise.setText("OrderID: " + o);
         txtMessage.setText(o.getMessage());
-        
-        
+
     }
 
     /**
@@ -89,22 +86,18 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         add(lblEnterprise);
         lblEnterprise.setBounds(60, 40, 540, 60);
 
-        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/7e8e8c57497d2627fa7923f20188fa5d.jpg"))); // NOI18N
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Medications02_Yellow@2x.png"))); // NOI18N
         add(lblBackground);
-        lblBackground.setBounds(0, 0, 1030, 760);
+        lblBackground.setBounds(0, 0, 1120, 840);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
 
-        if(txtMessage.getText() != "")
-        {
+        if (txtMessage.getText() != "") {
             o.setMessage(txtMessage.getText());
             JOptionPane.showMessageDialog(null, "Message updated successfully");
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null,"Message cannot be empty!", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
+        } else {
+            JOptionPane.showMessageDialog(null, "Message cannot be empty!", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnSubmitActionPerformed
 
@@ -115,7 +108,7 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         Component component = componentArray[componentArray.length - 1];
         CustomerSummaryJPanell dwjp = (CustomerSummaryJPanell) component;
         dwjp.populateRequestTable();
-        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 

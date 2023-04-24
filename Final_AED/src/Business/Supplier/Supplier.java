@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Business.Supplier;
+
 import Business.Employee.EmployeeDirectory;
 import Business.SupplierDeliveryMan.SupplierDeliveryMan;
 import Business.SupplierDeliveryMan.SupplierDeliveryManDirectory;
@@ -16,6 +17,7 @@ import Business.SupplierOrders.SupplierOrdersDirectory;
  * @author whh
  */
 public class Supplier {
+
     private String name;
     private String address;
     private String email;
@@ -35,7 +37,7 @@ public class Supplier {
         this.supplierOrdersDirectory = new SupplierOrdersDirectory();
         this.supplierMedicineCatalog = new SupplierMedicineCatalog();
     }
-    
+
     public String getAddress() {
         return address;
     }
@@ -51,7 +53,7 @@ public class Supplier {
     public EmployeeDirectory getEmployeeDirectory() {
         return employeeDirectory;
     }
-    
+
     public void setName(String name) {
         this.name = name;
     }
@@ -79,7 +81,6 @@ public class Supplier {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-    
 
     @Override
     public String toString() {
@@ -93,22 +94,18 @@ public class Supplier {
     public SupplierMedicineCatalog getSupplierMedicineCatalog() {
         return supplierMedicineCatalog;
     }
-    
-    public void deleteOrder(SupplierOrders so)
-    {
+
+    public void deleteOrder(SupplierOrders so) {
         this.getSupplierOrderDirectory().getSupplierOrderList().remove(so);
     }
-    
-    public SupplierDeliveryMan findSupplierDeliveryMan(String name)
-    {
-        for(SupplierDeliveryMan sdm : this.supplierDeliveryManDirectory.getSupplierDeliveryManList())
-        {
-            if(sdm.getName().equals(name))
-            {
+
+    public SupplierDeliveryMan findSupplierDeliveryMan(String name) {
+        for (SupplierDeliveryMan sdm : this.supplierDeliveryManDirectory.getSupplierDeliveryManList()) {
+            if (sdm.getName().equals(name)) {
                 return sdm;
             }
         }
         return null;
-    }   
-    
+    }
+
 }

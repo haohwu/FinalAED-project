@@ -1,6 +1,11 @@
 
 package Business.Drugs;
 
+import Business.Employee.EmployeeDirectory;
+import Business.SupplierDeliveryMan.SupplierDeliveryManDirectory;
+import Business.SupplierMedicineItem.SupplierMedicineCatalog;
+import Business.SupplierOrders.SupplierOrdersDirectory;
+
 /**
  *
  * @author whh
@@ -11,7 +16,12 @@ public class Drugs {
     private String DrugName;
     private String DrugCompostion;
     private String Id;
+     private DrugsDirectory drugdirectory;
+     
+      public Drugs() {
+         this.drugdirectory = new DrugsDirectory();
 
+    }
 
     public String getId() {
         return Id;
@@ -46,6 +56,16 @@ public class Drugs {
         this.DrugCompostion = DrugCompostion;
     }
 
+    public DrugsDirectory getDrugdirectory() {
+        return drugdirectory;
+    }
+
+    public void setDrugdirectory(DrugsDirectory drugdirectory) {
+        this.drugdirectory = drugdirectory;
+    }
+
+   
+    
 
     @Override
     public String toString() {

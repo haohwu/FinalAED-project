@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package userinterface.DeliveryManRole;
+
 import Business.Orders.Orders;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -17,15 +18,13 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
 
     JPanel userProcessContainer;
     Orders orders;
-    /**
-     * Creates new form ProcessWorkRequestJPanel
-     */
+
     public ProcessWorkRequestJPanel(JPanel userProcessContainer, Orders o) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.orders = o;
         comboStatus.addItem("Delivered");
-        comboStatus.addItem("Not Delivered");        
+        comboStatus.addItem("Not Delivered");
     }
 
     /**
@@ -41,7 +40,10 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
         lblResult = new javax.swing.JLabel();
         comboStatus = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(0, 255, 255));
         setLayout(null);
 
         btnSubmit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -53,7 +55,7 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
             }
         });
         add(btnSubmit);
-        btnSubmit.setBounds(680, 180, 110, 50);
+        btnSubmit.setBounds(660, 350, 160, 60);
 
         btnBack.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Back Button.png"))); // NOI18N
@@ -65,25 +67,35 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
             }
         });
         add(btnBack);
-        btnBack.setBounds(60, 50, 110, 50);
+        btnBack.setBounds(50, 90, 110, 50);
 
         lblResult.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         lblResult.setText("Result");
         add(lblResult);
-        lblResult.setBounds(430, 100, 80, 40);
+        lblResult.setBounds(410, 230, 80, 40);
 
         comboStatus.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         add(comboStatus);
-        comboStatus.setBounds(560, 100, 380, 50);
+        comboStatus.setBounds(550, 220, 380, 50);
+
+        jLabel1.setText(" ");
+        add(jLabel1);
+        jLabel1.setBounds(520, 100, 4, 17);
+
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jLabel2.setText("Delivery Man Work Panel");
+        add(jLabel2);
+        jLabel2.setBounds(460, 110, 240, 30);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
-        switch(comboStatus.getSelectedIndex())
-        {
-            case 0 : orders.setStatus(true);
-            break;
-            case 1 : orders.setStatus(false);
-            break;
+        switch (comboStatus.getSelectedIndex()) {
+            case 0:
+                orders.setStatus(true);
+                break;
+            case 1:
+                orders.setStatus(false);
+                break;
         }
         System.out.println(comboStatus.getSelectedIndex());
         System.out.println(orders.isStatus());
@@ -108,6 +120,8 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JComboBox<String> comboStatus;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblResult;
     // End of variables declaration//GEN-END:variables
 }

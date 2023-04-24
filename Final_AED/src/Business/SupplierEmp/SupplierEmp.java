@@ -9,10 +9,10 @@ package Business.SupplierEmp;
  * @author whh
  */
 public class SupplierEmp {
-    
+
     private String name;
     private String address;
-    private String phone;    
+    private String phone;
     private int id;
     private static int count = 1;
 
@@ -29,7 +29,6 @@ public class SupplierEmp {
         this.name = name;
     }
 
-    
     public String getName() {
         return name;
     }
@@ -41,20 +40,18 @@ public class SupplierEmp {
     public void setAddress(String address) {
         this.address = address;
     }
-    
+
     public String getPhone() {
         return phone;
     }
 
     public void setPhone(String phone) {
         this.phone = phone;
-    } 
+    }
 
     @Override
     public String toString() {
         return name;
     }
- 
 
-    
 }

@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @author whh
  */
 public class SupplierDeliveryManDirectory {
-    
+
     private ArrayList<Business.SupplierDeliveryMan.SupplierDeliveryMan> supplierDeliveryManList;
 
     public SupplierDeliveryManDirectory() {
@@ -21,14 +21,14 @@ public class SupplierDeliveryManDirectory {
     public ArrayList<Business.SupplierDeliveryMan.SupplierDeliveryMan> getSupplierDeliveryManList() {
         return supplierDeliveryManList;
     }
-    
-    public Business.SupplierDeliveryMan.SupplierDeliveryMan createSupplierDeliveryMan(String name, String phone, String address){
+
+    public Business.SupplierDeliveryMan.SupplierDeliveryMan createSupplierDeliveryMan(String name, String phone, String address) {
         Business.SupplierDeliveryMan.SupplierDeliveryMan supplierDeliveryMan = new Business.SupplierDeliveryMan.SupplierDeliveryMan();
         supplierDeliveryMan.setName(name);
         supplierDeliveryMan.setPhone(phone);
         supplierDeliveryMan.setAddress(address);
         supplierDeliveryManList.add(supplierDeliveryMan);
         return supplierDeliveryMan;
-    }    
-    
+    }
+
 }

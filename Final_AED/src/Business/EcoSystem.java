@@ -1,4 +1,3 @@
-
 package Business;
 
 import Business.Customer.CustomerDirectory;
@@ -12,16 +11,14 @@ import Business.SupplierDeliveryMan.SupplierDeliveryManDirectory;
 import java.util.ArrayList;
 
 import Business.Hospital.HospitalDirectory;
-import Business.Role.HospitalAdminRole;
 import Business.SupplierEmp.SupplierEmpDirectory;
 
 /**
  *
  * @author whh
  */
-public class EcoSystem extends Organization{
-    
-     
+public class EcoSystem extends Organization {
+
     private static EcoSystem business;
     private PharmacyDirectory pharmacyDirectory;
     private CustomerDirectory customerDirectory;
@@ -30,7 +27,6 @@ public class EcoSystem extends Organization{
     private SupplierDeliveryManDirectory supplierDeliveryManDirectory;
     private SupplierEmpDirectory supplieryEmpDirectory;
     private HospitalDirectory hospitalDirectory;
-    
     private DrugsDirectory drugsDirectory;
 
     public EcoSystem(PharmacyDirectory pharmacyDirectory, CustomerDirectory customerDirectory, DeliveryManDirectory deliveryManDirectory, SupplierDirectory supplierDirectory, SupplierDeliveryManDirectory supplierDeliveryManDirectory) {
@@ -38,45 +34,44 @@ public class EcoSystem extends Organization{
         this.pharmacyDirectory = pharmacyDirectory;
         this.customerDirectory = customerDirectory;
         this.deliveryManDirectory = deliveryManDirectory;
-                this.supplierDirectory = supplierDirectory;
-                        this.supplierDeliveryManDirectory = supplierDeliveryManDirectory;
-                        this.supplieryEmpDirectory=supplieryEmpDirectory;
-                        this.hospitalDirectory=hospitalDirectory;
-                        
-                        this.drugsDirectory = drugsDirectory;
+        this.supplierDirectory = supplierDirectory;
+        this.supplierDeliveryManDirectory = supplierDeliveryManDirectory;
+        this.supplieryEmpDirectory = supplieryEmpDirectory;
+        this.hospitalDirectory = hospitalDirectory;
+
+        this.drugsDirectory = drugsDirectory;
 
     }
 
-    
-    
-    public static EcoSystem getInstance(){
-        if(business==null){
-            business=new EcoSystem();
+    public static EcoSystem getInstance() {
+        if (business == null) {
+            business = new EcoSystem();
         }
         return business;
     }
-    
+
     @Override
     public ArrayList<Role> getSupportedRole() {
-        ArrayList<Role> roleList=new ArrayList<Role>();
+        ArrayList<Role> roleList = new ArrayList<Role>();
         roleList.add(new SystemAdminRole());
         return roleList;
     }
-    private EcoSystem(){
+
+    private EcoSystem() {
         super(null);
-      
+
         this.pharmacyDirectory = new PharmacyDirectory();
         this.customerDirectory = new CustomerDirectory();
         this.deliveryManDirectory = new DeliveryManDirectory();
-         this.supplierDirectory = new SupplierDirectory();
+        this.supplierDirectory = new SupplierDirectory();
 
-                        this.supplierDeliveryManDirectory = new SupplierDeliveryManDirectory();
-                        
-                        this.hospitalDirectory = new HospitalDirectory();
-                        
-                        this.drugsDirectory = new DrugsDirectory();
+        this.supplierDeliveryManDirectory = new SupplierDeliveryManDirectory();
+
+        this.hospitalDirectory = new HospitalDirectory();
+
+        this.drugsDirectory = new DrugsDirectory();
     }
-    
+
     public DrugsDirectory getDrugsDirectory() {
         return drugsDirectory;
     }
@@ -91,7 +86,8 @@ public class EcoSystem extends Organization{
 
     public DeliveryManDirectory getDeliveryManDirectory() {
         return deliveryManDirectory;
-    } 
+    }
+
     public SupplierDirectory getSupplierDirectory() {
         return supplierDirectory;
     }
@@ -111,8 +107,7 @@ public class EcoSystem extends Organization{
     public void setSupplieryEmpDirectory(SupplierEmpDirectory supplieryEmpDirectory) {
         this.supplieryEmpDirectory = supplieryEmpDirectory;
     }
-    
-    
+
     //
     public HospitalDirectory getHospitalDirectory() {
         return hospitalDirectory;
@@ -121,8 +116,8 @@ public class EcoSystem extends Organization{
     public SupplierDeliveryManDirectory getSupplierDeliveryManDirectory() {
         return supplierDeliveryManDirectory;
     }
-    public boolean checkIfUserIsUnique(String userName){
-       //
-       return false;
+
+    public boolean checkIfUserIsUnique(String userName) {
+        return false;
     }
 }

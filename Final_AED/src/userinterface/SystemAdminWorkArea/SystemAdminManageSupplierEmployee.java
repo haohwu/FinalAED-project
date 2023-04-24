@@ -5,12 +5,8 @@
  */
 package userinterface.SystemAdminWorkArea;
 
-import Business.Customer.Customer;
-import Business.Customer.CustomerDirectory;
 import Business.EcoSystem;
 import Business.Employee.Employee;
-//import Business.Role.AdminRole;
-import Business.Role.DeliveryManRole;
 import Business.Role.SupplierDeliveryManRole;
 import Business.Role.SupplierAdminRole;
 import Business.Supplier.Supplier;
@@ -22,21 +18,17 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
-
 /**
  *
  * @author Pratik Poojari
  */
 public class SystemAdminManageSupplierEmployee extends javax.swing.JPanel {
 
-    /**
-     * Creates new form SystemAdminManageSupplierEmployee
-     */
-        private JPanel userProcessContainer;
-        private Supplier supplier;
-        private String user;
-        private EcoSystem ecosystem;
-    
+    private JPanel userProcessContainer;
+    private Supplier supplier;
+    private String user;
+    private EcoSystem ecosystem;
+
     public SystemAdminManageSupplierEmployee(JPanel userProcessContainer, Supplier supplier, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -54,7 +46,7 @@ public class SystemAdminManageSupplierEmployee extends javax.swing.JPanel {
         radioBtnDelivery.setEnabled(false);
         radioBtnManager.setEnabled(false);
         populateSupplierEmpTable();
-        
+
     }
 
     /**
@@ -103,7 +95,7 @@ public class SystemAdminManageSupplierEmployee extends javax.swing.JPanel {
             }
         });
         add(btnBack);
-        btnBack.setBounds(30, 30, 120, 50);
+        btnBack.setBounds(30, 30, 130, 60);
 
         btnView.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/View Button.png"))); // NOI18N
@@ -114,7 +106,7 @@ public class SystemAdminManageSupplierEmployee extends javax.swing.JPanel {
             }
         });
         add(btnView);
-        btnView.setBounds(20, 130, 130, 50);
+        btnView.setBounds(20, 130, 140, 54);
 
         btnDelete.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Delete Button.png"))); // NOI18N
@@ -125,7 +117,7 @@ public class SystemAdminManageSupplierEmployee extends javax.swing.JPanel {
             }
         });
         add(btnDelete);
-        btnDelete.setBounds(20, 210, 130, 50);
+        btnDelete.setBounds(20, 210, 140, 60);
 
         btnCreate.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnCreate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Create Button.png"))); // NOI18N
@@ -136,7 +128,7 @@ public class SystemAdminManageSupplierEmployee extends javax.swing.JPanel {
             }
         });
         add(btnCreate);
-        btnCreate.setBounds(20, 290, 130, 50);
+        btnCreate.setBounds(20, 290, 140, 60);
 
         btnSubmit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnSubmit.setText("Submit");
@@ -146,7 +138,7 @@ public class SystemAdminManageSupplierEmployee extends javax.swing.JPanel {
             }
         });
         add(btnSubmit);
-        btnSubmit.setBounds(490, 600, 120, 40);
+        btnSubmit.setBounds(490, 600, 220, 50);
 
         tblManageSupplierEmp.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -261,9 +253,9 @@ public class SystemAdminManageSupplierEmployee extends javax.swing.JPanel {
         add(txtName);
         txtName.setBounds(690, 340, 300, 30);
 
-        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/SystemAdminWorkArea/11-1-1024x600 (1).jpg"))); // NOI18N
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/SystemAdminWorkArea/a2.v1.jpg"))); // NOI18N
         add(lblBackground);
-        lblBackground.setBounds(-50, -10, 1040, 770);
+        lblBackground.setBounds(-50, -10, 1190, 850);
     }// </editor-fold>//GEN-END:initComponents
 
     private void radioBtnDeliveryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBtnDeliveryActionPerformed
@@ -278,50 +270,37 @@ public class SystemAdminManageSupplierEmployee extends javax.swing.JPanel {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-         userProcessContainer.remove(this);
+        userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
-       if(validateThis())
-        {
+        if (validateThis()) {
 
             Employee e = supplier.getEmployeeDirectory().createEmployee(txtName.getText(), txtAddress.getText(), txtPhoneNumber.getText());
-            if(e == null)
-            {
-                JOptionPane.showMessageDialog(null,"Employee " + txtName.getText() + " already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
+            if (e == null) {
+                JOptionPane.showMessageDialog(null, "Employee " + txtName.getText() + " already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
-            }
-            else
-            {
-                if(radioBtnManager.isSelected())
-                {
+            } else {
+                if (radioBtnManager.isSelected()) {
                     UserAccount ua = ecosystem.getUserAccountDirectory().createUserAccount(txtUsername.getText(), txtPassword.getText(), e, new SupplierAdminRole());
-                    if(ua != null)
-                    {
+                    if (ua != null) {
                         JOptionPane.showMessageDialog(null, "Manager account created successfully for " + e.getName());
-                    }
-                    else
-                    {
+                    } else {
                         supplier.getEmployeeDirectory().deleteEmployee(e);
-                        JOptionPane.showMessageDialog(null,"Username " + txtUsername.getText() + " already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Username " + txtUsername.getText() + " already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
                         return;
                     }
-                }
-                else
-                {
+                } else {
                     UserAccount ua = ecosystem.getUserAccountDirectory().createUserAccount(txtUsername.getText(), txtPassword.getText(), e, new SupplierDeliveryManRole());
-                    if(ua != null)
-                    {
+                    if (ua != null) {
                         SupplierDeliveryMan sdm = supplier.getSupplierDeliveryManDirectory().createSupplierDeliveryMan(txtName.getText(), txtAddress.getText(), txtPhoneNumber.getText());
                         JOptionPane.showMessageDialog(null, "Delivery Man account created successfully for " + e.getName());
-                    }
-                    else
-                    {
+                    } else {
                         supplier.getEmployeeDirectory().deleteEmployee(e);
-                        JOptionPane.showMessageDialog(null,"Username " + txtUsername.getText() + " already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Username " + txtUsername.getText() + " already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
                         return;
                     }
 
@@ -346,21 +325,18 @@ public class SystemAdminManageSupplierEmployee extends javax.swing.JPanel {
                 radioBtnManager.setEnabled(false);
             }
             populateSupplierEmpTable();
-        }
-        else
-        {
+        } else {
             return;
         }
-                
-        
+
+
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void tblManageSupplierEmpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblManageSupplierEmpMouseClicked
         // TODO add your handling code here:
-       
+
         int selectedRow = tblManageSupplierEmp.getSelectedRow();
-        if (selectedRow >= 0)
-        {
+        if (selectedRow >= 0) {
             btnDelete.setEnabled(true);
             btnView.setEnabled(true);
         }
@@ -368,42 +344,36 @@ public class SystemAdminManageSupplierEmployee extends javax.swing.JPanel {
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
         // TODO add your handling code here:
-       int selectedRow = tblManageSupplierEmp.getSelectedRow();
-        if (selectedRow >= 0)
-        {
+        int selectedRow = tblManageSupplierEmp.getSelectedRow();
+        if (selectedRow >= 0) {
             Employee selectedEmployee = (Employee) tblManageSupplierEmp.getValueAt(selectedRow, 1);
             SystemUpdateSupplierEmployee fs = new SystemUpdateSupplierEmployee(userProcessContainer, selectedEmployee, ecosystem);
             userProcessContainer.add("SysUpdateSupplierEmployee", fs);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null,"Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
     }//GEN-LAST:event_btnViewActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-         int selectedRow = tblManageSupplierEmp.getSelectedRow();
-        if (selectedRow >= 0)
-        {
+        int selectedRow = tblManageSupplierEmp.getSelectedRow();
+        if (selectedRow >= 0) {
             Employee selectedEmployee = (Employee) tblManageSupplierEmp.getValueAt(selectedRow, 1);
             supplier.getEmployeeDirectory().deleteEmployee(selectedEmployee);
-            JOptionPane.showMessageDialog(null, "Employee " + selectedEmployee.getName()+ " deleted successfully!");
+            JOptionPane.showMessageDialog(null, "Employee " + selectedEmployee.getName() + " deleted successfully!");
             populateSupplierEmpTable();
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null,"Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-         btnCreate.setEnabled(false);
+        btnCreate.setEnabled(false);
         txtUsername.setEnabled(true);
         txtPassword.setEnabled(true);
         txtConfirmPassword.setEnabled(true);
@@ -443,60 +413,41 @@ public class SystemAdminManageSupplierEmployee extends javax.swing.JPanel {
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 
-
-private void populateSupplierEmpTable() {
-        DefaultTableModel dtm = (DefaultTableModel)tblManageSupplierEmp.getModel();
+    private void populateSupplierEmpTable() {
+        DefaultTableModel dtm = (DefaultTableModel) tblManageSupplierEmp.getModel();
         dtm.setRowCount(0);
-        if(supplier.getEmployeeDirectory().getEmployeeList() != null)
-        {
-            for(Employee e : supplier.getEmployeeDirectory().getEmployeeList())
-            {
+        if (supplier.getEmployeeDirectory().getEmployeeList() != null) {
+            for (Employee e : supplier.getEmployeeDirectory().getEmployeeList()) {
                 Object[] row = new Object[dtm.getColumnCount()];
-                row[0]= e.getId();
-                row[1]= e;
+                row[0] = e.getId();
+                row[1] = e;
                 UserAccount ua = ecosystem.getUserAccountDirectory().findEmployee(e);
                 row[2] = ua.getRole().toString().substring(14).replace("Role", "");
                 dtm.addRow(row);
             }
         }
-        if(dtm.getRowCount() == 0)
-            {
-                btnDelete.setEnabled(false);
-                btnView.setEnabled(false);
-            }
+        if (dtm.getRowCount() == 0) {
+            btnDelete.setEnabled(false);
+            btnView.setEnabled(false);
+        }
     }
 
     private boolean validateThis() {
-         SupplierEmpDirectory ua=this.ecosystem.getSupplieryEmpDirectory();
+        SupplierEmpDirectory ua = this.ecosystem.getSupplieryEmpDirectory();
         String regex = "\\d{10}";
-        if(("".equals(txtUsername.getText())) || ("".equals(txtPassword.getText())) || ("".equals(txtConfirmPassword.getText())) 
+        if (("".equals(txtUsername.getText())) || ("".equals(txtPassword.getText())) || ("".equals(txtConfirmPassword.getText()))
                 || ("".equals(txtName.getText())) || ("".equals(txtPhoneNumber.getText())) || ("".equals(txtAddress.getText()))
-                || ((radioBtnDelivery.isEnabled() == false) && (radioBtnManager.isEnabled() == false)))
-        {
-            JOptionPane.showMessageDialog(null,"Please fill all details!", "Warning", JOptionPane.WARNING_MESSAGE);
+                || ((radioBtnDelivery.isEnabled() == false) && (radioBtnManager.isEnabled() == false))) {
+            JOptionPane.showMessageDialog(null, "Please fill all details!", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
-        }
-        else if(!(txtPassword.getText().equals(txtConfirmPassword.getText())))
-        {
-            JOptionPane.showMessageDialog(null,"Passwords do not match!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (!(txtPassword.getText().equals(txtConfirmPassword.getText()))) {
+            JOptionPane.showMessageDialog(null, "Passwords do not match!", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
-        }
-        else if(!(txtPhoneNumber.getText().matches(regex)))
-        {
-            JOptionPane.showMessageDialog(null,"Phone number must have only 10 digits!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (!(txtPhoneNumber.getText().matches(regex))) {
+            JOptionPane.showMessageDialog(null, "Phone number must have only 10 digits!", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
-        }
-        
-        //    else if (ua.checkIfSupplierEmpIsUnique(txtName.getText())==false){
-         //     JOptionPane.showMessageDialog(null, "Sorry credentials are taken.");
-    //  return false;
-      
-       //   }    
-        else
-        {
+        } else {
             return true;
         }
     }
 }
-
-

@@ -8,14 +8,15 @@ import Business.Customer.Customer;
 import Business.Orders.Orders;
 import Business.Pharmacy.Pharmacy;
 import java.util.ArrayList;
+
 /**
  *
  * @author whh
  */
 public class SupplierOrdersDirectory {
-      
-     private ArrayList<SupplierOrders> supplierOrderList;
-    
+
+    private ArrayList<SupplierOrders> supplierOrderList;
+
     public SupplierOrdersDirectory() {
         supplierOrderList = new ArrayList();
     }
@@ -23,13 +24,12 @@ public class SupplierOrdersDirectory {
     public ArrayList<SupplierOrders> getSupplierOrderList() {
         return supplierOrderList;
     }
-    
-    public SupplierOrders createNewSupplierOrder(Pharmacy pharma)
-    {
+
+    public SupplierOrders createNewSupplierOrder(Pharmacy pharma) {
         SupplierOrders supplierOrders = new SupplierOrders();
         supplierOrders.setPharmacy(pharma);
         supplierOrderList.add(supplierOrders);
         pharma.getPastSupplierOrderList().add(supplierOrders);
         return supplierOrders;
-    }    
+    }
 }

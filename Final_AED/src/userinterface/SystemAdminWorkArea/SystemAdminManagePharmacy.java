@@ -5,35 +5,24 @@
  */
 package userinterface.SystemAdminWorkArea;
 
-import Business.Customer.Customer;
-import Business.DeliveryMan.DeliveryMan;
 import Business.EcoSystem;
-import Business.Employee.Employee;
 import Business.Pharmacy.Pharmacy;
 import Business.Pharmacy.PharmacyDirectory;
-import Business.Role.AdminRole;
-import Business.Role.CustomerRole;
-import Business.Supplier.SupplierDirectory;
-import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Pratik Poojari
  */
 public class SystemAdminManagePharmacy extends javax.swing.JPanel {
-
-    /**
-     * Creates new form SystemAdminManagePharmacy
-     */
-    
     private JPanel userProcessContainerSAMR;
     private EcoSystem ecosystem;
     private String user;
-    
+
     public SystemAdminManagePharmacy(JPanel userProcessContainer, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainerSAMR = userProcessContainer;
@@ -85,7 +74,7 @@ public class SystemAdminManagePharmacy extends javax.swing.JPanel {
             }
         });
         add(btnDeletePharmacy);
-        btnDeletePharmacy.setBounds(10, 220, 190, 60);
+        btnDeletePharmacy.setBounds(10, 220, 200, 70);
 
         btnCreatePharmacy.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnCreatePharmacy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Add Medicine.png"))); // NOI18N
@@ -97,7 +86,7 @@ public class SystemAdminManagePharmacy extends javax.swing.JPanel {
             }
         });
         add(btnCreatePharmacy);
-        btnCreatePharmacy.setBounds(10, 310, 190, 60);
+        btnCreatePharmacy.setBounds(10, 310, 200, 70);
 
         txtPharmacyName.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         txtPharmacyName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -133,7 +122,7 @@ public class SystemAdminManagePharmacy extends javax.swing.JPanel {
             }
         });
         add(btnSubmit);
-        btnSubmit.setBounds(560, 474, 104, 40);
+        btnSubmit.setBounds(560, 474, 210, 40);
 
         btnManagePharmacy.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnManagePharmacy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/View Button.png"))); // NOI18N
@@ -145,7 +134,7 @@ public class SystemAdminManagePharmacy extends javax.swing.JPanel {
             }
         });
         add(btnManagePharmacy);
-        btnManagePharmacy.setBounds(10, 131, 190, 54);
+        btnManagePharmacy.setBounds(10, 131, 200, 60);
 
         btnBack.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Back Button.png"))); // NOI18N
@@ -157,7 +146,7 @@ public class SystemAdminManagePharmacy extends javax.swing.JPanel {
             }
         });
         add(btnBack);
-        btnBack.setBounds(50, 30, 100, 50);
+        btnBack.setBounds(30, 30, 160, 60);
 
         lblTitle.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -190,30 +179,27 @@ public class SystemAdminManagePharmacy extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblPharmacy);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(320, 140, 550, 170);
+        jScrollPane1.setBounds(320, 140, 590, 190);
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         add(jSeparator1);
         jSeparator1.setBounds(220, 10, 11, 520);
 
-        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/SystemAdminWorkArea/Pharmacy Delivery.jpeg"))); // NOI18N
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/SystemAdminWorkArea/a2.v1.jpg"))); // NOI18N
         add(lblBackground);
-        lblBackground.setBounds(40, 10, 1510, 880);
+        lblBackground.setBounds(-10, 0, 1560, 890);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeletePharmacyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletePharmacyActionPerformed
         // TODO add your handling code here:
         int selectedRowSAMR = tblPharmacy.getSelectedRow();
-        if (selectedRowSAMR >= 0)
-        {
+        if (selectedRowSAMR >= 0) {
             Pharmacy selectedPharmacy = (Pharmacy) tblPharmacy.getValueAt(selectedRowSAMR, 1);
             ecosystem.getPharmacyDirectory().deletePharmacy(selectedPharmacy);
-            JOptionPane.showMessageDialog(null, "Pharmacy " + selectedPharmacy.getName()+ " deleted successfully!");
+            JOptionPane.showMessageDialog(null, "Pharmacy " + selectedPharmacy.getName() + " deleted successfully!");
             populateTable();
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null,"Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
     }//GEN-LAST:event_btnDeletePharmacyActionPerformed
@@ -228,28 +214,23 @@ public class SystemAdminManagePharmacy extends javax.swing.JPanel {
 
     private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_txtAddressActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
-        
-         PharmacyDirectory ua=this.ecosystem.getPharmacyDirectory();
-      
-        if(ua.checkIfPharmacyIsUnique(txtPharmacyName.getText())==false)
-        {
-            JOptionPane.showMessageDialog(null,"Supplier " + txtPharmacyName.getText() + " already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
+
+        PharmacyDirectory ua = this.ecosystem.getPharmacyDirectory();
+
+        if (ua.checkIfPharmacyIsUnique(txtPharmacyName.getText()) == false) {
+            JOptionPane.showMessageDialog(null, "Supplier " + txtPharmacyName.getText() + " already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
-            
-        }
-        else if("".equals(txtPharmacyName.getText())||("".equals(txtAddress.getText()))){
+
+        } else if ("".equals(txtPharmacyName.getText()) || ("".equals(txtAddress.getText()))) {
             JOptionPane.showMessageDialog(null, "Null Check ");
-          return ;  
-        }
-       
-        else
-        {
-             Pharmacy p = ecosystem.getPharmacyDirectory().createPharmacy(txtPharmacyName.getText(), txtAddress.getText());
+            return;
+        } else {
+            Pharmacy p = ecosystem.getPharmacyDirectory().createPharmacy(txtPharmacyName.getText(), txtAddress.getText());
             JOptionPane.showMessageDialog(null, "Pharmacy created successfully as " + p.getName());
             btnCreatePharmacy.setEnabled(true);
             txtPharmacyName.setEnabled(false);
@@ -264,17 +245,14 @@ public class SystemAdminManagePharmacy extends javax.swing.JPanel {
     private void btnManagePharmacyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManagePharmacyActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblPharmacy.getSelectedRow();
-        if (selectedRow >= 0)
-        {
+        if (selectedRow >= 0) {
             Pharmacy selectedPharmacy = (Pharmacy) tblPharmacy.getValueAt(selectedRow, 1);
             SystemManageEmployees fs = new SystemManageEmployees(userProcessContainerSAMR, selectedPharmacy, ecosystem);
             userProcessContainerSAMR.add("SysAdminManageEmployees", fs);
             CardLayout layout = (CardLayout) userProcessContainerSAMR.getLayout();
             layout.next(userProcessContainerSAMR);
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null,"Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
     }//GEN-LAST:event_btnManagePharmacyActionPerformed
@@ -293,8 +271,7 @@ public class SystemAdminManagePharmacy extends javax.swing.JPanel {
     private void tblPharmacyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPharmacyMouseClicked
         // TODO add your handling code here:
         int selectedRow = tblPharmacy.getSelectedRow();
-        if (selectedRow >= 0)
-        {
+        if (selectedRow >= 0) {
             btnDeletePharmacy.setEnabled(true);
             btnManagePharmacy.setEnabled(true);
         }
@@ -318,14 +295,12 @@ public class SystemAdminManagePharmacy extends javax.swing.JPanel {
     private javax.swing.JTextField txtPharmacyName;
     // End of variables declaration//GEN-END:variables
 
-   private void populateTable() {
-        DefaultTableModel dtm = (DefaultTableModel)tblPharmacy.getModel();
+    private void populateTable() {
+        DefaultTableModel dtm = (DefaultTableModel) tblPharmacy.getModel();
         dtm.setRowCount(0);
         int count1 = 1;
-        if(ecosystem.getPharmacyDirectory().getPharmacyList() != null)
-        {
-            for(Pharmacy p : ecosystem.getPharmacyDirectory().getPharmacyList())
-            {
+        if (ecosystem.getPharmacyDirectory().getPharmacyList() != null) {
+            for (Pharmacy p : ecosystem.getPharmacyDirectory().getPharmacyList()) {
                 Object[] row = new Object[dtm.getColumnCount()];
                 row[0] = p.getId();
                 row[1] = p;
@@ -333,14 +308,8 @@ public class SystemAdminManagePharmacy extends javax.swing.JPanel {
                 dtm.addRow(row);
                 count1++;
             }
-        }
-        else
-        {
+        } else {
             tblPharmacy.setEnabled(false);
         }
     }
 }
-
-        
-    
-

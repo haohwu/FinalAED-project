@@ -7,6 +7,7 @@ package userinterface.DrugMinistry;
 import Business.EcoSystem;
 import Business.Drugs.Drugs;
 import Business.Drugs.DrugsDirectory;
+import Business.SupplierMedicineItem.SupplierMedicineItem;
 import java.awt.CardLayout;
 //import Business.Supplier.Supplier;
 import javax.swing.JOptionPane;
@@ -19,15 +20,16 @@ import javax.swing.table.DefaultTableModel;
  */
 public class DrugApprovalJPanel extends javax.swing.JPanel {
 
- 
+    Drugs drugs;
     private JPanel UserProccessContainerSAMC;
     private EcoSystem ecosystem;
-   
+
     public DrugApprovalJPanel(JPanel userProccessContainer, EcoSystem ecosystem) {
         initComponents();
         this.UserProccessContainerSAMC = userProccessContainer;
         this.ecosystem = ecosystem;
         populateTable();
+        this.drugs = drugs;
     }
 
     /**
@@ -268,90 +270,57 @@ public class DrugApprovalJPanel extends javax.swing.JPanel {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         int selectedRow = tbl_DrugApproval.getSelectedRow();
-        if (selectedRow >= 0)
-        {
+        if (selectedRow >= 0) {
             Drugs selectedDrugs = (Drugs) tbl_DrugApproval.getValueAt(selectedRow, 1);
             ecosystem.getDrugsDirectory().deleteDrugs(selectedDrugs);
-            JOptionPane.showMessageDialog(null, "Drugs " + selectedDrugs.getDrugName()+ " deleted successfully!");
+            JOptionPane.showMessageDialog(null, "Drugs " + selectedDrugs.getDrugName() + " deleted successfully!");
             populateTable();
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null,"Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btn_PublishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_PublishActionPerformed
         // TODO add your handling code here:
-        Drugs pe = ecosystem.getDrugsDirectory().createDrugs(txt_Id.getText(),txt_drug.getText(),txt_Components.getText(), text_disease.getText());
-        System.out.println(pe);
-      //  supplier se = new supplier(pe);
-        if(pe == null)
-        {
-            JOptionPane.showMessageDialog(null,"Drugs " + txt_drug.getText() + " already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        else
-        {
+        if (validateThis()) {
+
             JOptionPane.showMessageDialog(null, "Drugs successfully Published ");
-            
+            Drugs pe = ecosystem.getDrugsDirectory().createDrugs(txt_Id.getText(), txt_drug.getText(), txt_Components.getText(), text_disease.getText());
+            System.out.println(pe);
+            populateTable();
         }
-         txt_Id.setText("");
-         txt_drug.setText("");
-         text_disease.setText("");
-         txt_Components.setText("");
-         
-        populateTable();
+
+        txt_Id.setText("");
+        txt_drug.setText("");
+        text_disease.setText("");
+        txt_Components.setText("");
+
+
     }//GEN-LAST:event_btn_PublishActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
-        
-//         int selectedRowIndex = tbl_DrugApproval.getSelectedRow();
-//                
-//           if (selectedRowIndex<0) {
-//               
-//               JOptionPane.showMessageDialog(this, "Please select a row to delete.");
-//               return;
-//           }
-//           
-//           DefaultTableModel model = (DefaultTableModel) tbl_DrugApproval.getModel();
-//            selectedEmployee_Details  = (Drugs) model.getValueAt(selectedRowIndex, 1);
-//           
-//           txtName.setText(String.valueOf(selectedEmployee_Details.getName()));
-        
-        
-        
-        
-         DefaultTableModel model= (DefaultTableModel) tbl_DrugApproval.getModel();
-        if(tbl_DrugApproval.getSelectedRowCount()==1){
-            
-        int selectedRowIndex = tbl_DrugApproval.getSelectedRow();
-           //DefaultTableModel model1 = (DefaultTableModel) tbl_SA_PatientDirectory.getModel();
-        Drugs selectedDrugs_Details  = (Drugs) model.getValueAt(selectedRowIndex, 1);
-         //  int row = DrugsDirectory.getDru().indexOf(selectedPatientD_Details);
-        
-//         txt_drug.setText(String.valueOf(selectedDrugs_Details.getDrugName()));
-//         txt_Components.setText(String.valueOf(selectedDrugs_Details.getDrugCompostion()));
-//         text_disease.setText(String.valueOf(selectedDrugs_Details.getDisease()));
-//         txt_Id.setText(String.valueOf(selectedDrugs_Details.getId()));   
-                 
-         selectedDrugs_Details.setDrugName(txt_drug.getText());
-         selectedDrugs_Details.setDrugCompostion(txt_Components.getText());
-         selectedDrugs_Details.setDisease(text_disease.getText());
-         selectedDrugs_Details.setId(txt_Id.getText());
+
+        DefaultTableModel model = (DefaultTableModel) tbl_DrugApproval.getModel();
+        if (tbl_DrugApproval.getSelectedRowCount() == 1) {
+
+            int selectedRowIndex = tbl_DrugApproval.getSelectedRow();
+            Drugs selectedDrugs_Details = (Drugs) model.getValueAt(selectedRowIndex, 1);
+            selectedDrugs_Details.setDrugName(txt_drug.getText());
+            selectedDrugs_Details.setDrugCompostion(txt_Components.getText());
+            selectedDrugs_Details.setDisease(text_disease.getText());
+            selectedDrugs_Details.setId(txt_Id.getText());
         }
-        
+
         populateTable();
         txt_Id.setText("");
         txt_drug.setText("");
         text_disease.setText("");
         txt_Components.setText("");
-        
-        
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -359,27 +328,27 @@ public class DrugApprovalJPanel extends javax.swing.JPanel {
         UserProccessContainerSAMC.remove(this);
         CardLayout layout = (CardLayout) UserProccessContainerSAMC.getLayout();
         layout.previous(UserProccessContainerSAMC);
-       
+
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btn_viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewActionPerformed
         // TODO add your handling code here:
-         int selectedRowIndex = tbl_DrugApproval.getSelectedRow();
-                
-           if (selectedRowIndex<0) {
-               
-               JOptionPane.showMessageDialog(this, "Please select a row to delete.");
-               return;
-           }
-           
+        int selectedRowIndex = tbl_DrugApproval.getSelectedRow();
+
+        if (selectedRowIndex < 0) {
+
+            JOptionPane.showMessageDialog(this, "Please select a row to delete.");
+            return;
+        }
+
         DefaultTableModel model = (DefaultTableModel) tbl_DrugApproval.getModel();
-        Drugs selectedDrugs_Details  = (Drugs) model.getValueAt(selectedRowIndex, 1);
-           
-         txt_drug.setText(String.valueOf(selectedDrugs_Details.getDrugName()));
-         txt_Components.setText(String.valueOf(selectedDrugs_Details.getDrugCompostion()));
-         text_disease.setText(String.valueOf(selectedDrugs_Details.getDisease()));
-         txt_Id.setText(String.valueOf(selectedDrugs_Details.getId())); 
-         
+        Drugs selectedDrugs_Details = (Drugs) model.getValueAt(selectedRowIndex, 1);
+
+        txt_drug.setText(String.valueOf(selectedDrugs_Details.getDrugName()));
+        txt_Components.setText(String.valueOf(selectedDrugs_Details.getDrugCompostion()));
+        text_disease.setText(String.valueOf(selectedDrugs_Details.getDisease()));
+        txt_Id.setText(String.valueOf(selectedDrugs_Details.getId()));
+
     }//GEN-LAST:event_btn_viewActionPerformed
 
 
@@ -402,14 +371,12 @@ public class DrugApprovalJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txt_drug;
     // End of variables declaration//GEN-END:variables
 
-private void populateTable() {
-        DefaultTableModel dtm = (DefaultTableModel)tbl_DrugApproval.getModel();
+    private void populateTable() {
+        DefaultTableModel dtm = (DefaultTableModel) tbl_DrugApproval.getModel();
         dtm.setRowCount(0); //deletes the empty records  
         int count1 = 1;
-        if(ecosystem.getDrugsDirectory().getDrugsList()!= null)
-        {
-            for(Drugs s : ecosystem.getDrugsDirectory().getDrugsList())
-            {
+        if (ecosystem.getDrugsDirectory().getDrugsList() != null) {
+            for (Drugs s : ecosystem.getDrugsDirectory().getDrugsList()) {
                 Object[] row = new Object[dtm.getColumnCount()]; //creates an array
                 row[0] = s.getId();
                 row[1] = s;
@@ -418,14 +385,17 @@ private void populateTable() {
                 dtm.addRow(row);
                 count1++;
             }
-        }
-        else
-        {
+        } else {
             tbl_DrugApproval.setEnabled(false);
         }
     }
 
-
-
-
+    private boolean validateThis() {
+        if (txt_Id.getText().isEmpty() || txt_drug.getText().isEmpty() || txt_Components.getText().isEmpty() || txt_Components.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Fields cannot be empty!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

@@ -12,14 +12,15 @@ import java.util.Date;
  * @author whh
  */
 public class WorkRequest {
-     private String message;
+
+    private String message;
     private UserAccount sender;
     private UserAccount receiver;
     private String status;
     private Date requestDate;
     private Date resolveDate;
-    
-    public WorkRequest(){
+
+    public WorkRequest() {
         requestDate = new Date();
     }
 
@@ -70,5 +71,5 @@ public class WorkRequest {
     public void setResolveDate(Date resolveDate) {
         this.resolveDate = resolveDate;
     }
-    
+
 }

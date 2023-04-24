@@ -7,13 +7,15 @@ package Business.Orders;
 import Business.Customer.Customer;
 import Business.Hospital.Hospital;
 import java.util.ArrayList;
+
 /**
  *
  * @author whh
  */
 public class OrderDirectory {
+
     private ArrayList<Orders> orderList;
-    
+
     public OrderDirectory() {
         orderList = new ArrayList();
     }
@@ -21,23 +23,21 @@ public class OrderDirectory {
     public ArrayList<Orders> getOrderList() {
         return orderList;
     }
-    
-    public Orders createNewOrder(Customer cust)
-    {
+
+    public Orders createNewOrder(Customer cust) {
         Orders orders = new Orders();
         orders.setCustomer(cust);
         orderList.add(orders);
         cust.getPastOrderList().add(orders);
         return orders;
-    }   
-    
-    public Orders createNewOrderH(Hospital hosp)
-    {
+    }
+
+    public Orders createNewOrderH(Hospital hosp) {
         Orders orders = new Orders();
         orders.setHospital(hosp);
         orderList.add(orders);
         hosp.getPastOrderList().add(orders);
         return orders;
-    } 
-    
+    }
+
 }

@@ -67,14 +67,12 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
         lblName = new javax.swing.JLabel();
         comboPharmacy = new javax.swing.JComboBox<>();
         lblWelcome = new javax.swing.JLabel();
-        lblUpdate = new javax.swing.JLabel();
         lblValue = new javax.swing.JLabel();
         btnReviewOrders = new javax.swing.JButton();
         lblSelectPharmacy = new javax.swing.JLabel();
         lblPhone = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         txtPhone = new javax.swing.JTextField();
-        btnSubmit = new javax.swing.JButton();
         lblBackground = new javax.swing.JLabel();
 
         setLayout(null);
@@ -117,11 +115,6 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
         add(lblWelcome);
         lblWelcome.setBounds(430, 80, 120, 29);
 
-        lblUpdate.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        lblUpdate.setText("Update Details");
-        add(lblUpdate);
-        lblUpdate.setBounds(470, 200, 120, 50);
-
         lblValue.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         lblValue.setText("<value>");
         add(lblValue);
@@ -136,7 +129,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(btnReviewOrders);
-        btnReviewOrders.setBounds(380, 490, 140, 40);
+        btnReviewOrders.setBounds(470, 490, 140, 40);
 
         lblSelectPharmacy.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         lblSelectPharmacy.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -161,20 +154,9 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
         add(txtPhone);
         txtPhone.setBounds(470, 320, 270, 40);
 
-        btnSubmit.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnSubmit.setText("Submit");
-        btnSubmit.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSubmitActionPerformed(evt);
-            }
-        });
-        add(btnSubmit);
-        btnSubmit.setBounds(590, 490, 120, 40);
-
-        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/7e8e8c57497d2627fa7923f20188fa5d.jpg"))); // NOI18N
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/medomand-medicine-on-demand-online-pharmarcy-2-1024x1024.png"))); // NOI18N
         add(lblBackground);
-        lblBackground.setBounds(0, 0, 1030, 820);
+        lblBackground.setBounds(0, 0, 1100, 820);
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboPharmacyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPharmacyActionPerformed
@@ -198,27 +180,9 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnReviewOrdersActionPerformed
 
-    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
-        // TODO add your handling code here:
-        if((txtAddress.getText() == "") || (txtPhone.getText() == "") )
-        {
-            JOptionPane.showMessageDialog(null,"Please fill all values!", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        else
-        {
-            customer.setAddress(txtAddress.getText());
-            customer.setPhone(txtPhone.getText());
-          
-                    
-        }
-        lblValue.setText(pharmacy.getName());
-    }//GEN-LAST:event_btnSubmitActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnReviewOrders;
-    private javax.swing.JButton btnSubmit;
     private javax.swing.JComboBox<String> comboPharmacy;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblBackground;
@@ -226,7 +190,6 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblPhone;
     private javax.swing.JLabel lblSelectPharmacy;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JLabel lblUpdate;
     private javax.swing.JLabel lblValue;
     private javax.swing.JLabel lblWelcome;
     private javax.swing.JTextField txtAddress;

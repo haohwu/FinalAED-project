@@ -5,34 +5,28 @@
  */
 package userinterface.SystemAdminWorkArea;
 
-import Business.DeliveryMan.DeliveryMan;
 import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Employee.EmployeeDirectory;
-import Business.Role.AdminRole;
-import Business.Role.DeliveryManRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Pratik Poojari
  */
 public class SystemUpdateEmployee extends javax.swing.JPanel {
 
-    /**
-     * Creates new form SystemUpdateEmployee
-     */
     private JPanel userProcessContainerSUE;
     private Employee employeeSUE;
     private EcoSystem ecosystemSUE;
     private UserAccount userSUE;
-    
+
     public SystemUpdateEmployee(JPanel userProcessContainer, Employee employee, EcoSystem system) {
         initComponents();
-        
+
         this.userProcessContainerSUE = userProcessContainer;
         this.employeeSUE = employee;
         this.ecosystemSUE = system;
@@ -43,12 +37,9 @@ public class SystemUpdateEmployee extends javax.swing.JPanel {
         txtName.setText(employee.getName());
         txtPhoneNumber.setText(employee.getPhone());
         txtAddress.setText(employee.getAddress());
-        if(this.userSUE.getRole().toString().equals("Business.Role.DeliverManRole"))
-        {
+        if (this.userSUE.getRole().toString().equals("Business.Role.DeliverManRole")) {
             radioBtnDelivery.setSelected(true);
-        }
-        else
-        {
+        } else {
             radioBtnManager.setSelected(true);
         }
     }
@@ -112,7 +103,7 @@ public class SystemUpdateEmployee extends javax.swing.JPanel {
             }
         });
         add(btnBack);
-        btnBack.setBounds(50, 40, 100, 50);
+        btnBack.setBounds(50, 40, 140, 54);
 
         txtPhoneNumber.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         txtPhoneNumber.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -195,28 +186,25 @@ public class SystemUpdateEmployee extends javax.swing.JPanel {
             }
         });
         add(btnSubmit);
-        btnSubmit.setBounds(410, 540, 120, 50);
+        btnSubmit.setBounds(410, 540, 160, 60);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-         userProcessContainerSUE.remove(this);
+        userProcessContainerSUE.remove(this);
         CardLayout layout = (CardLayout) userProcessContainerSUE.getLayout();
         layout.previous(userProcessContainerSUE);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
-        if(validateThisSUE())
-        {
+        if (validateThisSUE()) {
             userSUE.setPassword(txtPassword.getText());
             employeeSUE.setAddress(txtAddress.getText());
             employeeSUE.setPhone((txtPhoneNumber.getText()));
-            JOptionPane.showMessageDialog(null, "Details for " + employeeSUE.getName()+ " updated successfully!");
-        }
-        else
-        {
-            return;
+            JOptionPane.showMessageDialog(null, "Details for " + employeeSUE.getName() + " updated successfully!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Does not meet requirments");
         }
     }//GEN-LAST:event_btnSubmitActionPerformed
 
@@ -243,33 +231,21 @@ public class SystemUpdateEmployee extends javax.swing.JPanel {
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 
-     private boolean validateThisSUE() {
-         EmployeeDirectory ua=this.ecosystemSUE.getEmployeeDirectory();
-     
+    private boolean validateThisSUE() {
+        EmployeeDirectory ua = this.ecosystemSUE.getEmployeeDirectory();
+
         String regex = "\\d{10}";
-        if(("".equals(txtPassword.getText())) || ("".equals(txtConfirmPassword.getText())) 
-                || ("".equals(txtPhoneNumber.getText())) || ("".equals(txtAddress.getText())))
-        {
-            JOptionPane.showMessageDialog(null,"Please fill all details!", "Warning", JOptionPane.WARNING_MESSAGE);
+        if (("".equals(txtPassword.getText())) || ("".equals(txtConfirmPassword.getText()))
+                || ("".equals(txtPhoneNumber.getText())) || ("".equals(txtAddress.getText()))) {
+            JOptionPane.showMessageDialog(null, "Please fill all details!", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
-        }
-        else if(!(txtPassword.getText().equals(txtConfirmPassword.getText())))
-        {
-            JOptionPane.showMessageDialog(null,"Passwords do not match!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (!(txtPassword.getText().equals(txtConfirmPassword.getText()))) {
+            JOptionPane.showMessageDialog(null, "Passwords do not match!", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
-        }
-        else if(!(txtPhoneNumber.getText().matches(regex)))
-        {
-            JOptionPane.showMessageDialog(null,"Phone number must have only 10 digits!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (!(txtPhoneNumber.getText().matches(regex))) {
+            JOptionPane.showMessageDialog(null, "Phone number must have only 10 digits!", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
-        }
-        
-          else if (ua.checkIfEmployeeIsUnique(txtUsername.getText())==false){
-              JOptionPane.showMessageDialog(null, "Sorry credentials are taken.");
-      return false;
-          }
-      else
-        {
+        } else {
             return true;
         }
     }

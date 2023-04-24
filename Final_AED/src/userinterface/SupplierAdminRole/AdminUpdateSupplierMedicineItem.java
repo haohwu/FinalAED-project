@@ -17,9 +17,6 @@ public class AdminUpdateSupplierMedicineItem extends javax.swing.JPanel {
 JPanel userProcessContainer;
     Supplier supplier;
     SupplierMedicineItem supplierMedicineItem;
-    /**
-     * Creates new form AdminUpdateSupplierMedicineItem
-     */
     public AdminUpdateSupplierMedicineItem(JPanel userProcessContainer, SupplierMedicineItem smi) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -99,9 +96,9 @@ JPanel userProcessContainer;
         add(btnBack);
         btnBack.setBounds(840, 60, 130, 60);
 
-        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/4cdd558652d6adfe5e9d4c5af515fc40.jpg"))); // NOI18N
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Medications02_Yellow@2x.png"))); // NOI18N
         add(lblBackground);
-        lblBackground.setBounds(0, 0, 1030, 760);
+        lblBackground.setBounds(0, 0, 1170, 860);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed

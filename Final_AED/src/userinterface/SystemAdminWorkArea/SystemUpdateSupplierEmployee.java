@@ -5,7 +5,6 @@
  */
 package userinterface.SystemAdminWorkArea;
 
-
 import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.SupplierEmp.SupplierEmpDirectory;
@@ -13,18 +12,18 @@ import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
 /**
  *
  * @author Pratik Poojari
  */
 public class SystemUpdateSupplierEmployee extends javax.swing.JPanel {
 
-  
     private JPanel userProcessContainerSUE;
     private Employee employeeSUE;
     private EcoSystem ecosystemSUE;
     private UserAccount userSUE;
-    
+
     public SystemUpdateSupplierEmployee(JPanel userProcessContainer, Employee employee, EcoSystem system) {
         initComponents();
         this.userProcessContainerSUE = userProcessContainer;
@@ -37,12 +36,9 @@ public class SystemUpdateSupplierEmployee extends javax.swing.JPanel {
         txtName.setText(employee.getName());
         txtPhoneNumber.setText(employee.getPhone());
         txtAddress.setText(employee.getAddress());
-        if(this.userSUE.getRole().toString().equals("Business.Role.DeliverManRole"))
-        {
+        if (this.userSUE.getRole().toString().equals("Business.Role.DeliverManRole")) {
             radioBtnDelivery.setSelected(true);
-        }
-        else
-        {
+        } else {
             radioBtnManager.setSelected(true);
         }
     }
@@ -101,7 +97,7 @@ public class SystemUpdateSupplierEmployee extends javax.swing.JPanel {
             }
         });
         add(btnBack);
-        btnBack.setBounds(30, 30, 110, 50);
+        btnBack.setBounds(30, 30, 130, 60);
 
         radioBtnManager.setBackground(new java.awt.Color(255, 255, 255));
         radioBtnManager.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -149,7 +145,7 @@ public class SystemUpdateSupplierEmployee extends javax.swing.JPanel {
             }
         });
         add(btnSubmit);
-        btnSubmit.setBounds(440, 520, 130, 40);
+        btnSubmit.setBounds(440, 520, 180, 60);
 
         txtPassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         add(txtPassword);
@@ -196,9 +192,9 @@ public class SystemUpdateSupplierEmployee extends javax.swing.JPanel {
         add(lblTitle);
         lblTitle.setBounds(370, 50, 350, 50);
 
-        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/hero-header.png"))); // NOI18N
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/a4.v1.png"))); // NOI18N
         add(lblBackground);
-        lblBackground.setBounds(0, 0, 1030, 760);
+        lblBackground.setBounds(0, 0, 1170, 840);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -210,16 +206,13 @@ public class SystemUpdateSupplierEmployee extends javax.swing.JPanel {
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
-        if(validateThisSUE())
-        {
+        if (validateThisSUE()) {
             userSUE.setPassword(txtPassword.getText());
             employeeSUE.setAddress(txtAddress.getText());
             employeeSUE.setPhone((txtPhoneNumber.getText()));
-            JOptionPane.showMessageDialog(null, "Details for " + employeeSUE.getName()+ " updated successfully!");
-        }
-        else
-        {
-            return;
+            JOptionPane.showMessageDialog(null, "Details for " + employeeSUE.getName() + " updated successfully!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Do not meet requirements");
         }
     }//GEN-LAST:event_btnSubmitActionPerformed
 
@@ -246,37 +239,21 @@ public class SystemUpdateSupplierEmployee extends javax.swing.JPanel {
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 
-
-private boolean validateThisSUE() {
-         SupplierEmpDirectory ua=this.ecosystemSUE.getSupplieryEmpDirectory();
+    private boolean validateThisSUE() {
+        SupplierEmpDirectory ua = this.ecosystemSUE.getSupplieryEmpDirectory();
         String regex = "\\d{10}";
-        if(("".equals(txtPassword.getText())) || ("".equals(txtConfirmPassword.getText())) 
-                || ("".equals(txtPhoneNumber.getText())) || ("".equals(txtAddress.getText())))
-        {
-            JOptionPane.showMessageDialog(null,"Please fill all details!", "Warning", JOptionPane.WARNING_MESSAGE);
+        if (("".equals(txtPassword.getText())) || ("".equals(txtConfirmPassword.getText()))
+                || ("".equals(txtPhoneNumber.getText())) || ("".equals(txtAddress.getText()))) {
+            JOptionPane.showMessageDialog(null, "Please fill all details!", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
-        }
-        else if(!(txtPassword.getText().equals(txtConfirmPassword.getText())))
-        {
-            JOptionPane.showMessageDialog(null,"Passwords do not match!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (!(txtPassword.getText().equals(txtConfirmPassword.getText()))) {
+            JOptionPane.showMessageDialog(null, "Passwords do not match!", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
-        }
-        else if(!(txtPhoneNumber.getText().matches(regex)))
-        {
-            JOptionPane.showMessageDialog(null,"Phone number must have only 10 digits!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (!(txtPhoneNumber.getText().matches(regex))) {
+            JOptionPane.showMessageDialog(null, "Phone number must have only 10 digits!", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
+        } else {
+            return true;
         }
-        
-      else if (ua.checkIfSupplierEmpIsUnique(txtUsername.getText())==false){
-              JOptionPane.showMessageDialog(null, "Sorry credentials are taken.");
-      return false;
-      }
-           
-      else
-       {
-           return true;
-       }
-   }
+    }
 }
-
-

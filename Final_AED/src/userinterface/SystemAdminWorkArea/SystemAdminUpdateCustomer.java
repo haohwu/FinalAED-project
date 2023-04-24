@@ -4,20 +4,13 @@
  * and open the template in the editor.
  */
 package userinterface.SystemAdminWorkArea;
+
 import Business.Customer.Customer;
 import Business.Customer.CustomerDirectory;
-import Business.DeliveryMan.DeliveryMan;
 import Business.EcoSystem;
-import Business.Employee.Employee;
-import Business.Role.AdminRole;
-import Business.Role.CustomerRole;
-import Business.Role.DeliveryManRole;
-import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
-import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,21 +18,19 @@ import javax.swing.table.DefaultTableModel;
  */
 public class SystemAdminUpdateCustomer extends javax.swing.JPanel {
 
-    /**
-     * Creates new form SystemAdminUpdateCustomer
-     */
     private JPanel userProcessContainerSAUC;
     private EcoSystem ecosystemSAUC;
     private Customer customerSAUC;
+
     public SystemAdminUpdateCustomer(JPanel userProcessContainer, Customer customer, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainerSAUC = userProcessContainer;
         this.customerSAUC = customer;
-        this.ecosystemSAUC = ecosystem;;
+        this.ecosystemSAUC = ecosystem;
         txtName.setText(customer.getName());
         txtPhoneNumber.setText(customer.getPhone());
         txtAddress.setText(customer.getAddress());
-        
+
     }
 
     /**
@@ -75,7 +66,7 @@ public class SystemAdminUpdateCustomer extends javax.swing.JPanel {
             }
         });
         add(btnBackSAUC);
-        btnBackSAUC.setBounds(30, 30, 110, 50);
+        btnBackSAUC.setBounds(30, 30, 120, 60);
 
         btnSubmitSAUC.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnSubmitSAUC.setText("Submit");
@@ -86,7 +77,7 @@ public class SystemAdminUpdateCustomer extends javax.swing.JPanel {
             }
         });
         add(btnSubmitSAUC);
-        btnSubmitSAUC.setBounds(440, 370, 160, 39);
+        btnSubmitSAUC.setBounds(440, 370, 280, 50);
 
         lblTitle.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -126,9 +117,9 @@ public class SystemAdminUpdateCustomer extends javax.swing.JPanel {
         add(txtAddress);
         txtAddress.setBounds(460, 280, 260, 30);
 
-        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/SystemAdminWorkArea/11-1-1024x600 (1).jpg"))); // NOI18N
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/SystemAdminWorkArea/a4.v1.png"))); // NOI18N
         add(lblBackground);
-        lblBackground.setBounds(0, 0, 1030, 760);
+        lblBackground.setBounds(0, 0, 1250, 870);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackSAUCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackSAUCActionPerformed
@@ -140,15 +131,12 @@ public class SystemAdminUpdateCustomer extends javax.swing.JPanel {
 
     private void btnSubmitSAUCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitSAUCActionPerformed
         // TODO add your handling code here:
-        if(validateThisSAUC())
-        {
+        if (validateThisSAUC()) {
             customerSAUC.setAddress(txtAddress.getText());
             customerSAUC.setPhone(txtPhoneNumber.getText());
-            JOptionPane.showMessageDialog(null, "Details for " + customerSAUC.getName()+ " updated successfully!");
-        }
-        else
-        {
-            return;
+            JOptionPane.showMessageDialog(null, "Details for " + customerSAUC.getName() + " updated successfully!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Do not meet requirements");
         }
     }//GEN-LAST:event_btnSubmitSAUCActionPerformed
 
@@ -166,28 +154,16 @@ public class SystemAdminUpdateCustomer extends javax.swing.JPanel {
     private javax.swing.JTextField txtPhoneNumber;
     // End of variables declaration//GEN-END:variables
 
-     private boolean validateThisSAUC() {
-         CustomerDirectory ua=this.ecosystemSAUC.getCustomerDirectory();
+    private boolean validateThisSAUC() {
+        CustomerDirectory ua = this.ecosystemSAUC.getCustomerDirectory();
         String regex = "\\d{10}";
-        if(("".equals(txtPhoneNumber.getText())) || ("".equals(txtAddress.getText())))
-        {
-            JOptionPane.showMessageDialog(null,"Please fill all details!", "Warning", JOptionPane.WARNING_MESSAGE);
+        if (("".equals(txtPhoneNumber.getText())) || ("".equals(txtAddress.getText()))) {
+            JOptionPane.showMessageDialog(null, "No Empty allowed", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
-        }
-        else if(!(txtPhoneNumber.getText().matches(regex)))
-        {
-            JOptionPane.showMessageDialog(null,"Phone number must have only 10 digits!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (!(txtPhoneNumber.getText().matches(regex))) {
+            JOptionPane.showMessageDialog(null, "POnly 10 digits!", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
-        }
-            
-        
-          else if (ua.checkIfCustomerIsUnique(txtName.getText())==false){
-              JOptionPane.showMessageDialog(null, "Sorry credentials are taken.");
-      return false;
-          }    
-            
-        else
-        {
+        } else {
             return true;
         }
     }

@@ -9,9 +9,10 @@ package Business.Employee;
  * @author whh
  */
 public class Employee {
-     private String name;
+
+    private String name;
     private String address;
-    private String phone;    
+    private String phone;
     private int id;
     private static int count = 1;
 
@@ -28,7 +29,6 @@ public class Employee {
         this.name = name;
     }
 
-    
     public String getName() {
         return name;
     }
@@ -40,14 +40,14 @@ public class Employee {
     public void setAddress(String address) {
         this.address = address;
     }
-    
+
     public String getPhone() {
         return phone;
     }
 
     public void setPhone(String phone) {
         this.phone = phone;
-    } 
+    }
 
     @Override
     public String toString() {

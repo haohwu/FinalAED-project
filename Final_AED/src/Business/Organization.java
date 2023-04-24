@@ -63,12 +63,6 @@ public abstract class Organization {
     public EmployeeDirectory getEmployeeDirectory() {
         return employeeDirectory;
     }
-
-   // public SupplierEmpDirectory getSupplierEmpDirectory() {
-       // return supplierEmpDirectory;
-    //}
-    
-    
     public String getName() {
         return name;
     }

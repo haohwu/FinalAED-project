@@ -11,11 +11,13 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import Business.Hospital.Hospital;
+
 /**
  *
  * @author whh
  */
 public class Orders {
+
     private Customer customer;
     private int orderId;
     private LocalDateTime orderDate;
@@ -25,9 +27,9 @@ public class Orders {
     private int totalAmount;
     private String message;
     private boolean status;
-    
+
     private Hospital hospital;
-    
+
     public Orders() {
         orderId = count;
         count++;
@@ -45,7 +47,6 @@ public class Orders {
         this.hospital = hospital;
     }
 
-    
     public Customer getCustomer() {
         return customer;
     }
@@ -77,25 +78,21 @@ public class Orders {
     public int getTotalAmount() {
         return totalAmount;
     }
-    
-    public void deleteMedicineItem(MedicineItem mi)
-    {
+
+    public void deleteMedicineItem(MedicineItem mi) {
         medicineItemList.remove(mi);
     }
-    
-    public int calculateTotalAmount()
-    {
+
+    public int calculateTotalAmount() {
         int sum = 0;
-        for(MedicineItem mi : this.getMedicineItemList())
-        {
+        for (MedicineItem mi : this.getMedicineItemList()) {
             sum = sum + mi.getPrice();
         }
         this.totalAmount = sum;
         return sum;
     }
-    
-    public void addItem(MedicineItem mi)
-    {
+
+    public void addItem(MedicineItem mi) {
         medicineItemList.add(mi);
     }
 
@@ -114,10 +111,10 @@ public class Orders {
     public void setStatus(boolean status) {
         this.status = status;
     }
-    
+
     @Override
     public String toString() {
         return Integer.toString(orderId);
-    }   
-  
+    }
+
 }

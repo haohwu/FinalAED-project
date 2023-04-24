@@ -4,7 +4,7 @@
  */
 package Business.Drugs;
 
-
+import Business.MedicineItems.MedicineItem;
 import java.util.ArrayList;
 
 /**
@@ -12,15 +12,13 @@ import java.util.ArrayList;
  * @author whh
  */
 public class DrugsDirectory {
-    
- private ArrayList<Drugs> drugsList;
 
-    
- public DrugsDirectory() {
+    private ArrayList<Drugs> drugsList;
+
+    public DrugsDirectory() {
         drugsList = new ArrayList();
     }
- 
-    
+
     public ArrayList<Drugs> getDrugsList() {
         return drugsList;
     }
@@ -29,24 +27,28 @@ public class DrugsDirectory {
         this.drugsList = drugsList;
     }
 
-    
-   
-    
-    public Drugs createDrugs(String Id, String DrugName, String DrugCompostion, String Disease){
+    public Drugs createDrugs(String Id, String DrugName, String DrugCompostion, String Disease) {
         Drugs drugsobj = new Drugs();
         drugsobj.setId(Id);
         drugsobj.setDrugName(DrugName);
         drugsobj.setDisease(Disease);
         drugsobj.setDrugCompostion(DrugCompostion);
         drugsList.add(drugsobj);
-        
+
         return drugsobj;
-    }    
-    
-    public void deleteDrugs(Drugs drugs)
-    {
+    }
+
+    public void deleteDrugs(Drugs drugs) {
         drugsList.remove(drugs);
-    } 
-    
-    
+    }
+
+    public boolean checkIfDrugIsUnique(String name) {
+        for (Drugs drug : drugsList) {
+            if (drug.getDrugName().equals(name)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

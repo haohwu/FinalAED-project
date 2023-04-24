@@ -4,19 +4,9 @@
  * and open the template in the editor.
  */
 package userinterface.SystemAdminWorkArea;
-import Business.Customer.Customer;
 import Business.EcoSystem;
-import Business.Employee.Employee;
-import Business.MedicineItems.MedicineItem;
-
-import Business.Organization;
-import Business.Pharmacy.Pharmacy;
-import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
-import java.util.ArrayList;
 import javax.swing.JPanel;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeModel;
 import userinterface.DrugMinistry.DrugApprovalJPanel;
 
 
@@ -26,79 +16,14 @@ import userinterface.DrugMinistry.DrugApprovalJPanel;
  */
 public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form SystemAdminWorkAreaJPanel
-     */
      JPanel userProcessContainerSAWAP;
     EcoSystem ecosystemSAWAP;
     public SystemAdminWorkAreaJPanel(JPanel userProcessContainer,EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainerSAWAP = userProcessContainer;
         this.ecosystemSAWAP = ecosystem;
-        //populateTree();
     }
     
-    /*public void populateTree(){
-        DefaultTreeModel modelSAWAP=(DefaultTreeModel)jTreeSAWAP.getModel();
-       // Add the code for draw your system structure shown by JTree
-        //MutableTreeNode root = (MutableTreeNode) model.getRoot();
-        DefaultMutableTreeNode root = (DefaultMutableTreeNode)modelSAWAP.getRoot();
-        root.removeAllChildren();
-        DefaultMutableTreeNode es = new DefaultMutableTreeNode("Ecosystem");
-        root.add(es);
-        DefaultMutableTreeNode cd = new DefaultMutableTreeNode("Customer Directory");
-        es.add(cd);
-        for(Customer c : ecosystemSAWAP.getCustomerDirectory().getCustomerList())
-        {
-            DefaultMutableTreeNode cu = (DefaultMutableTreeNode)es.getRoot();
-            cd.add(new DefaultMutableTreeNode(c.getName()));
-        }
-        DefaultMutableTreeNode rd = new DefaultMutableTreeNode("Restaurant Directory");
-        es.add(rd);
-        
-        for(Pharmacy p : ecosystemSAWAP.getPharmacyDirectory().getPharmacyList())
-        {
-            //DefaultMutableTreeNode cu = (DefaultMutableTreeNode)rd.getRoot();
-            DefaultMutableTreeNode sd = new DefaultMutableTreeNode(p.getName());
-            rd.add(sd);
-            DefaultMutableTreeNode ed = new DefaultMutableTreeNode("Employee Directory");
-            sd.add(ed);
-            DefaultMutableTreeNode manager = new DefaultMutableTreeNode("Manager Directory");
-            ed.add(manager);
-            DefaultMutableTreeNode deliver = new DefaultMutableTreeNode("Delivery Man Directory");
-            ed.add(deliver);
-            for(Employee e : p.getEmployeeDirectory().getEmployeeList())
-            {
-                for(UserAccount u : ecosystemSAWAP.getUserAccountDirectory().getUserAccountList())
-                {
-                    if(u.getEmployee().equals(e))
-                    {
-                        if(u.getRole().toString() == "Business.Role.AdminRole")
-                        {
-                            DefaultMutableTreeNode ar = new DefaultMutableTreeNode(e.getName());
-                            manager.add(ar);
-                        }
-                        else if(u.getRole().toString() == "Business.Role.DeliverManRole")
-                        {
-                            DefaultMutableTreeNode dm = new DefaultMutableTreeNode(e.getName());
-                            deliver.add(dm);
-                        }
-                    }
-                }
-            }
-            
-            //DefaultMutableTreeNode fl = (DefaultMutableTreeNode)rd.getRoot();
-            DefaultMutableTreeNode f = new DefaultMutableTreeNode("MedicineCatalog");
-            sd.add(f);
-            for(MedicineItem mi : p.getMedicineCatalog().getMedicineItemList())
-            {
-                DefaultMutableTreeNode z = (DefaultMutableTreeNode)ed.getRoot();
-                f.add(new DefaultMutableTreeNode(mi.getName()));
-            }
-        }
-        
-        modelSAWAP.reload(root);
-    }*/
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -156,7 +81,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         jPanel2.add(btnManageCustomersSAWAP);
-        btnManageCustomersSAWAP.setBounds(40, 200, 160, 50);
+        btnManageCustomersSAWAP.setBounds(40, 200, 190, 60);
 
         btnManagePharmacySAWAP.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnManagePharmacySAWAP.setText("Manage Pharmacy");
@@ -167,7 +92,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         jPanel2.add(btnManagePharmacySAWAP);
-        btnManagePharmacySAWAP.setBounds(810, 200, 160, 50);
+        btnManagePharmacySAWAP.setBounds(780, 200, 190, 60);
 
         BtnManageHospital.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         BtnManageHospital.setText("Manage Hospital");
@@ -178,7 +103,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         jPanel2.add(BtnManageHospital);
-        BtnManageHospital.setBounds(440, 360, 160, 50);
+        BtnManageHospital.setBounds(440, 360, 190, 70);
 
         BtnManageSupplier.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         BtnManageSupplier.setText("Manage Supplier");
@@ -189,7 +114,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         jPanel2.add(BtnManageSupplier);
-        BtnManageSupplier.setBounds(50, 550, 160, 50);
+        BtnManageSupplier.setBounds(50, 550, 210, 70);
 
         btn_DrugApproval.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btn_DrugApproval.setText("Drug Approval ");
@@ -200,7 +125,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         jPanel2.add(btn_DrugApproval);
-        btn_DrugApproval.setBounds(800, 560, 160, 50);
+        btn_DrugApproval.setBounds(760, 560, 200, 70);
 
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/SystemAdminWorkArea/HD-wallpaper-what-caregivers-need-to-know-about-schizophrenia-treatment-cute-pharmacy.v1 (1).jpg"))); // NOI18N
         lblBackground.setMaximumSize(new java.awt.Dimension(1024, 759));

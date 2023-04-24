@@ -5,12 +5,7 @@
 package userinterface.SupplierAdminRole;
 
 import Business.EcoSystem;
-
-import Business.Supplier.Supplier;
-
 import Business.Drugs.Drugs;
-import Business.Supplier.Supplier;
-import Business.SupplierMedicineItem.SupplierMedicineItem;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -21,20 +16,16 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MedicinesApproved extends javax.swing.JPanel {
 
-    /**
-     * Creates new form MedicinesApproved
-     */
     JPanel userProcessContainer;
-    //Supplier supplier;
     EcoSystem system;
+
     public MedicinesApproved(JPanel userProcessContainer, EcoSystem system) {
-        
+
         initComponents();
         this.userProcessContainer = userProcessContainer;
-       // this.supplier = supplier;
         this.system = system;
         populateTable();
-        
+
     }
 
     /**
@@ -49,6 +40,9 @@ public class MedicinesApproved extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_DrugApproval1 = new javax.swing.JTable();
         btn_back = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(0, 255, 255));
 
         tbl_DrugApproval1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -78,26 +72,34 @@ public class MedicinesApproved extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setText("Appoved Medicines");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 131, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(160, 160, 160))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(155, 155, 155)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 632, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
-                .addComponent(btn_back)
-                .addGap(119, 119, 119))
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(btn_back))
+                .addGap(34, 34, 34)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(178, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -111,20 +113,19 @@ public class MedicinesApproved extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_back;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbl_DrugApproval1;
     // End of variables declaration//GEN-END:variables
 public void populateTable() {
-    
-     DefaultTableModel dtm = (DefaultTableModel)tbl_DrugApproval1.getModel();
-        dtm.setRowCount(0); //deletes the empty records  
+
+        DefaultTableModel dtm = (DefaultTableModel) tbl_DrugApproval1.getModel();
+        dtm.setRowCount(0);
         int count1 = 1;
-        if(system.getDrugsDirectory().getDrugsList()!= null)
-        {
+        if (system.getDrugsDirectory().getDrugsList() != null) {
             System.out.println("Inside part");
-            for(Drugs s : system.getDrugsDirectory().getDrugsList())
-            {
-                Object[] row = new Object[dtm.getColumnCount()]; //creates an array
+            for (Drugs s : system.getDrugsDirectory().getDrugsList()) {
+                Object[] row = new Object[dtm.getColumnCount()]; 
                 row[0] = s.getId();
                 row[1] = s;
                 row[2] = s.getDrugCompostion();
@@ -132,16 +133,10 @@ public void populateTable() {
                 dtm.addRow(row);
                 count1++;
             }
-        }
-        else
-        {
+        } else {
             tbl_DrugApproval1.setEnabled(false);
         }
-    
-        
+
     }
-
-
-
 
 }

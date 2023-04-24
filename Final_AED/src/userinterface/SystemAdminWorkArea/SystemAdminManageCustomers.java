@@ -5,43 +5,33 @@
  */
 package userinterface.SystemAdminWorkArea;
 
-
 import Business.Customer.Customer;
 import Business.Customer.CustomerDirectory;
-import Business.DeliveryMan.DeliveryMan;
 import Business.EcoSystem;
 import Business.Employee.Employee;
-import Business.Role.AdminRole;
 import Business.Role.CustomerRole;
-import Business.Role.DeliveryManRole;
-import Business.SupplierEmp.SupplierEmp;
 import Business.UserAccount.UserAccount;
-
-//import Business.SendSms.SendSms;
-
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Pratik Poojari
  */
 public class SystemAdminManageCustomers extends javax.swing.JPanel {
 
-    /**
-     * Creates new form SystemAdminManageCustomers
-     */
     private JPanel userProcessContainerSAMC;
     private EcoSystem ecosystem;
-   
+
     public SystemAdminManageCustomers(JPanel userProcessContainer, EcoSystem ecosystem) {
-       
+
         initComponents();
         this.userProcessContainerSAMC = userProcessContainer;
         this.ecosystem = ecosystem;
-        
+
         txtUsername.setEnabled(false);
         txtPassword.setEnabled(false);
         txtConfirmPassword.setEnabled(false);
@@ -256,32 +246,27 @@ public class SystemAdminManageCustomers extends javax.swing.JPanel {
         add(jSeparator1);
         jSeparator1.setBounds(168, 1, 13, 720);
 
-        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/SystemAdminWorkArea/11-1-1024x600 (1).jpg"))); // NOI18N
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/SystemAdminWorkArea/a4.v1.png"))); // NOI18N
         add(lblBackground);
-        lblBackground.setBounds(0, 0, 1030, 760);
+        lblBackground.setBounds(0, 0, 1140, 840);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-      // TODO add your handling code here:
+        // TODO add your handling code here:
         userProcessContainerSAMC.remove(this);
         Component[] componentArray = userProcessContainerSAMC.getComponents();
         Component component = componentArray[componentArray.length - 1];
         SystemAdminWorkAreaJPanel dwjp = (SystemAdminWorkAreaJPanel) component;
-        //dwjp.populateTree();
         CardLayout layout = (CardLayout) userProcessContainerSAMC.getLayout();
         layout.previous(userProcessContainerSAMC);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
-        if(validateThisSAMC())
-        {
+        if (validateThisSAMC()) {
             Employee e = ecosystem.getEmployeeDirectory().createEmployee(txtName.getText(), txtAddress.getText(), txtPhoneNumber.getText());
-           // SupplierEmp se = ecosystem.getSupplierEmpDirectory().createSupplierEmp(txtNameSAMC.getText(), txtAddressSAMC.getText(), txtPhoneSAMC.getText());
-
             UserAccount ua = ecosystem.getUserAccountDirectory().createUserAccount(txtUsername.getText(), txtPassword.getText(), e, new CustomerRole());
-            if(ua != null)
-            {
+            if (ua != null) {
                 Customer c = ecosystem.getCustomerDirectory().createCustomer(txtName.getText(), txtAddress.getText(), txtPhoneNumber.getText());
                 JOptionPane.showMessageDialog(null, "Customer account created successfully for " + c.getName());
                 populateTable();
@@ -299,28 +284,21 @@ public class SystemAdminManageCustomers extends javax.swing.JPanel {
                 txtAddress.setText("");
                 txtAddress.setEnabled(false);
                 btnSubmit.setEnabled(false);
-                
-             // SendSms.sendSms("daskjhh", "9820990965");
-            }
-            else
-            {
+            } else {
                 ecosystem.getEmployeeDirectory().deleteEmployee(e);
-                JOptionPane.showMessageDialog(null,"Username " + txtUsername.getText() + " already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Username " + txtUsername.getText() + " already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
             }
-        }
-        else
-        {
+        } else {
             return;
         }
-       
+
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void tblCustomersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCustomersMouseClicked
         // TODO add your handling code here:
-       int selectedRow = tblCustomers.getSelectedRow();
-        if (selectedRow >= 0)
-        {
+        int selectedRow = tblCustomers.getSelectedRow();
+        if (selectedRow >= 0) {
             btnDeleteCustomer.setEnabled(true);
             btnManageCustomer.setEnabled(true);
         }
@@ -329,41 +307,35 @@ public class SystemAdminManageCustomers extends javax.swing.JPanel {
     private void btnManageCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageCustomerActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblCustomers.getSelectedRow();
-        if (selectedRow >= 0)
-        {
+        if (selectedRow >= 0) {
             Customer selectedCustomer = (Customer) tblCustomers.getValueAt(selectedRow, 1);
             SystemAdminUpdateCustomer fs = new SystemAdminUpdateCustomer(userProcessContainerSAMC, selectedCustomer, ecosystem);
             userProcessContainerSAMC.add("SysAdminUpdateEmployees", fs);
             CardLayout layout = (CardLayout) userProcessContainerSAMC.getLayout();
             layout.next(userProcessContainerSAMC);
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null,"Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
     }//GEN-LAST:event_btnManageCustomerActionPerformed
 
     private void btnDeleteCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteCustomerActionPerformed
         // TODO add your handling code here:
-       int selectedRow = tblCustomers.getSelectedRow();
-        if (selectedRow >= 0)
-        {
+        int selectedRow = tblCustomers.getSelectedRow();
+        if (selectedRow >= 0) {
             Customer selectedCustomer = (Customer) tblCustomers.getValueAt(selectedRow, 1);
             ecosystem.getCustomerDirectory().deleteCustomer(selectedCustomer);
-            JOptionPane.showMessageDialog(null, "Customer " + selectedCustomer.getName()+ " deleted successfully!");
+            JOptionPane.showMessageDialog(null, "Customer " + selectedCustomer.getName() + " deleted successfully!");
             populateTable();
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null,"Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
     }//GEN-LAST:event_btnDeleteCustomerActionPerformed
 
     private void btnCreateCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateCustomerActionPerformed
         // TODO add your handling code here:
-         btnCreateCustomer.setEnabled(false);
+        btnCreateCustomer.setEnabled(false);
         txtUsername.setEnabled(true);
         txtPassword.setEnabled(true);
         txtConfirmPassword.setEnabled(true);
@@ -410,52 +382,39 @@ public class SystemAdminManageCustomers extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateTable() {
-         DefaultTableModel dtmSAMC = (DefaultTableModel)tblCustomers.getModel();
+        DefaultTableModel dtmSAMC = (DefaultTableModel) tblCustomers.getModel();
         dtmSAMC.setRowCount(0);
-        if(ecosystem.getCustomerDirectory().getCustomerList() != null)
-        {
-            for(Customer c: ecosystem.getCustomerDirectory().getCustomerList())
-            {
+        if (ecosystem.getCustomerDirectory().getCustomerList() != null) {
+            for (Customer c : ecosystem.getCustomerDirectory().getCustomerList()) {
                 Object[] row = new Object[dtmSAMC.getColumnCount()];
-                row[0]= c.getId();
-                row[1]= c;
+                row[0] = c.getId();
+                row[1] = c;
                 dtmSAMC.addRow(row);
             }
         }
-        if(dtmSAMC.getRowCount() == 0)
-            {
-                btnDeleteCustomer.setEnabled(false);
-                btnManageCustomer.setEnabled(false);
-            }
+        if (dtmSAMC.getRowCount() == 0) {
+            btnDeleteCustomer.setEnabled(false);
+            btnManageCustomer.setEnabled(false);
+        }
     }
 
     private boolean validateThisSAMC() {
-        CustomerDirectory ua=this.ecosystem.getCustomerDirectory();
+        CustomerDirectory ua = this.ecosystem.getCustomerDirectory();
         String regex = "\\d{10}";
-        if(("".equals(txtUsername.getText())) || ("".equals(txtPassword.getText())) || ("".equals(txtConfirmPassword.getText())) 
-                || ("".equals(txtName.getText())) || ("".equals(txtPhoneNumber.getText())) || ("".equals(txtAddress.getText())))
-        {
-            JOptionPane.showMessageDialog(null,"Please fill all details!", "Warning", JOptionPane.WARNING_MESSAGE);
+        if (("".equals(txtUsername.getText())) || ("".equals(txtPassword.getText())) || ("".equals(txtConfirmPassword.getText()))
+                || ("".equals(txtName.getText())) || ("".equals(txtPhoneNumber.getText())) || ("".equals(txtAddress.getText()))) {
+            JOptionPane.showMessageDialog(null, "Please fill all details!", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
-        }
-        else if(!(txtPassword.getText().equals(txtConfirmPassword.getText())))
-        {
-            JOptionPane.showMessageDialog(null,"Passwords do not match!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (!(txtPassword.getText().equals(txtConfirmPassword.getText()))) {
+            JOptionPane.showMessageDialog(null, "Passwords do not match!", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
-        }
-        else if(!(txtPhoneNumber.getText().matches(regex)))
-        {
-            JOptionPane.showMessageDialog(null,"Mobile no. can have only 10 digits!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (!(txtPhoneNumber.getText().matches(regex))) {
+            JOptionPane.showMessageDialog(null, "Mobile no. can have only 10 digits!", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
-        }
-        
-           else if (ua.checkIfCustomerIsUnique(txtName.getText())==false){
-              JOptionPane.showMessageDialog(null, "Sorry credentials are taken.");
-      return false;
-          }    
-           
-        else
-        {
+        } else if (ua.checkIfCustomerIsUnique(txtName.getText()) == false) {
+            JOptionPane.showMessageDialog(null, "Sorry credentials are taken.");
+            return false;
+        } else {
             return true;
         }
     }

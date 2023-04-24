@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package userinterface.CustomerRole;
+
 import Business.Customer.Customer;
 import Business.EcoSystem;
 import Business.Orders.Orders;
@@ -15,7 +16,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
-
 /**
  *
  * @author Pratik Poojari
@@ -27,22 +27,17 @@ public class CustomerSummaryJPanell extends javax.swing.JPanel {
     private UserAccount user;
     private Customer customer;
     private EcoSystem system;
-    
-    
-    
-   
+
     public CustomerSummaryJPanell(JPanel userProcessContainer, UserAccount account, EcoSystem system) {
         initComponents();
-        this.userProcessContainer = userProcessContainer;     
+        this.userProcessContainer = userProcessContainer;
         this.user = account;
         this.system = system;
-        for(Customer c : system.getCustomerDirectory().getCustomerList() )
-        {
-            
-                if(c.getName() == null ? user.getEmployee().getName() == null : c.getName().equals(user.getEmployee().getName()))
-                {
-                    this.customer = c;
-                }
+        for (Customer c : system.getCustomerDirectory().getCustomerList()) {
+
+            if (c.getName() == null ? user.getEmployee().getName() == null : c.getName().equals(user.getEmployee().getName())) {
+                this.customer = c;
+            }
         }
         lblEnterprise.setText(this.customer + "'s orders");
         populateRequestTable();
@@ -139,46 +134,37 @@ public class CustomerSummaryJPanell extends javax.swing.JPanel {
         btnBack.setBounds(860, 50, 120, 50);
 
         lblBackground.setBackground(new java.awt.Color(255, 255, 255));
-        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/7e8e8c57497d2627fa7923f20188fa5d.jpg"))); // NOI18N
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Medications02_Yellow@2x.png"))); // NOI18N
         add(lblBackground);
-        lblBackground.setBounds(0, 0, 1030, 760);
+        lblBackground.setBounds(0, 0, 1150, 810);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMessageActionPerformed
 
         int selectedRow = tblWorkRequest.getSelectedRow();
-        if (selectedRow >= 0)
-        {
-            if((tblWorkRequest.getValueAt(selectedRow, 1)) == null)
-            {
-                JOptionPane.showMessageDialog(null,"Order is not live anymore!", "Warning", JOptionPane.WARNING_MESSAGE);
+        if (selectedRow >= 0) {
+            if ((tblWorkRequest.getValueAt(selectedRow, 1)) == null) {
+                JOptionPane.showMessageDialog(null, "Order is not live anymore!", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
-            }
-            else
-            {
+            } else {
                 Orders o = (Orders) tblWorkRequest.getValueAt(selectedRow, 0);
                 RequestLabTestJPanel fs = new RequestLabTestJPanel(userProcessContainer, o);
                 userProcessContainer.add("SysAdminManageEmployees", fs);
                 CardLayout layout = (CardLayout) userProcessContainer.getLayout();
                 layout.next(userProcessContainer);
             }
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null,"Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
     }//GEN-LAST:event_btnAddMessageActionPerformed
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-        if(tblWorkRequest.getRowCount() > 0)
-        {
+        if (tblWorkRequest.getRowCount() > 0) {
             populateRequestTable();
             JOptionPane.showMessageDialog(null, "Table refreshed!");
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null,"Nothing to refresh!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Nothing to refresh!", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnRefreshActionPerformed
 
@@ -200,39 +186,30 @@ public class CustomerSummaryJPanell extends javax.swing.JPanel {
     private javax.swing.JTable tblWorkRequest;
     // End of variables declaration//GEN-END:variables
 public void populateRequestTable() {
-        if(customer.getPastOrderList() != null)
-        {
-            DefaultTableModel dtm = (DefaultTableModel)tblWorkRequest.getModel();
+        if (customer.getPastOrderList() != null) {
+            DefaultTableModel dtm = (DefaultTableModel) tblWorkRequest.getModel();
             dtm.setRowCount(0);
-            
+
             btnRefresh.setEnabled(true);
             btnAddMessage.setEnabled(true);
             int count = 1;
-            for(Orders o : customer.getPastOrderList())
-            {
-                if(system.getPharmacyDirectory().getPharmacyList() != null)
-                {
+            for (Orders o : customer.getPastOrderList()) {
+                if (system.getPharmacyDirectory().getPharmacyList() != null) {
                     Object[] row = new Object[dtm.getColumnCount()];
                     row[0] = o;
-                    for(Pharmacy p : system.getPharmacyDirectory().getPharmacyList())
-                    {
-                        for(Orders or : p.getOrderDirectory().getOrderList())
-                        {
-                          if(o.equals(or))
-                          {
-                              row[1] = p;
-                          }
+                    for (Pharmacy p : system.getPharmacyDirectory().getPharmacyList()) {
+                        for (Orders or : p.getOrderDirectory().getOrderList()) {
+                            if (o.equals(or)) {
+                                row[1] = p;
+                            }
                         }
                     }
                     row[2] = o.getTotalAmount();
                     row[3] = o.getMessage();
                     row[4] = o.getDeliveryMan();
-                    if(o.isStatus())
-                    {
+                    if (o.isStatus()) {
                         row[5] = "Yes";
-                    }
-                    else
-                    {
+                    } else {
                         row[5] = "No";
                     }
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -243,6 +220,5 @@ public void populateRequestTable() {
             }
         }
     }
-
 
 }

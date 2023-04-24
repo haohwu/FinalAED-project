@@ -23,9 +23,10 @@ public class SystemAdminManageSupplier extends javax.swing.JPanel {
     /**
      * Creates new form SystemAdminManageSupplier
      */
-     private JPanel userProcessContainerSMR;
+    private JPanel userProcessContainerSMR;
     private EcoSystem ecosystem;
     private String user;
+
     public SystemAdminManageSupplier(JPanel userProcessContainer, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainerSMR = userProcessContainer;
@@ -96,7 +97,7 @@ public class SystemAdminManageSupplier extends javax.swing.JPanel {
             }
         });
         add(btnDelete);
-        btnDelete.setBounds(20, 270, 130, 54);
+        btnDelete.setBounds(20, 270, 130, 70);
 
         btnView.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/View Button.png"))); // NOI18N
@@ -108,7 +109,7 @@ public class SystemAdminManageSupplier extends javax.swing.JPanel {
             }
         });
         add(btnView);
-        btnView.setBounds(20, 170, 130, 50);
+        btnView.setBounds(20, 150, 130, 60);
 
         btnCreate.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnCreate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Create Button.png"))); // NOI18N
@@ -119,7 +120,7 @@ public class SystemAdminManageSupplier extends javax.swing.JPanel {
             }
         });
         add(btnCreate);
-        btnCreate.setBounds(20, 370, 130, 54);
+        btnCreate.setBounds(20, 370, 130, 70);
 
         btnBack.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Back Button.png"))); // NOI18N
@@ -131,7 +132,7 @@ public class SystemAdminManageSupplier extends javax.swing.JPanel {
             }
         });
         add(btnBack);
-        btnBack.setBounds(20, 20, 130, 50);
+        btnBack.setBounds(20, 20, 130, 60);
 
         tblSupplier.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         tblSupplier.setModel(new javax.swing.table.DefaultTableModel(
@@ -171,38 +172,35 @@ public class SystemAdminManageSupplier extends javax.swing.JPanel {
             }
         });
         add(btnSubmit);
-        btnSubmit.setBounds(540, 580, 100, 40);
+        btnSubmit.setBounds(540, 580, 140, 40);
 
         txtAddress.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         add(txtAddress);
         txtAddress.setBounds(460, 490, 300, 40);
 
-        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/hero-header.png"))); // NOI18N
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/a2.v1.jpg"))); // NOI18N
         add(lblBackground);
-        lblBackground.setBounds(0, 0, 1030, 760);
+        lblBackground.setBounds(0, 0, 1160, 850);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
 
         int selectedRowSAMR = tblSupplier.getSelectedRow();
-        if (selectedRowSAMR >= 0)
-        {
+        if (selectedRowSAMR >= 0) {
             Supplier selectedSupplier = (Supplier) tblSupplier.getValueAt(selectedRowSAMR, 1);
             ecosystem.getSupplierDirectory().deleteSupplier(selectedSupplier);
-            JOptionPane.showMessageDialog(null, "Supplier " + selectedSupplier.getName()+ " deleted successfully!");
+            JOptionPane.showMessageDialog(null, "Supplier " + selectedSupplier.getName() + " deleted successfully!");
             populateTable();
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null,"Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-       btnCreate.setEnabled(false);
+        btnCreate.setEnabled(false);
         txtSupplierName.setEnabled(true);
         txtAddress.setEnabled(true);
         btnSubmit.setEnabled(true);
@@ -210,20 +208,16 @@ public class SystemAdminManageSupplier extends javax.swing.JPanel {
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
-        SupplierDirectory ua=this.ecosystem.getSupplierDirectory();
-      
-        if(ua.checkIfSupplierIsUnique(txtSupplierName.getText())==false)
-        {
-            JOptionPane.showMessageDialog(null,"Supplier " + txtSupplierName.getText() + " already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
+        SupplierDirectory ua = this.ecosystem.getSupplierDirectory();
+
+        if (ua.checkIfSupplierIsUnique(txtSupplierName.getText()) == false) {
+            JOptionPane.showMessageDialog(null, "Supplier " + txtSupplierName.getText() + " already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
-        }
-        else if("".equals(txtSupplierName.getText())||("".equals(txtAddress.getText()))){
+        } else if ("".equals(txtSupplierName.getText()) || ("".equals(txtAddress.getText()))) {
             JOptionPane.showMessageDialog(null, "Null Check ");
-          return ;  
-        }
-        else
-        {
-              Supplier s = ecosystem.getSupplierDirectory().createSupplier(txtSupplierName.getText(), txtAddress.getText());
+            return;
+        } else {
+            Supplier s = ecosystem.getSupplierDirectory().createSupplier(txtSupplierName.getText(), txtAddress.getText());
             JOptionPane.showMessageDialog(null, "Supplier created successfully as " + s.getName());
             btnCreate.setEnabled(true);
             txtSupplierName.setEnabled(false);
@@ -237,19 +231,16 @@ public class SystemAdminManageSupplier extends javax.swing.JPanel {
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
         // TODO add your handling code here:
-         int selectedRow = tblSupplier.getSelectedRow();
-        if (selectedRow >= 0)
-        {
+        int selectedRow = tblSupplier.getSelectedRow();
+        if (selectedRow >= 0) {
             Supplier selectedSupplier = (Supplier) tblSupplier.getValueAt(selectedRow, 1);
             SystemAdminManageSupplierEmployee se = new SystemAdminManageSupplierEmployee(userProcessContainerSMR, selectedSupplier, ecosystem);
             userProcessContainerSMR.add("SysAdminManageEmployees", se);
             CardLayout layout = (CardLayout) userProcessContainerSMR.getLayout();
             layout.next(userProcessContainerSMR);
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null,"Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
+
         }
     }//GEN-LAST:event_btnViewActionPerformed
 
@@ -259,7 +250,6 @@ public class SystemAdminManageSupplier extends javax.swing.JPanel {
         Component[] componentArray = userProcessContainerSMR.getComponents();
         Component component = componentArray[componentArray.length - 1];
         SystemAdminWorkAreaJPanel dwjp = (SystemAdminWorkAreaJPanel) component;
-        //dwjp.populateTree();
         CardLayout layout = (CardLayout) userProcessContainerSMR.getLayout();
         layout.previous(userProcessContainerSMR);
     }//GEN-LAST:event_btnBackActionPerformed
@@ -267,14 +257,11 @@ public class SystemAdminManageSupplier extends javax.swing.JPanel {
     private void tblSupplierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSupplierMouseClicked
         // TODO add your handling code here:
         int selectedRow = tblSupplier.getSelectedRow();
-        if (selectedRow >= 0)
-        {
+        if (selectedRow >= 0) {
             btnDelete.setEnabled(true);
             btnView.setEnabled(true);
         }
     }//GEN-LAST:event_tblSupplierMouseClicked
-
-                                       
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -292,15 +279,13 @@ public class SystemAdminManageSupplier extends javax.swing.JPanel {
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtSupplierName;
     // End of variables declaration//GEN-END:variables
- 
+
     private void populateTable() {
-        DefaultTableModel dtm = (DefaultTableModel)tblSupplier.getModel();
+        DefaultTableModel dtm = (DefaultTableModel) tblSupplier.getModel();
         dtm.setRowCount(0);
         int count1 = 1;
-        if(ecosystem.getSupplierDirectory().getSupplierList()!= null)
-        {
-            for(Supplier s : ecosystem.getSupplierDirectory().getSupplierList())
-            {
+        if (ecosystem.getSupplierDirectory().getSupplierList() != null) {
+            for (Supplier s : ecosystem.getSupplierDirectory().getSupplierList()) {
                 Object[] row = new Object[dtm.getColumnCount()];
                 row[0] = s.getId();
                 row[1] = s;
@@ -308,9 +293,7 @@ public class SystemAdminManageSupplier extends javax.swing.JPanel {
                 dtm.addRow(row);
                 count1++;
             }
-        }
-        else
-        {
+        } else {
             tblSupplier.setEnabled(false);
         }
     }

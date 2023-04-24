@@ -4,7 +4,6 @@
  */
 package userinterface.PharmacyAdminRole;
 
-
 import Business.Pharmacy.Pharmacy;
 import Business.Supplier.Supplier;
 import Business.SupplierMedicineItem.SupplierMedicineItem;
@@ -14,33 +13,30 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Pratik Poojari
  */
 public class PharmacyOrderAction extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PharmacyOrderAction
-     */
     JPanel userProcessContainer;
     Supplier supplier;
     Pharmacy pharma;
     SupplierOrders supplierOrders;
     int totalAmount = 0;
-    
-   ArrayList<SupplierMedicineItem> cart = new ArrayList<SupplierMedicineItem>();
-    
+
+    ArrayList<SupplierMedicineItem> cart = new ArrayList<SupplierMedicineItem>();
+
     public PharmacyOrderAction(JPanel userProcessContainer, Pharmacy pharmacy, Supplier supplier) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.pharma = pharmacy;
         this.supplier = supplier;
-        lblValue.setText("Supplier: " +this.supplier.getName());
-        populateMedicine(); 
+        lblValue.setText("Supplier: " + this.supplier.getName());
+        populateMedicine();
         populateOrder();
-        if(tblOrder.getRowCount() <= 0)
-        {
+        if (tblOrder.getRowCount() <= 0) {
             btnOrder.setEnabled(false);
         }
     }
@@ -74,7 +70,7 @@ public class PharmacyOrderAction extends javax.swing.JPanel {
         txtTotal.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         txtTotal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         add(txtTotal);
-        txtTotal.setBounds(660, 670, 220, 50);
+        txtTotal.setBounds(660, 670, 230, 50);
 
         btnDelete.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Delete Button.png"))); // NOI18N
@@ -86,7 +82,7 @@ public class PharmacyOrderAction extends javax.swing.JPanel {
             }
         });
         add(btnDelete);
-        btnDelete.setBounds(370, 570, 160, 50);
+        btnDelete.setBounds(360, 570, 170, 50);
 
         btnOrder.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnOrder.setText("Confirm Order");
@@ -97,7 +93,7 @@ public class PharmacyOrderAction extends javax.swing.JPanel {
             }
         });
         add(btnOrder);
-        btnOrder.setBounds(610, 570, 160, 50);
+        btnOrder.setBounds(610, 570, 170, 50);
 
         btnBack.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Back Button.png"))); // NOI18N
@@ -131,7 +127,7 @@ public class PharmacyOrderAction extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblOrder);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(220, 380, 670, 160);
+        jScrollPane1.setBounds(150, 380, 740, 160);
 
         tblMedicine.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         tblMedicine.setModel(new javax.swing.table.DefaultTableModel(
@@ -158,7 +154,7 @@ public class PharmacyOrderAction extends javax.swing.JPanel {
         jScrollPane2.setViewportView(tblMedicine);
 
         add(jScrollPane2);
-        jScrollPane2.setBounds(220, 120, 670, 150);
+        jScrollPane2.setBounds(160, 120, 730, 150);
 
         btnAddItem.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnAddItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Add to Cart Button.png"))); // NOI18N
@@ -170,7 +166,7 @@ public class PharmacyOrderAction extends javax.swing.JPanel {
             }
         });
         add(btnAddItem);
-        btnAddItem.setBounds(730, 290, 160, 50);
+        btnAddItem.setBounds(710, 290, 180, 50);
 
         lblTotal.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         lblTotal.setText("               Total Amount:");
@@ -183,7 +179,7 @@ public class PharmacyOrderAction extends javax.swing.JPanel {
         add(lblValue);
         lblValue.setBounds(300, 30, 510, 50);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/46c6cc94a14f2da88997d4df1d5efde7.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Medomand-online-Pharmacy-supply-1024x759.png"))); // NOI18N
         add(jLabel1);
         jLabel1.setBounds(0, 0, 1030, 760);
     }// </editor-fold>//GEN-END:initComponents
@@ -191,27 +187,23 @@ public class PharmacyOrderAction extends javax.swing.JPanel {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         int selectedRow1 = tblOrder.getSelectedRow();
-        if (selectedRow1 >= 0)
-        {
+        if (selectedRow1 >= 0) {
             SupplierMedicineItem smi1 = (SupplierMedicineItem) tblOrder.getValueAt(selectedRow1, 1);
             //order.deleteFoodItem(fi);
             cart.remove(smi1);
-            JOptionPane.showMessageDialog(null, "Medicine Item " + smi1.getName()+ " deleted from cart successfully!");
+            JOptionPane.showMessageDialog(null, "Medicine Item " + smi1.getName() + " deleted from cart successfully!");
             totalAmount = totalAmount - smi1.getPrice();
             populateOrder();
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null,"Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
         // TODO add your handling code here:
-       supplierOrders = supplier.getSupplierOrderDirectory().createNewSupplierOrder(pharma);
-        for(SupplierMedicineItem mo : cart)
-        {
+        supplierOrders = supplier.getSupplierOrderDirectory().createNewSupplierOrder(pharma);
+        for (SupplierMedicineItem mo : cart) {
             supplierOrders.addItem(mo);
         }
         supplierOrders.calculateTotalAmount();
@@ -228,8 +220,7 @@ public class PharmacyOrderAction extends javax.swing.JPanel {
     private void tblMedicineMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMedicineMouseClicked
         // TODO add your handling code here:
         int selectedRow = tblMedicine.getSelectedRow();
-        if (selectedRow >= 0)
-        {
+        if (selectedRow >= 0) {
             btnAddItem.setEnabled(true);
         }
     }//GEN-LAST:event_tblMedicineMouseClicked
@@ -237,18 +228,15 @@ public class PharmacyOrderAction extends javax.swing.JPanel {
     private void btnAddItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddItemActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblMedicine.getSelectedRow();
-        if (selectedRow >= 0)
-        {
+        if (selectedRow >= 0) {
             SupplierMedicineItem smi2 = (SupplierMedicineItem) tblMedicine.getValueAt(selectedRow, 1);
 
             cart.add(smi2);
-            JOptionPane.showMessageDialog(null, "Medicine Item " + smi2.getName()+ " added to cart successfully!");
+            JOptionPane.showMessageDialog(null, "Medicine Item " + smi2.getName() + " added to cart successfully!");
             totalAmount = totalAmount + smi2.getPrice();
             populateOrder();
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null,"Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
     }//GEN-LAST:event_btnAddItemActionPerformed
@@ -270,12 +258,10 @@ public class PharmacyOrderAction extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateMedicine() {
-        DefaultTableModel dtm = (DefaultTableModel)tblMedicine.getModel();
+        DefaultTableModel dtm = (DefaultTableModel) tblMedicine.getModel();
         dtm.setRowCount(0);
-        if(supplier.getSupplierMedicineCatalog().getSupplierMedicineItemList()!= null)
-        {
-            for(SupplierMedicineItem smi3 : supplier.getSupplierMedicineCatalog().getSupplierMedicineItemList())
-            {
+        if (supplier.getSupplierMedicineCatalog().getSupplierMedicineItemList() != null) {
+            for (SupplierMedicineItem smi3 : supplier.getSupplierMedicineCatalog().getSupplierMedicineItemList()) {
                 Object[] row = new Object[dtm.getColumnCount()];
                 row[0] = smi3.getId();
                 row[1] = smi3;
@@ -283,34 +269,30 @@ public class PharmacyOrderAction extends javax.swing.JPanel {
                 dtm.addRow(row);
             }
         }
-        if(dtm.getRowCount() == 0)
-            {
-                btnAddItem.setEnabled(false);
-                btnDelete.setEnabled(false);
-            }
+        if (dtm.getRowCount() == 0) {
+            btnAddItem.setEnabled(false);
+            btnDelete.setEnabled(false);
+        }
     }
 
     private void populateOrder() {
-        DefaultTableModel dtm = (DefaultTableModel)tblOrder.getModel();
+        DefaultTableModel dtm = (DefaultTableModel) tblOrder.getModel();
         dtm.setRowCount(0);
-        if(cart != null)
-        {
+        if (cart != null) {
             btnDelete.setEnabled(true);
             btnOrder.setEnabled(true);
             int count = 1;
-            for(SupplierMedicineItem mi3 : cart)
-            {
+            for (SupplierMedicineItem mi3 : cart) {
                 Object[] row = new Object[dtm.getColumnCount()];
                 row[0] = count;
                 row[1] = mi3;
-                row[2] =  mi3.getPrice();
+                row[2] = mi3.getPrice();
                 dtm.addRow(row);
                 count++;
             }
             txtTotal.setText(Integer.toString(totalAmount));
         }
-        if(tblOrder.getRowCount() <= 0)
-        {
+        if (tblOrder.getRowCount() <= 0) {
             btnOrder.setEnabled(false);
             btnDelete.setEnabled(false);
         }

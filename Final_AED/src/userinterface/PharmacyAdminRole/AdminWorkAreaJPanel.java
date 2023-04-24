@@ -18,33 +18,28 @@ import javax.swing.JOptionPane;
  */
 public class AdminWorkAreaJPanel extends javax.swing.JPanel {
 
-    
     JPanel userProcessContainer;
-    
+
     UserAccount user;
     EcoSystem system;
     Pharmacy pharmacy;
-    
-  
+
     public AdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount user, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.user = user;
         this.system = system;
-        for(Pharmacy r : system.getPharmacyDirectory().getPharmacyList())
-        {
-            for(Employee e : r.getEmployeeDirectory().getEmployeeList())
-            {
-                if(user.getEmployee() == e)
-                {
+        for (Pharmacy r : system.getPharmacyDirectory().getPharmacyList()) {
+            for (Employee e : r.getEmployeeDirectory().getEmployeeList()) {
+                if (user.getEmployee() == e) {
                     this.pharmacy = r;
                     lblValue.setText(r.getName());
                 }
-            } 
+            }
         }
         txtPharmcyName.setText(this.pharmacy.getName());
         txtAddress.setText(this.pharmacy.getAddress());
-      System.out.println("Admin area work panel pharmacy : " + pharmacy);
+        System.out.println("Admin area work panel pharmacy : " + pharmacy);
         //valueLabel.setText();
     }
 
@@ -98,7 +93,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(btnManageMedicines);
-        btnManageMedicines.setBounds(70, 340, 190, 60);
+        btnManageMedicines.setBounds(70, 340, 200, 60);
 
         btnManageOrders.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnManageOrders.setText("Manage Orders");
@@ -109,7 +104,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(btnManageOrders);
-        btnManageOrders.setBounds(70, 220, 190, 60);
+        btnManageOrders.setBounds(70, 220, 200, 60);
 
         lblPharmacyName.setBackground(new java.awt.Color(255, 255, 255));
         lblPharmacyName.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -134,7 +129,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         txtAddress.setBounds(590, 340, 340, 50);
 
         btnSubmit.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnSubmit.setText("Submit");
+        btnSubmit.setText("Update");
         btnSubmit.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,7 +137,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(btnSubmit);
-        btnSubmit.setBounds(680, 450, 180, 60);
+        btnSubmit.setBounds(680, 450, 200, 60);
 
         btnOrderMedicines.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnOrderMedicines.setText("Order Medicines");
@@ -152,9 +147,9 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(btnOrderMedicines);
-        btnOrderMedicines.setBounds(70, 470, 190, 60);
+        btnOrderMedicines.setBounds(70, 470, 200, 60);
 
-        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/46c6cc94a14f2da88997d4df1d5efde7.jpg"))); // NOI18N
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Medomand-online-Pharmacy-supply-1024x759.png"))); // NOI18N
         add(lblBackground);
         lblBackground.setBounds(0, 0, 1030, 760);
     }// </editor-fold>//GEN-END:initComponents
@@ -162,35 +157,29 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     private void btnManageMedicinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageMedicinesActionPerformed
         AdminManageMedicine amm = new AdminManageMedicine(userProcessContainer, pharmacy);
         userProcessContainer.add("UserCustomer", amm);
-        CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
+        CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageMedicinesActionPerformed
 
     private void btnManageOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageOrdersActionPerformed
         AdminManageOrders amo = new AdminManageOrders(userProcessContainer, pharmacy);
         userProcessContainer.add("UserCustomer", amo);
-        CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
+        CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageOrdersActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
-        if(("".equals(txtPharmcyName.getText())) || ("".equals(txtAddress.getText())))
-        {
-            JOptionPane.showMessageDialog(null,"Please fill all values!", "Warning", JOptionPane.WARNING_MESSAGE);
+        if (("".equals(txtPharmcyName.getText())) || ("".equals(txtAddress.getText()))) {
+            JOptionPane.showMessageDialog(null, "Please fill all values!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
-        }
-        else if(txtPharmcyName.getText() == null ? pharmacy.getName() != null : !txtPharmcyName.getText().equals(pharmacy.getName()))
-        {
-            if(system.getPharmacyDirectory().checkIfPharmacyIsUnique(txtPharmcyName.getText()))
-            {
+        } else if (txtPharmcyName.getText() == null ? pharmacy.getName() != null : !txtPharmcyName.getText().equals(pharmacy.getName())) {
+            if (system.getPharmacyDirectory().checkIfPharmacyIsUnique(txtPharmcyName.getText())) {
                 pharmacy.setName(txtPharmcyName.getText());
                 pharmacy.setAddress(txtAddress.getText());
                 JOptionPane.showMessageDialog(null, "Pharmacy details updated!");
-            }
-            else
-            {
-                JOptionPane.showMessageDialog(null,"Pharmacy name not unique!", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Pharmacy name not unique!", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
             }
         }
@@ -199,9 +188,9 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnOrderMedicinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderMedicinesActionPerformed
         // TODO add your handling code here:
-        PharmacyAreaJPanel pap = new PharmacyAreaJPanel(userProcessContainer, user,system, pharmacy);
+        PharmacyAreaJPanel pap = new PharmacyAreaJPanel(userProcessContainer, user, system, pharmacy);
         userProcessContainer.add("UserCustomer", pap);
-        CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
+        CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnOrderMedicinesActionPerformed
 

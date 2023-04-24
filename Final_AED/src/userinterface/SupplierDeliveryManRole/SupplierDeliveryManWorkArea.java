@@ -4,10 +4,7 @@
  */
 package userinterface.SupplierDeliveryManRole;
 
-import Business.DeliveryMan.DeliveryMan;
 import Business.EcoSystem;
-import Business.Orders.Orders;
-import Business.Pharmacy.Pharmacy;
 import Business.Supplier.Supplier;
 import Business.SupplierDeliveryMan.SupplierDeliveryMan;
 import Business.SupplierOrders.SupplierOrders;
@@ -23,56 +20,45 @@ import javax.swing.table.DefaultTableModel;
  * @author chengyen lai
  */
 public class SupplierDeliveryManWorkArea extends javax.swing.JPanel {
+
     private JPanel userProcessContainer;
     private EcoSystem business;
     private UserAccount userAccount;
     private Supplier supplier;
     private SupplierDeliveryMan supplierDeliveryMan;
-    /**
-     * Creates new form SupplierDeliveryManWorkArea
-     */
+
     public SupplierDeliveryManWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
         initComponents();
-         this.userProcessContainer = userProcessContainer;
+        this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.business = business;
-        
-        for(Supplier s : business.getSupplierDirectory().getSupplierList())
-        {
-            if(s.findSupplierDeliveryMan(account.getEmployee().getName()) != null)
-            {
+
+        for (Supplier s : business.getSupplierDirectory().getSupplierList()) {
+            if (s.findSupplierDeliveryMan(account.getEmployee().getName()) != null) {
                 this.supplierDeliveryMan = s.findSupplierDeliveryMan(account.getEmployee().getName());
                 this.supplier = s;
                 break;
             }
         }
         lblDeliveryAgent.setText("Orders to be delivered by " + this.supplierDeliveryMan);
-        
-//        if(workRequestJTable.getRowCount() > 0)
-//        {
-            populateTable();
-//        }
+
+        populateTable();
     }
- public void populateTable(){
-        if(supplier.getSupplierOrderDirectory() != null)
-        {
-            DefaultTableModel dtm = (DefaultTableModel)tblWorkRequest.getModel();
+
+    public void populateTable() {
+        if (supplier.getSupplierOrderDirectory() != null) {
+            DefaultTableModel dtm = (DefaultTableModel) tblWorkRequest.getModel();
             dtm.setRowCount(0);
-            for(SupplierOrders so : supplier.getSupplierOrderDirectory().getSupplierOrderList())
-            {
-                if(so.getSupplierDeliveryMan().equals(supplierDeliveryMan))
-                {
+            for (SupplierOrders so : supplier.getSupplierOrderDirectory().getSupplierOrderList()) {
+                if (so.getSupplierDeliveryMan().equals(supplierDeliveryMan)) {
                     Object[] row = new Object[dtm.getColumnCount()];
                     row[0] = so;
                     row[1] = so.getTotalAmount();
                     row[2] = so.getMessage();
                     row[3] = so.getSupplierDeliveryMan();
-                    if(so.isStatus())
-                    {
+                    if (so.isStatus()) {
                         row[4] = "Yes";
-                    }
-                    else
-                    {
+                    } else {
                         row[4] = "No";
                     }
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -80,8 +66,9 @@ public class SupplierDeliveryManWorkArea extends javax.swing.JPanel {
                     dtm.addRow(row);
                 }
             }
-        }        
+        }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -127,12 +114,12 @@ public class SupplierDeliveryManWorkArea extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblWorkRequest);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(60, 180, 910, 100);
+        jScrollPane1.setBounds(60, 160, 910, 210);
 
         lblDeliveryAgent.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         lblDeliveryAgent.setText("<>");
         add(lblDeliveryAgent);
-        lblDeliveryAgent.setBounds(48, 38, 520, 50);
+        lblDeliveryAgent.setBounds(48, 38, 570, 50);
 
         btnProcess.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnProcess.setText("Process");
@@ -143,7 +130,7 @@ public class SupplierDeliveryManWorkArea extends javax.swing.JPanel {
             }
         });
         add(btnProcess);
-        btnProcess.setBounds(450, 340, 110, 50);
+        btnProcess.setBounds(360, 390, 330, 50);
 
         btnRefresh.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Refresh Button.png"))); // NOI18N
@@ -155,7 +142,7 @@ public class SupplierDeliveryManWorkArea extends javax.swing.JPanel {
             }
         });
         add(btnRefresh);
-        btnRefresh.setBounds(850, 110, 120, 50);
+        btnRefresh.setBounds(810, 80, 160, 50);
 
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Pharmacy Delivery.jpeg"))); // NOI18N
         add(lblBackground);
@@ -163,40 +150,31 @@ public class SupplierDeliveryManWorkArea extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
-  int selectedRow = tblWorkRequest.getSelectedRow();
-        if (selectedRow >= 0)
-        {
-            if((tblWorkRequest.getValueAt(selectedRow, 1)) == null)
-            {
-                JOptionPane.showMessageDialog(null,"Order is not live anymore!", "Warning", JOptionPane.WARNING_MESSAGE);
+        int selectedRow = tblWorkRequest.getSelectedRow();
+        if (selectedRow >= 0) {
+            if ((tblWorkRequest.getValueAt(selectedRow, 1)) == null) {
+                JOptionPane.showMessageDialog(null, "Order is not live anymore!", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
-            }
-            else
-            {
+            } else {
                 SupplierOrders so = (SupplierOrders) tblWorkRequest.getValueAt(selectedRow, 0);
                 SupplierProcessDeliveryWorkArea fs = new SupplierProcessDeliveryWorkArea(userProcessContainer, so);
                 userProcessContainer.add("SysAdminManageEmployees", fs);
                 CardLayout layout = (CardLayout) userProcessContainer.getLayout();
                 layout.next(userProcessContainer);
             }
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null,"Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
+
     }//GEN-LAST:event_btnProcessActionPerformed
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-        if(tblWorkRequest.getRowCount() > 0)
-        {
+        if (tblWorkRequest.getRowCount() > 0) {
             populateTable();
             JOptionPane.showMessageDialog(null, "Table refreshed!");
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null,"Nothing to refresh!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Nothing to refresh!", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnRefreshActionPerformed
 

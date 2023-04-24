@@ -3,28 +3,28 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Business.UserAccount;
+
 import Business.Employee.Employee;
 import Business.Role.Role;
 import Business.SupplierEmp.SupplierEmp;
 import Business.WorkQueue.WorkQueue;
+
 /**
  *
  * @author whh
  */
 public class UserAccount {
+
     private String username;
     private String password;
     private Employee employee;
-    //private SupplierEmp supplierEmp;
     private Role role;
     private WorkQueue workQueue;
 
     public UserAccount() {
         workQueue = new WorkQueue();
     }
-    
-    
-    
+
     public String getUsername() {
         return username;
     }
@@ -61,14 +61,9 @@ public class UserAccount {
         return workQueue;
     }
 
-    
-
-    
-    
     @Override
     public String toString() {
         return username;
     }
-    
-    
+
 }

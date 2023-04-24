@@ -1,9 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package userinterface.HospitalRole;
-
 
 import Business.Customer.Customer;
 import Business.Hospital.Hospital;
@@ -11,7 +6,6 @@ import Business.EcoSystem;
 import Business.Orders.Orders;
 import Business.Pharmacy.Pharmacy;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
@@ -24,29 +18,23 @@ import javax.swing.table.DefaultTableModel;
  */
 public class HospitalSummaryJPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form HospitalSummaryJPanel
-     */
-    
     private JPanel userProcessContainer;
 
     private UserAccount user;
     private Customer customer;
     private Hospital hospital;
     private EcoSystem system;
-    
+
     public HospitalSummaryJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system) {
         initComponents();
-        this.userProcessContainer = userProcessContainer;     
+        this.userProcessContainer = userProcessContainer;
         this.user = account;
         this.system = system;
-        for(Hospital c : system.getHospitalDirectory().getHospitalList() )
-        {
-            
-                if(c.getHospitalName() == null ? user.getEmployee().getName()== null : c.getHospitalName().equals(user.getEmployee().getName()))
-                {
-                    this.hospital = c;
-                }
+        for (Hospital c : system.getHospitalDirectory().getHospitalList()) {
+
+            if (c.getHospitalName() == null ? user.getEmployee().getName() == null : c.getHospitalName().equals(user.getEmployee().getName())) {
+                this.hospital = c;
+            }
         }
         CSenterpriseLabel.setText(this.hospital + "'s orders");
         populateRequestTable();
@@ -66,6 +54,8 @@ public class HospitalSummaryJPanel extends javax.swing.JPanel {
         HSBackButton = new javax.swing.JButton();
         HSrefreshTestJButton = new javax.swing.JButton();
         CSenterpriseLabel = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(51, 255, 255));
 
         HSWorkrequestTable.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         HSWorkrequestTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -93,9 +83,7 @@ public class HospitalSummaryJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(HSWorkrequestTable);
 
-        HSBackButton.setBackground(new java.awt.Color(0, 0, 0));
         HSBackButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        HSBackButton.setForeground(new java.awt.Color(255, 255, 255));
         HSBackButton.setText("< Back");
         HSBackButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         HSBackButton.addActionListener(new java.awt.event.ActionListener() {
@@ -104,9 +92,7 @@ public class HospitalSummaryJPanel extends javax.swing.JPanel {
             }
         });
 
-        HSrefreshTestJButton.setBackground(new java.awt.Color(0, 0, 0));
         HSrefreshTestJButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        HSrefreshTestJButton.setForeground(new java.awt.Color(255, 255, 255));
         HSrefreshTestJButton.setText("Refresh");
         HSrefreshTestJButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         HSrefreshTestJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -154,14 +140,11 @@ public class HospitalSummaryJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_HSBackButtonActionPerformed
 
     private void HSrefreshTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HSrefreshTestJButtonActionPerformed
-        if(HSWorkrequestTable.getRowCount() > 0)
-        {
+        if (HSWorkrequestTable.getRowCount() > 0) {
             populateRequestTable();
             JOptionPane.showMessageDialog(null, "Table refreshed!");
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null,"Nothing to refresh!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Nothing to refresh!", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_HSrefreshTestJButtonActionPerformed
 
@@ -174,39 +157,30 @@ public class HospitalSummaryJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-public void populateRequestTable() {
-        if(hospital.getPastOrderList() != null)
-        {
-            DefaultTableModel dtm = (DefaultTableModel)HSWorkrequestTable.getModel();
+    public void populateRequestTable() {
+        if (hospital.getPastOrderList() != null) {
+            DefaultTableModel dtm = (DefaultTableModel) HSWorkrequestTable.getModel();
             dtm.setRowCount(0);
-            
+
             HSrefreshTestJButton.setEnabled(true);
-           
+
             int count = 1;
-            for(Orders o : hospital.getPastOrderList())
-            {
-                if(system.getPharmacyDirectory().getPharmacyList() != null)
-                {
+            for (Orders o : hospital.getPastOrderList()) {
+                if (system.getPharmacyDirectory().getPharmacyList() != null) {
                     Object[] row = new Object[dtm.getColumnCount()];
                     row[0] = o;
-                    for(Pharmacy p : system.getPharmacyDirectory().getPharmacyList())
-                    {
-                        for(Orders or : p.getOrderDirectory().getOrderList())
-                        {
-                          if(o.equals(or))
-                          {
-                              row[1] = p;
-                          }
+                    for (Pharmacy p : system.getPharmacyDirectory().getPharmacyList()) {
+                        for (Orders or : p.getOrderDirectory().getOrderList()) {
+                            if (o.equals(or)) {
+                                row[1] = p;
+                            }
                         }
                     }
                     row[2] = o.getTotalAmount();
                     row[3] = o.getDeliveryMan();
-                    if(o.isStatus())
-                    {
+                    if (o.isStatus()) {
                         row[4] = "Yes";
-                    }
-                    else
-                    {
+                    } else {
                         row[4] = "No";
                     }
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -217,8 +191,5 @@ public void populateRequestTable() {
             }
         }
     }
-
-
-
 
 }

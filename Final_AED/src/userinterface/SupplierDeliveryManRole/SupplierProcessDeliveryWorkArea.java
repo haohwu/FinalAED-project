@@ -15,17 +15,16 @@ import javax.swing.JPanel;
  * @author chengyen lai
  */
 public class SupplierProcessDeliveryWorkArea extends javax.swing.JPanel {
+
     JPanel userProcessContainer;
     SupplierOrders supplierOrders;
-    /**
-     * Creates new form SupplierProcessDeliveryWorkArea
-     */
+
     public SupplierProcessDeliveryWorkArea(JPanel userProcessContainer, SupplierOrders so) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.supplierOrders = so;
         comboResultStatus.addItem("Delivered");
-        comboResultStatus.addItem("Not Delivered"); 
+        comboResultStatus.addItem("Not Delivered");
     }
 
     /**
@@ -70,7 +69,8 @@ public class SupplierProcessDeliveryWorkArea extends javax.swing.JPanel {
             }
         });
 
-        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Pharmacy Delivery.jpeg"))); // NOI18N
+        lblBackground.setBackground(new java.awt.Color(0, 255, 255));
+        lblBackground.setForeground(new java.awt.Color(0, 255, 255));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -81,41 +81,45 @@ public class SupplierProcessDeliveryWorkArea extends javax.swing.JPanel {
                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(425, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblResult)
-                        .addGap(43, 43, 43)
-                        .addComponent(comboResultStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(443, 443, 443))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(lblBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblResult)
+                                .addGap(43, 43, 43)
+                                .addComponent(comboResultStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(636, 636, 636))
+                    .addComponent(lblBackground, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1143, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(btnBack)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(comboResultStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
                 .addGap(76, 76, 76)
                 .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(460, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(lblBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 791, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
-       switch(comboResultStatus.getSelectedIndex())
-        {
-            case 0 : supplierOrders.setStatus(true);
-            break;
-            case 1 : supplierOrders.setStatus(false);
-            break;
+        switch (comboResultStatus.getSelectedIndex()) {
+            case 0:
+                supplierOrders.setStatus(true);
+                break;
+            case 1:
+                supplierOrders.setStatus(false);
+                break;
         }
         System.out.println(comboResultStatus.getSelectedIndex());
         System.out.println(supplierOrders.isStatus());

@@ -9,6 +9,7 @@ package Business.DeliveryMan;
  * @author whh
  */
 public class DeliveryMan {
+
     private String name;
     private String phone;
     private String address;
@@ -28,7 +29,6 @@ public class DeliveryMan {
         this.name = name;
     }
 
-    
     public String getName() {
         return name;
     }
@@ -52,5 +52,5 @@ public class DeliveryMan {
 
     public void setAddress(String address) {
         this.address = address;
-    }    
+    }
 }

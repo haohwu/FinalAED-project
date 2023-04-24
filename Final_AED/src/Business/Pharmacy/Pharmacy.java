@@ -19,6 +19,7 @@ import java.util.ArrayList;
  * @author whh
  */
 public class Pharmacy {
+
     private String name;
     private String address;
     private String email;
@@ -30,8 +31,7 @@ public class Pharmacy {
     private OrderDirectory orderDirectory;
     private MedicineCatalog medicineCatalog;
     private ArrayList<SupplierOrders> PastSupplierOrderList;
-   
-    
+
     public Pharmacy() {
         id = count;
         count++;
@@ -41,7 +41,7 @@ public class Pharmacy {
         this.medicineCatalog = new MedicineCatalog();
         this.PastSupplierOrderList = new ArrayList<SupplierOrders>();
     }
-    
+
     public String getAddress() {
         return address;
     }
@@ -57,7 +57,7 @@ public class Pharmacy {
     public EmployeeDirectory getEmployeeDirectory() {
         return employeeDirectory;
     }
-    
+
     public void setName(String name) {
         this.name = name;
     }
@@ -85,7 +85,6 @@ public class Pharmacy {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-    
 
     @Override
     public String toString() {
@@ -95,7 +94,7 @@ public class Pharmacy {
     public OrderDirectory getOrderDirectory() {
         return orderDirectory;
     }
-    
+
     public ArrayList<SupplierOrders> getPastSupplierOrderList() {
         return PastSupplierOrderList;
     }
@@ -103,30 +102,18 @@ public class Pharmacy {
     public MedicineCatalog getMedicineCatalog() {
         return medicineCatalog;
     }
-    
-    public void deleteOrder(Orders o)
-    {
+
+    public void deleteOrder(Orders o) {
         this.getOrderDirectory().getOrderList().remove(o);
     }
-    
-    public DeliveryMan findDeliveryMan(String name)
-    {
-        for(DeliveryMan dm : this.deliveryManDirectory.getDeliveryManList())
-        {
-            if(dm.getName().equals(name))
-            {
+
+    public DeliveryMan findDeliveryMan(String name) {
+        for (DeliveryMan dm : this.deliveryManDirectory.getDeliveryManList()) {
+            if (dm.getName().equals(name)) {
                 return dm;
             }
         }
         return null;
-    }    
+    }
 
-
-
-public void AddSupplierOrder()
-    {
-        
-    }    
 }
-
- 

@@ -12,13 +12,13 @@ import java.util.ArrayList;
  * @author whh
  */
 public class Hospital {
-    
+
     private String HospitalName;
     private int HospitalId;
     private String HospitalAddress;
     private String HospitalContactNo;
     private String emailId;
-    
+    private String username;
     private static int count = 1;
     private ArrayList<Orders> PastOrderList;
 
@@ -61,25 +61,32 @@ public class Hospital {
     public void setEmailId(String emailId) {
         this.emailId = emailId;
     }
-    
-      public Hospital() {
+
+    public Hospital() {
         HospitalId = count;
         count++;
         this.PastOrderList = new ArrayList<Orders>();
     }
-    
-      @Override
+
+    @Override
     public String toString() {
         return HospitalName;
     }
+
     public ArrayList<Orders> getPastOrderList() {
         return PastOrderList;
     }
-    
-     public void AddOrder()
-    {
-        
-    }  
-    
-    
+
+    public void AddOrder() {
+
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
 }

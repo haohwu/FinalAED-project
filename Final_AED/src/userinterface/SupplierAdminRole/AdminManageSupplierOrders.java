@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package userinterface.SupplierAdminRole;
+
 import Business.Supplier.Supplier;
 import Business.SupplierDeliveryMan.SupplierDeliveryMan;
 import Business.SupplierOrders.SupplierOrders;
@@ -11,29 +12,27 @@ import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
- * @author  Pratik Poojari
+ * @author Pratik Poojari
  */
 public class AdminManageSupplierOrders extends javax.swing.JPanel {
-        JPanel userProcessContainer;
-        Supplier supplier;
-    /**
-     * Creates new form AdminManageSupplierOrders
-     */
+
+    JPanel userProcessContainer;
+    Supplier supplier;
     public AdminManageSupplierOrders(JPanel userProcessContainer, Supplier supplier) {
         initComponents();
-         this.userProcessContainer = userProcessContainer;
+        this.userProcessContainer = userProcessContainer;
         this.supplier = supplier;
         btnAssignDeliveryAgent.setEnabled(false);
         comboSupplierDeliveryAgent.setEnabled(false);
-       
+
         lblValue.setText(supplier.getName());
         populateTable();
         comboSupplierDeliveryAgent.addItem("");
         System.out.println(supplier.getSupplierDeliveryManDirectory().getSupplierDeliveryManList().size());
-        for(SupplierDeliveryMan sdm : supplier.getSupplierDeliveryManDirectory().getSupplierDeliveryManList())
-        {
+        for (SupplierDeliveryMan sdm : supplier.getSupplierDeliveryManDirectory().getSupplierDeliveryManList()) {
             System.out.println(sdm.getName());
             comboSupplierDeliveryAgent.addItem(sdm.getName());
         }
@@ -151,9 +150,9 @@ public class AdminManageSupplierOrders extends javax.swing.JPanel {
         btnDelete.setBounds(780, 460, 120, 50);
 
         lblBackground.setBackground(new java.awt.Color(255, 255, 255));
-        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/4cdd558652d6adfe5e9d4c5af515fc40.jpg"))); // NOI18N
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Medications02_Yellow@2x.png"))); // NOI18N
         add(lblBackground);
-        lblBackground.setBounds(0, 0, 1030, 760);
+        lblBackground.setBounds(0, 0, 1140, 860);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -165,30 +164,26 @@ public class AdminManageSupplierOrders extends javax.swing.JPanel {
 
     private void tblOrdersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblOrdersMouseClicked
         // TODO add your handling code here:
-          int selectedRow = tblOrders.getSelectedRow();
-        if (selectedRow >= 0)
-        {
+        int selectedRow = tblOrders.getSelectedRow();
+        if (selectedRow >= 0) {
             comboSupplierDeliveryAgent.setEnabled(true);
             btnDelete.setEnabled(true);
             btnAssignDeliveryAgent.setEnabled(true);
         }
 
-       
+
     }//GEN-LAST:event_tblOrdersMouseClicked
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-       int selectedRow = tblOrders.getSelectedRow();
-        if (selectedRow >= 0)
-        {
+        int selectedRow = tblOrders.getSelectedRow();
+        if (selectedRow >= 0) {
             SupplierOrders supplierOrders = (SupplierOrders) tblOrders.getValueAt(selectedRow, 0);
             supplier.deleteOrder(supplierOrders);
             JOptionPane.showMessageDialog(null, "Order deleted successfully!");
             populateTable();
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null,"Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
@@ -196,26 +191,20 @@ public class AdminManageSupplierOrders extends javax.swing.JPanel {
     private void btnAssignDeliveryAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignDeliveryAgentActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblOrders.getSelectedRow();
-        if (selectedRow >= 0)
-        {
+        if (selectedRow >= 0) {
             SupplierOrders supplierOrders = (SupplierOrders) tblOrders.getValueAt(selectedRow, 0);
-            if(comboSupplierDeliveryAgent.getSelectedItem() != "")
-            {
+            if (comboSupplierDeliveryAgent.getSelectedItem() != "") {
                 String dmName = comboSupplierDeliveryAgent.getSelectedItem().toString();
                 SupplierDeliveryMan sdm = supplier.findSupplierDeliveryMan(dmName);
                 supplierOrders.setSupplierDeliveryMan(sdm);
                 JOptionPane.showMessageDialog(null, "Delivery man assigned successfully!");
                 populateTable();
-            }
-            else
-            {
-                JOptionPane.showMessageDialog(null,"Please select a delivery man!", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Please select a delivery man!", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
             }
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null,"Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
     }//GEN-LAST:event_btnAssignDeliveryAgentActionPerformed
@@ -238,36 +227,28 @@ public class AdminManageSupplierOrders extends javax.swing.JPanel {
     private javax.swing.JTable tblOrders;
     // End of variables declaration//GEN-END:variables
 private void populateTable() {
-       DefaultTableModel dtm = (DefaultTableModel)tblOrders.getModel();
+        DefaultTableModel dtm = (DefaultTableModel) tblOrders.getModel();
         dtm.setRowCount(0);
-        if(supplier.getSupplierOrderDirectory().getSupplierOrderList() != null)
-        {
-            for(SupplierOrders supplierOrders : supplier.getSupplierOrderDirectory().getSupplierOrderList())
-            {
-                if(!supplierOrders.isStatus() && supplierOrders.getPharmacy()!= null)
-                {
+        if (supplier.getSupplierOrderDirectory().getSupplierOrderList() != null) {
+            for (SupplierOrders supplierOrders : supplier.getSupplierOrderDirectory().getSupplierOrderList()) {
+                if (!supplierOrders.isStatus() && supplierOrders.getPharmacy() != null) {
                     Object[] row = new Object[dtm.getColumnCount()];
                     row[0] = supplierOrders;
                     row[1] = supplierOrders.getPharmacy().getName();
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
                     row[2] = supplierOrders.getOrderDate().format(formatter);
-                    if(supplierOrders.getSupplierDeliveryMan() == null)
-                    {
+                    if (supplierOrders.getSupplierDeliveryMan() == null) {
                         row[3] = "";
-                    }
-                    else
-                    {
+                    } else {
                         row[3] = supplierOrders.getSupplierDeliveryMan().getName();
                     }
                     dtm.addRow(row);
                 }
             }
         }
-        if(dtm.getRowCount() == 0)
-            {
-                comboSupplierDeliveryAgent.setEnabled(false);
-                btnAssignDeliveryAgent.setEnabled(false);
-            }
+        if (dtm.getRowCount() == 0) {
+            comboSupplierDeliveryAgent.setEnabled(false);
+            btnAssignDeliveryAgent.setEnabled(false);
+        }
     }
 }
-

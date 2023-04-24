@@ -7,31 +7,29 @@ package userinterface.PharmacyAdminRole;
 import Business.EcoSystem;
 import Business.Pharmacy.Pharmacy;
 import Business.Supplier.Supplier;
-import Business.SupplierMedicineItem.SupplierMedicineItem;
 import Business.SupplierOrders.SupplierOrders;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Pratik Poojari
  */
 public class PharmacySummaryJPanel extends javax.swing.JPanel {
-private JPanel userProcessContainer;
+
+    private JPanel userProcessContainer;
 
     private UserAccount user;
     private Pharmacy pharmacy;
     private EcoSystem system;
-    /**
-     * Creates new form PharmacySummaryJPanel
-     */
+
     public PharmacySummaryJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system, Pharmacy pharmacy) {
         initComponents();
-        this.userProcessContainer = userProcessContainer;     
+        this.userProcessContainer = userProcessContainer;
         this.user = account;
         this.system = system;
         System.out.println(system.getPharmacyDirectory().getPharmacyList());
@@ -86,7 +84,7 @@ private JPanel userProcessContainer;
         jScrollPane1.setViewportView(workRequestJTable);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(70, 310, 880, 230);
+        jScrollPane1.setBounds(70, 290, 900, 250);
 
         btnMessage.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Message Button.png"))); // NOI18N
@@ -98,7 +96,7 @@ private JPanel userProcessContainer;
             }
         });
         add(btnMessage);
-        btnMessage.setBounds(780, 560, 160, 50);
+        btnMessage.setBounds(770, 560, 170, 50);
 
         btnRefresh.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Refresh Button.png"))); // NOI18N
@@ -110,7 +108,7 @@ private JPanel userProcessContainer;
             }
         });
         add(btnRefresh);
-        btnRefresh.setBounds(70, 140, 120, 50);
+        btnRefresh.setBounds(70, 140, 170, 60);
 
         enterpriseLabel.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         enterpriseLabel.setText("<>");
@@ -127,47 +125,38 @@ private JPanel userProcessContainer;
             }
         });
         add(btnBack);
-        btnBack.setBounds(840, 40, 110, 50);
+        btnBack.setBounds(790, 40, 160, 50);
 
-        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/46c6cc94a14f2da88997d4df1d5efde7.jpg"))); // NOI18N
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Medomand-online-Pharmacy-supply-1024x759.png"))); // NOI18N
         add(lblBackground);
         lblBackground.setBounds(0, 0, 1030, 760);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMessageActionPerformed
         int selectedRow = workRequestJTable.getSelectedRow();
-        if (selectedRow >= 0)
-        {
-            if((workRequestJTable.getValueAt(selectedRow, 1)) == null)
-            {
-                JOptionPane.showMessageDialog(null,"Order is not live anymore!", "Warning", JOptionPane.WARNING_MESSAGE);
+        if (selectedRow >= 0) {
+            if ((workRequestJTable.getValueAt(selectedRow, 1)) == null) {
+                JOptionPane.showMessageDialog(null, "Order is not live anymore!", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
-            }
-            else
-            {
+            } else {
                 SupplierOrders so = (SupplierOrders) workRequestJTable.getValueAt(selectedRow, 0);
                 PharmacyRequestJPanel fs = new PharmacyRequestJPanel(userProcessContainer, so);
                 userProcessContainer.add("SysAdminManageEmployees", fs);
                 CardLayout layout = (CardLayout) userProcessContainer.getLayout();
                 layout.next(userProcessContainer);
             }
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null,"Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a row!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
     }//GEN-LAST:event_btnMessageActionPerformed
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-        if(workRequestJTable.getRowCount() > 0)
-        {
+        if (workRequestJTable.getRowCount() > 0) {
             populateRequestTable();
             JOptionPane.showMessageDialog(null, "Table refreshed!");
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null,"Nothing to refresh!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Nothing to refresh!", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnRefreshActionPerformed
 
@@ -189,39 +178,30 @@ private JPanel userProcessContainer;
     private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables
     public void populateRequestTable() {
-        if(pharmacy.getPastSupplierOrderList() != null)
-        {
-            DefaultTableModel dtm = (DefaultTableModel)workRequestJTable.getModel();
+        if (pharmacy.getPastSupplierOrderList() != null) {
+            DefaultTableModel dtm = (DefaultTableModel) workRequestJTable.getModel();
             dtm.setRowCount(0);
-            
+
             btnRefresh.setEnabled(true);
             btnMessage.setEnabled(true);
             int count = 1;
-            for(SupplierOrders so : pharmacy.getPastSupplierOrderList())
-            {
-                if(system.getSupplierDirectory().getSupplierList() != null)
-                {
+            for (SupplierOrders so : pharmacy.getPastSupplierOrderList()) {
+                if (system.getSupplierDirectory().getSupplierList() != null) {
                     Object[] row = new Object[dtm.getColumnCount()];
                     row[0] = so;
-                    for(Supplier s : system.getSupplierDirectory().getSupplierList())
-                    {
-                        for(SupplierOrders or : s.getSupplierOrderDirectory().getSupplierOrderList())
-                        {
-                          if(so.equals(or))
-                          {
-                              row[1] = s;
-                          }
+                    for (Supplier s : system.getSupplierDirectory().getSupplierList()) {
+                        for (SupplierOrders or : s.getSupplierOrderDirectory().getSupplierOrderList()) {
+                            if (so.equals(or)) {
+                                row[1] = s;
+                            }
                         }
                     }
                     row[2] = so.getTotalAmount();
                     row[3] = so.getMessage();
                     row[4] = so.getSupplierDeliveryMan();
-                    if(so.isStatus())
-                    {
+                    if (so.isStatus()) {
                         row[5] = "Yes";
-                    }
-                    else
-                    {
+                    } else {
                         row[5] = "No";
                     }
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");

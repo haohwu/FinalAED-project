@@ -1,127 +1,65 @@
-
 package Business.Customer;
+
+import java.util.Properties;
+import javax.mail.Session;
+import javax.mail.internet.*;
+import javax.mail.*;
+import javax.mail.MessagingException;
+import javax.mail.Transport;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author whh
+ * @author Pratik Poojari
  */
-
-import java.util.Properties;
-import java.util.Random;
-import javax.mail.Authenticator;
-import javax.mail.Message;
-import javax.mail.Message.RecipientType;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import javax.mail.PasswordAuthentication;
-import javax.swing.JOptionPane;
-
 public class EmailValidation {
-     private static final String smtpHostName = "smtp.gmail.com"; 
-    private static final String smtpPortNo = "587"; 
-    private static StringBuilder emailMsgTxt ;
-        
-    private static String emailSubText = "Thank you!";
-    private static String emailFromAdd = "poojari12345678901@gmail.com";
-    private static String pass2="anefxfftsrnencxm";
-    
-    
-    
-    
 
-    
-    
-      public static String generatePassword(String name)
-    {
-        try
-        {
-     StringBuilder sb = new StringBuilder();
-     sb.append(name);
-     System.out.println(">>>>password>>>>>"+sb.toString());
-         return sb.toString();
-        }
-        catch(Exception e)
-        {
-          
-        }
-        return null;
-    }
-     public static String generateUserName(String name)
-    {
-        try
-        {
-         StringBuilder sb = new StringBuilder();
-         sb.append(name);
-        System.out.println(">>>>username>>>>"+sb.toString());
-         return sb.toString();
-    }
-     catch(Exception e)
-        {
-            
-        }
-        return null;
-    }
-     
-     
-     
-     
-     
-       public static void send(String to, String sub,String msg, final String user, final String pass) 
-    {
-        Properties props = new Properties();
+    private String to;
+    private String from;
+    private String textBody;
+    private String host = "smtp.gmail.com";
+    private String password;
+    private String subject;
+    private String emailId;
 
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "587");	
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
-        
-        Session session = Session.getDefaultInstance(props,new Authenticator() 
-        {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() 
-            {
-                return new PasswordAuthentication(user, pass);
+    public EmailValidation(String to, String message, String sub) {
+        this.to = to;
+        this.from = "bostonhospital1@gmail.com";
+        this.textBody = message;
+        this.password = "ivlxtxhupzaxvnwv";
+        this.subject = sub;
+
+    }
+
+    public void sendEmail() {
+        Properties properties = new Properties();
+        properties.setProperty("mail.smtp.host", host);
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.ssl.trust", "*");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.setProperty("mail.smtp.ssl.protocols", "TLSv1.2");
+        properties.put("mail.smtp.port", "587");
+
+        Session session = Session.getDefaultInstance(properties, new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(from, password);
             }
         });
-
-        try 
-        {
+        try {
             Message message = new MimeMessage(session);
-            
-            message.setFrom(new InternetAddress(user));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
-            message.setSubject(sub);
-            message.setText(msg);
+
+            message.setFrom(new InternetAddress(from));
+
+            message.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            message.setSubject(subject);
+
+            message.setContent(textBody, "text/html");
 
             Transport.send(message);
-            
-            JOptionPane.showMessageDialog(null,"Your request has been successfully raised and repesctive personnel has been notified via email");
-            
-        } catch (MessagingException e) 
-        {
-            JOptionPane.showMessageDialog(null,"Something happened! Please recheck your email address and request again.");
-            
-            throw new RuntimeException(e);
+            System.out.println("Message Sent Successfully....");
+        } catch (MessagingException mex) {
+            mex.printStackTrace();
         }
-        
+
     }
 }
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-
-
-  

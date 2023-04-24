@@ -35,7 +35,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="660" y="670" width="220" height="50"/>
+          <AbsoluteConstraints x="660" y="670" width="230" height="50"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -59,7 +59,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="370" y="570" width="160" height="50"/>
+          <AbsoluteConstraints x="360" y="570" width="170" height="50"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -80,7 +80,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="610" y="570" width="160" height="50"/>
+          <AbsoluteConstraints x="610" y="570" width="170" height="50"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -114,7 +114,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="220" y="380" width="670" height="160"/>
+          <AbsoluteConstraints x="150" y="380" width="740" height="160"/>
         </Constraint>
       </Constraints>
 
@@ -145,7 +145,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="220" y="120" width="670" height="150"/>
+          <AbsoluteConstraints x="160" y="120" width="730" height="150"/>
         </Constraint>
       </Constraints>
 
@@ -193,7 +193,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="730" y="290" width="160" height="50"/>
+          <AbsoluteConstraints x="710" y="290" width="180" height="50"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -227,7 +227,7 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/icon/46c6cc94a14f2da88997d4df1d5efde7.jpg"/>
+          <Image iconType="3" name="/icon/Medomand-online-Pharmacy-supply-1024x759.png"/>
         </Property>
       </Properties>
       <Constraints>

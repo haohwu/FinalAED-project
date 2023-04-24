@@ -9,7 +9,8 @@ package Business.SupplierDeliveryMan;
  * @author whh
  */
 public class SupplierDeliveryMan {
- private String name;
+
+    private String name;
     private String phone;
     private String address;
     private int id;
@@ -28,7 +29,6 @@ public class SupplierDeliveryMan {
         this.name = name;
     }
 
-    
     public String getName() {
         return name;
     }
@@ -52,11 +52,6 @@ public class SupplierDeliveryMan {
 
     public void setAddress(String address) {
         this.address = address;
-    }    
+    }
 
-  
-
-  
-  
-    
 }

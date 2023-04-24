@@ -9,7 +9,8 @@ package Business.SupplierMedicineItem;
  * @author whh
  */
 public class SupplierMedicineItem {
-     private int id;
+
+    private int id;
     private String name;
     private int price;
     private static int count = 1;
@@ -33,17 +34,13 @@ public class SupplierMedicineItem {
         return price;
     }
 
-     
-    
     @Override
     public String toString() {
         return name;
     }
-    
 
     public void setPrice(int price) {
         this.price = price;
     }
-    
-    
+
 }

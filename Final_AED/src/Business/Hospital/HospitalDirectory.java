@@ -11,51 +11,56 @@ import java.util.ArrayList;
  * @author whh
  */
 public class HospitalDirectory {
-    
-     private ArrayList<Hospital> HospitalList;
 
+    private ArrayList<Hospital> HospitalList;
 
-public HospitalDirectory() {
+    public HospitalDirectory() {
         HospitalList = new ArrayList();
     }
 
-public Hospital createHospital(String name, String address, String phone){
+    public Hospital createHospital(String name, String address, String phone, String usern) {
         Hospital h = new Hospital();
         h.setHospitalName(name);
         h.setHospitalAddress(address);
         h.setHospitalContactNo(phone);
-
+        h.setUsername(usern);
         HospitalList.add(h);
         return h;
     }
-public ArrayList<Hospital> getHospitalList() {
+
+    public ArrayList<Hospital> getHospitalList() {
         return HospitalList;
     }
 
-public Hospital findHospital(String name)
-    {
-        for(Hospital h : HospitalList)
-        {
-            if(h.getHospitalName() == name)
-            {
+    public Hospital findHospital(String name) {
+        for (Hospital h : HospitalList) {
+            if (h.getHospitalName() == name) {
                 return h;
             }
         }
         return null;
     }
- public void deleteHospital(Hospital hospital)
-    {
-        HospitalList.remove(hospital);
-    }  
 
-  public boolean checkIfHospitalIsUnique(String hospital){
-        for (Business.Hospital.Hospital s : HospitalList){
-            if (s.getHospitalName().equals(hospital))
+    public void deleteHospital(Hospital hospital) {
+        HospitalList.remove(hospital);
+    }
+
+    public boolean checkIfHospitalIsUnique(String hospital) {
+        for (Business.Hospital.Hospital s : HospitalList) {
+            if (s.getHospitalName().equals(hospital)) {
                 return false;
+            }
         }
         return true;
     }
 
+    public boolean checkIfHospitalUserIsUnique(String username) {
+        for (Business.Hospital.Hospital s1 : HospitalList) {
+            if (s1.getUsername().equals(username)) {
+                return false;
+            }
+        }
+        return true;
+    }
 
-    
 }
