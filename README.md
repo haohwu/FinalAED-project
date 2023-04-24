@@ -13,7 +13,7 @@ This application is designed to streamline the distribution and sale of pharmace
 
 𝐄𝐧𝐭𝐞𝐫𝐩𝐫𝐢𝐬𝐞𝐬 :
 
-1)Hospital Admim      2)Drug Approval       3)Supplier         4)Pharmacy      5)Patients
+1)Hospital Admim      2)Drug Approval       3)Supplier         4)Pharmacy      5)Customers
  
 Organizations  :
 
