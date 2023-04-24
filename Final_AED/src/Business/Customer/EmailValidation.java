@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Business.Customer;
 
 /**
@@ -31,6 +28,11 @@ public class EmailValidation {
     private static String emailSubText = "Thank you!";
     private static String emailFromAdd = "pratik3336@gmail.com";
     private static String pass2="anefxfftsrnencxm";
+    
+    
+    
+    
+
     
     
       public static String generatePassword(String name)
@@ -63,77 +65,63 @@ public class EmailValidation {
         }
         return null;
     }
-   public static boolean sendEmail(String msg, String emailId, String userName, String password) throws Exception
+     
+     
+     
+     
+     
+       public static void send(String to, String sub,String msg, final String user, final String pass) 
     {
-        System.out.println("Preparing to send email");
-      boolean isSent = true;
+        Properties props = new Properties();
 
-    try {
-     Properties props =new Properties();
-     props.put("mail.smtp.user",emailFromAdd );
-        props.put("mail.smtp.host", smtpHostName);                                                        
-        props.put("mail.smtp.auth", "true");  
-        props.put("mail.smtp.starttls.enable","true");
-        props.put("mail.smtp.password",password);
-        props.put("mail.smtp.port", "465");
-        props.setProperty ("mail.smtp.ssl.enable", "true");
-        props.setProperty ("mail.smtp.localhost", "localhost"); // added this line
-        props.setProperty ("mail.debug", "true"); // added this line
-
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");	
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
         
-   System.out.println("debug 1");
-        Session mailSession = Session.getInstance(props,new Authenticator(){
+        Session session = Session.getDefaultInstance(props,new Authenticator() 
+        {
             @Override
-            protected PasswordAuthentication getPasswordAuthentication()
+            protected PasswordAuthentication getPasswordAuthentication() 
             {
-                return new PasswordAuthentication(emailFromAdd,pass2);
+                return new PasswordAuthentication(user, pass);
             }
         });
-        System.out.println("debug 2");
-        Message message = new MimeMessage(mailSession);
-        System.out.println("debug 3");
-         InternetAddress fromAddress ;
-        InternetAddress toAddress;
-        try
-           {
-         fromAddress = new InternetAddress(emailFromAdd);
-         toAddress = new InternetAddress(emailId);
-         }
-        
-        catch (AddressException ae) {
-            ae.printStackTrace();
-         isSent= false;
-         System.out.println("catch 1");
-         return isSent;
-         }
-        System.out.println("debug 4");
-        
-        message.setFrom(fromAddress);
-        message.setRecipient(RecipientType.TO, toAddress);
-        System.out.println("debug 5");
-        message.setSubject(emailSubText);
-        message.setText(msg);
-System.out.println("debug 6");
-        Transport transport =mailSession.getTransport("smtps");
-        
-       transport.send(message);
-       System.out.println("debug 9");
-       transport.close();
-       System.out.println("Email Sent !");
-       isSent=true;
-        } 
-         catch (MessagingException mex) {
-            isSent=false;
-            System.out.println("catch 2");
-            return isSent;
-       }
 
+        try 
+        {
+            Message message = new MimeMessage(session);
+            
+            message.setFrom(new InternetAddress(user));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+            message.setSubject(sub);
+            message.setText(msg);
 
-         return isSent;
-     
+            Transport.send(message);
+            
+            JOptionPane.showMessageDialog(null,"Your request has been successfully raised and repesctive personnel has been notified via email");
+            
+        } catch (MessagingException e) 
+        {
+            JOptionPane.showMessageDialog(null,"Something happened! Please recheck your email address and request again.");
+            
+            throw new RuntimeException(e);
+        }
+        
     }
-    
-    
-    
-    
 }
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+
+
+  
