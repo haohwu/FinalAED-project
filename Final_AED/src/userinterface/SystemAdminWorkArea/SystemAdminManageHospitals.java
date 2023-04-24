@@ -10,6 +10,7 @@ import Business.Hospital.Hospital;
 import Business.DeliveryMan.DeliveryMan;
 import Business.EcoSystem;
 import Business.Employee.Employee;
+import Business.Hospital.HospitalDirectory;
 import Business.Role.AdminRole;
 import Business.Role.CustomerRole;
 import Business.Role.DeliveryManRole;
@@ -403,28 +404,34 @@ public class SystemAdminManageHospitals extends javax.swing.JPanel {
         String Emailmsg = str1.concat(str2);
 
         System.out.println("In between"+CustomerUserName+" "+CustomerPassword+" "+ emailId);
-        // boolean emailSent = EmailValidation.sendEmail(Emailmsg, emailId,CustomerUserName,CustomerPassword);
+       //  boolean emailSent = EmailValidation.sendEmail(Emailmsg, emailId,CustomerUserName,CustomerPassword);
 
-        if(validateThisSAMC2()==true)
-        {
-            try
+       if(validateThisSAMC2()==true)
+       {
+        String emailSent = EmailValidation.generatePassword(str2);
+        String emailSent1=EmailValidation.generateUserName(str1);
+           
+        try
             {
-                String emailSent = EmailValidation.generatePassword(str2);
-
+               //String emailSent = EmailValidation.generatePassword(str2);
 
                 if(emailSent == null)
                 {
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please Enter a valid Email address! ","warning", JOptionPane.WARNING_MESSAGE);
-                    // organization.getPersonDirectory().getVolunteerList().remove((Volunteer)person);
+                     JOptionPane.showMessageDialog(null, "Please Enter a valid Email address! ","warning", JOptionPane.WARNING_MESSAGE);
+                    
+                    return;
+                } 
+                else {
+                    JOptionPane.showMessageDialog(null, "Email Sent! ","warning", JOptionPane.WARNING_MESSAGE);
+                   
                     return;
                 }
             }
             catch(Exception e){
                 System.out.println("Please put valid EmailID");
             }
-            //System.out.println(emailSent);
-        }
+            System.out.println(emailSent);
+   }
 
     }//GEN-LAST:event_SendEmailButtonActionPerformed
 
@@ -522,6 +529,7 @@ public class SystemAdminManageHospitals extends javax.swing.JPanel {
     }
 
     private boolean validateThisSAMC() {
+        HospitalDirectory ua=this.ecosystem.getHospitalDirectory();
         String regex = "\\d{10}";
         if(("".equals(SystemAMHUsernameText.getText())) || ("".equals(SystemAMHPasswordText.getText())) || ("".equals(SystemAMHConfirmPasswordText.getText())) 
                 || ("".equals(SystemAMHNameText.getText())) || ("".equals(SystemAMHPhoneNumberText.getText())) || ("".equals(SystemAMHAddressText.getText())))
@@ -539,6 +547,12 @@ public class SystemAdminManageHospitals extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null,"Mobile no. can have only 10 digits!", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
         }
+        else if (ua.checkIfHospitalIsUnique(SystemAMHNameText.getText())==false){
+            
+              JOptionPane.showMessageDialog(null, "Sorry credentials are taken.");
+      return false;
+      
+          }    
         else
         {
             return true;

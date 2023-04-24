@@ -8,6 +8,7 @@ package userinterface.SystemAdminWorkArea;
 import Business.DeliveryMan.DeliveryMan;
 import Business.EcoSystem;
 import Business.Employee.Employee;
+import Business.Employee.EmployeeDirectory;
 import Business.Pharmacy.Pharmacy;
 import Business.Role.AdminRole;
 
@@ -468,6 +469,7 @@ public class SystemManageEmployees extends javax.swing.JPanel {
 
     private boolean validateThis() {
         String regex = "\\d{10}";
+        EmployeeDirectory ua=this.ecosystem.getEmployeeDirectory();
         if(("".equals(txtUsername.getText())) || ("".equals(txtPassword.getText())) || ("".equals(txtConfirmPassword.getText())) 
                 || ("".equals(txtName.getText())) || ("".equals(txtPhoneNumber.getText())) || ("".equals(txtAddress.getText()))
                 || ((radioBtnDelivery.isEnabled() == false) && (radioBtnManager.isEnabled() == false)))
@@ -485,6 +487,12 @@ public class SystemManageEmployees extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null,"Phone number must have only 10 digits!", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
         }
+        
+          else if (ua.checkIfEmployeeIsUnique(txtUsername.getText())==false){
+              JOptionPane.showMessageDialog(null, "Sorry credentials are taken.");
+      return false;
+          }
+          
         else
         {
             return true;

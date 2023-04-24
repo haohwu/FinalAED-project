@@ -5,6 +5,7 @@
  */
 package userinterface.SystemAdminWorkArea;
 import Business.Customer.Customer;
+import Business.Customer.CustomerDirectory;
 import Business.DeliveryMan.DeliveryMan;
 import Business.EcoSystem;
 import Business.Employee.Employee;
@@ -166,6 +167,7 @@ public class SystemAdminUpdateCustomer extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
      private boolean validateThisSAUC() {
+         CustomerDirectory ua=this.ecosystemSAUC.getCustomerDirectory();
         String regex = "\\d{10}";
         if(("".equals(txtPhoneNumber.getText())) || ("".equals(txtAddress.getText())))
         {
@@ -177,6 +179,13 @@ public class SystemAdminUpdateCustomer extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null,"Phone number must have only 10 digits!", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
         }
+            
+        
+          else if (ua.checkIfCustomerIsUnique(txtName.getText())==false){
+              JOptionPane.showMessageDialog(null, "Sorry credentials are taken.");
+      return false;
+          }    
+            
         else
         {
             return true;

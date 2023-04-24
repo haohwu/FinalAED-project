@@ -48,7 +48,13 @@ public Hospital findHospital(String name)
         HospitalList.remove(hospital);
     }  
 
-
+  public boolean checkIfHospitalIsUnique(String hospital){
+        for (Business.Hospital.Hospital s : HospitalList){
+            if (s.getHospitalName().equals(hospital))
+                return false;
+        }
+        return true;
+    }
 
 
     

@@ -7,6 +7,7 @@ package userinterface.SystemAdminWorkArea;
 
 import Business.EcoSystem;
 import Business.Supplier.Supplier;
+import Business.Supplier.SupplierDirectory;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
@@ -209,14 +210,20 @@ public class SystemAdminManageSupplier extends javax.swing.JPanel {
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
-        Supplier s = ecosystem.getSupplierDirectory().createSupplier(txtSupplierName.getText(), txtAddress.getText());
-        if(s == null)
+        SupplierDirectory ua=this.ecosystem.getSupplierDirectory();
+      
+        if(ua.checkIfSupplierIsUnique(txtSupplierName.getText())==false)
         {
             JOptionPane.showMessageDialog(null,"Supplier " + txtSupplierName.getText() + " already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
+        else if("".equals(txtSupplierName.getText())||("".equals(txtAddress.getText()))){
+            JOptionPane.showMessageDialog(null, "Null Check ");
+          return ;  
+        }
         else
         {
+              Supplier s = ecosystem.getSupplierDirectory().createSupplier(txtSupplierName.getText(), txtAddress.getText());
             JOptionPane.showMessageDialog(null, "Supplier created successfully as " + s.getName());
             btnCreate.setEnabled(true);
             txtSupplierName.setEnabled(false);
