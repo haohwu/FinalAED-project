@@ -405,7 +405,7 @@ public class SystemAdminManageHospitals extends javax.swing.JPanel {
         System.out.println("In between"+CustomerUserName+" "+CustomerPassword+" "+ emailId);
         // boolean emailSent = EmailValidation.sendEmail(Emailmsg, emailId,CustomerUserName,CustomerPassword);
 
-        if(validateThisSAMC2())
+        if(validateThisSAMC2()==true)
         {
             try
             {
@@ -433,7 +433,7 @@ public class SystemAdminManageHospitals extends javax.swing.JPanel {
         String HospitalUserName = EmailValidation.generateUserName(SystemAMHNameText.getText());
         String HospitalPassword = EmailValidation.generatePassword(SystemAMHNameText.getText().concat(pass2));
 
-        if(validateThisSAMC())
+        if(validateThisSAMC()==true)
         {
             Employee e = ecosystem.getEmployeeDirectory().createEmployee(SystemAMHNameText.getText(), SystemAMHAddressText.getText(), SystemAMHPhoneNumberText.getText());
             
@@ -545,28 +545,24 @@ public class SystemAdminManageHospitals extends javax.swing.JPanel {
         }
     }
     private boolean validateThisSAMC2() {
-        String regex = "\\d{10}";
-        if( ("".equals(SystemAMHNameText.getText())) || ("".equals(SystemAMHPhoneNumberText.getText())) || ("".equals(SystemAMHAddressText.getText())))
-        {
-            JOptionPane.showMessageDialog(null,"Please fill all details!", "Warning", JOptionPane.WARNING_MESSAGE);
-            return false;
-        }
-       
-        else if(!(SystemAMHPhoneNumberText.getText().matches(regex)))
-        {
-            JOptionPane.showMessageDialog(null,"Mobile no. can have only 10 digits!", "Warning", JOptionPane.WARNING_MESSAGE);
-            return false;
-        }
-        else
-        {
+        String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
+        
+        if (emailIDField.getText().matches(regex)==true){
             return true;
         }
-    }
+        else {
+             
+   
+            return false;
 
-
-
-
+                    }   
+    
 }
+}    
+
+
+
+
 
 
 
