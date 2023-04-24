@@ -26,7 +26,7 @@ public class EmailValidation {
     private static StringBuilder emailMsgTxt ;
         
     private static String emailSubText = "Thank you!";
-    private static String emailFromAdd = "pratik3336@gmail.com";
+    private static String emailFromAdd = "poojari12345678901@gmail.com";
     private static String pass2="anefxfftsrnencxm";
     
     
