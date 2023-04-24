@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Business.Customer;
+import Business.Employee.Employee;
 import java.util.ArrayList;
 
 /**
@@ -46,4 +47,15 @@ public class CustomerDirectory {
     {
         customerList.remove(customer);
     }    
+
+
+  public boolean checkIfCustomerIsUnique(String username){
+        for (Customer ua : customerList){
+            if (ua.getName().equals(username))
+                return false;
+        }
+        return true;
+    }
+  
+
 }

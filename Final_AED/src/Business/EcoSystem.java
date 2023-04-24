@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import Business.Hospital.HospitalDirectory;
 import Business.Role.HospitalAdminRole;
+import Business.SupplierEmp.SupplierEmpDirectory;
 
 /**
  *
@@ -27,7 +28,7 @@ public class EcoSystem extends Organization{
     private DeliveryManDirectory deliveryManDirectory;
     private SupplierDirectory supplierDirectory;
     private SupplierDeliveryManDirectory supplierDeliveryManDirectory;
-    
+    private SupplierEmpDirectory supplieryEmpDirectory;
     private HospitalDirectory hospitalDirectory;
     
     private DrugsDirectory drugsDirectory;
@@ -39,7 +40,7 @@ public class EcoSystem extends Organization{
         this.deliveryManDirectory = deliveryManDirectory;
                 this.supplierDirectory = supplierDirectory;
                         this.supplierDeliveryManDirectory = supplierDeliveryManDirectory;
-                        
+                        this.supplieryEmpDirectory=supplieryEmpDirectory;
                         this.hospitalDirectory=hospitalDirectory;
                         
                         this.drugsDirectory = drugsDirectory;
@@ -93,6 +94,22 @@ public class EcoSystem extends Organization{
     } 
     public SupplierDirectory getSupplierDirectory() {
         return supplierDirectory;
+    }
+
+    public static EcoSystem getBusiness() {
+        return business;
+    }
+
+    public static void setBusiness(EcoSystem business) {
+        EcoSystem.business = business;
+    }
+
+    public SupplierEmpDirectory getSupplieryEmpDirectory() {
+        return supplieryEmpDirectory;
+    }
+
+    public void setSupplieryEmpDirectory(SupplierEmpDirectory supplieryEmpDirectory) {
+        this.supplieryEmpDirectory = supplieryEmpDirectory;
     }
     
     

@@ -7,6 +7,7 @@ package userinterface.SystemAdminWorkArea;
 
 
 import Business.Customer.Customer;
+import Business.Customer.CustomerDirectory;
 import Business.DeliveryMan.DeliveryMan;
 import Business.EcoSystem;
 import Business.Employee.Employee;
@@ -429,6 +430,7 @@ public class SystemAdminManageCustomers extends javax.swing.JPanel {
     }
 
     private boolean validateThisSAMC() {
+        CustomerDirectory ua=this.ecosystem.getCustomerDirectory();
         String regex = "\\d{10}";
         if(("".equals(txtUsername.getText())) || ("".equals(txtPassword.getText())) || ("".equals(txtConfirmPassword.getText())) 
                 || ("".equals(txtName.getText())) || ("".equals(txtPhoneNumber.getText())) || ("".equals(txtAddress.getText())))
@@ -446,6 +448,12 @@ public class SystemAdminManageCustomers extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null,"Mobile no. can have only 10 digits!", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
         }
+        
+           else if (ua.checkIfCustomerIsUnique(txtName.getText())==false){
+              JOptionPane.showMessageDialog(null, "Sorry credentials are taken.");
+      return false;
+          }    
+           
         else
         {
             return true;

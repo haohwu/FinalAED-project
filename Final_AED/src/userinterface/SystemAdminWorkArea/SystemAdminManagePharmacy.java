@@ -10,8 +10,10 @@ import Business.DeliveryMan.DeliveryMan;
 import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Pharmacy.Pharmacy;
+import Business.Pharmacy.PharmacyDirectory;
 import Business.Role.AdminRole;
 import Business.Role.CustomerRole;
+import Business.Supplier.SupplierDirectory;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -231,14 +233,23 @@ public class SystemAdminManagePharmacy extends javax.swing.JPanel {
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
-        Pharmacy p = ecosystem.getPharmacyDirectory().createPharmacy(txtPharmacyName.getText(), txtAddress.getText());
-        if(p == null)
+        
+         PharmacyDirectory ua=this.ecosystem.getPharmacyDirectory();
+      
+        if(ua.checkIfPharmacyIsUnique(txtPharmacyName.getText())==false)
         {
-            JOptionPane.showMessageDialog(null,"Pharmacy " + txtPharmacyName.getText() + " already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Supplier " + txtPharmacyName.getText() + " already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
+            
         }
+        else if("".equals(txtPharmacyName.getText())||("".equals(txtAddress.getText()))){
+            JOptionPane.showMessageDialog(null, "Null Check ");
+          return ;  
+        }
+       
         else
         {
+             Pharmacy p = ecosystem.getPharmacyDirectory().createPharmacy(txtPharmacyName.getText(), txtAddress.getText());
             JOptionPane.showMessageDialog(null, "Pharmacy created successfully as " + p.getName());
             btnCreatePharmacy.setEnabled(true);
             txtPharmacyName.setEnabled(false);

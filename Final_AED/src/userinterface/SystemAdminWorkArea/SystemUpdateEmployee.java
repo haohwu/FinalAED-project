@@ -8,6 +8,7 @@ package userinterface.SystemAdminWorkArea;
 import Business.DeliveryMan.DeliveryMan;
 import Business.EcoSystem;
 import Business.Employee.Employee;
+import Business.Employee.EmployeeDirectory;
 import Business.Role.AdminRole;
 import Business.Role.DeliveryManRole;
 import Business.UserAccount.UserAccount;
@@ -243,6 +244,8 @@ public class SystemUpdateEmployee extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
      private boolean validateThisSUE() {
+         EmployeeDirectory ua=this.ecosystemSUE.getEmployeeDirectory();
+     
         String regex = "\\d{10}";
         if(("".equals(txtPassword.getText())) || ("".equals(txtConfirmPassword.getText())) 
                 || ("".equals(txtPhoneNumber.getText())) || ("".equals(txtAddress.getText())))
@@ -260,7 +263,12 @@ public class SystemUpdateEmployee extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null,"Phone number must have only 10 digits!", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
         }
-        else
+        
+          else if (ua.checkIfEmployeeIsUnique(txtUsername.getText())==false){
+              JOptionPane.showMessageDialog(null, "Sorry credentials are taken.");
+      return false;
+          }
+      else
         {
             return true;
         }

@@ -5,6 +5,8 @@
  */
 package userinterface.SystemAdminWorkArea;
 
+import Business.Customer.Customer;
+import Business.Customer.CustomerDirectory;
 import Business.EcoSystem;
 import Business.Employee.Employee;
 //import Business.Role.AdminRole;
@@ -13,6 +15,7 @@ import Business.Role.SupplierDeliveryManRole;
 import Business.Role.SupplierAdminRole;
 import Business.Supplier.Supplier;
 import Business.SupplierDeliveryMan.SupplierDeliveryMan;
+import Business.SupplierEmp.SupplierEmpDirectory;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -464,6 +467,7 @@ private void populateSupplierEmpTable() {
     }
 
     private boolean validateThis() {
+         SupplierEmpDirectory ua=this.ecosystem.getSupplieryEmpDirectory();
         String regex = "\\d{10}";
         if(("".equals(txtUsername.getText())) || ("".equals(txtPassword.getText())) || ("".equals(txtConfirmPassword.getText())) 
                 || ("".equals(txtName.getText())) || ("".equals(txtPhoneNumber.getText())) || ("".equals(txtAddress.getText()))
@@ -482,6 +486,12 @@ private void populateSupplierEmpTable() {
             JOptionPane.showMessageDialog(null,"Phone number must have only 10 digits!", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
         }
+        
+        //    else if (ua.checkIfSupplierEmpIsUnique(txtName.getText())==false){
+         //     JOptionPane.showMessageDialog(null, "Sorry credentials are taken.");
+    //  return false;
+      
+       //   }    
         else
         {
             return true;
